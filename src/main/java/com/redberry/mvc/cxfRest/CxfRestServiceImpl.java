@@ -23,7 +23,7 @@ public class CxfRestServiceImpl implements CxfRestService {
         if(employeeId==null){
             return Response.status(Response.Status.BAD_REQUEST).build();
         }else {
-            Customer c = (Customer)customerService.getCustomerById(1);
+            Customer c = (Customer)customerService.getCustomerById(Integer.parseInt(employeeId));
             return Response.ok(c).build();
         }
     }
