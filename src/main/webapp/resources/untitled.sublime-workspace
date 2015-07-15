@@ -1,0 +1,228 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ret",
+				"return"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/kokila/IdeaProjects/restful-server/src/main/webapp/WEB-INF/web.xml",
+			"settings":
+			{
+				"buffer_size": 997,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/html/Shamcey",
+		"/var/www/html/Shamcey/fonts",
+		"/var/www/html/Shamcey/fonts/fontawesome"
+	],
+	"file_history":
+	[
+		"/var/www/html/Shamcey/404.html",
+		"/var/www/html/Shamcey/editprofile.html",
+		"/var/www/html/Shamcey/prettify/prettify.css",
+		"/var/www/html/Shamcey/index.html",
+		"/var/www/html/Shamcey/charts.html",
+		"/var/www/html/Shamcey/js/chat.js",
+		"/var/www/html/Shamcey/js/charts.js",
+		"/var/www/html/Shamcey/ajax/chat.html",
+		"/var/www/html/Shamcey/ajax/image.html",
+		"/var/www/html/Shamcey/ajax/doc.html",
+		"/var/www/html/Shamcey/ajax/video.html",
+		"/home/kokila/Downloads/smppusers.sql",
+		"/var/www/html/test/view.php",
+		"/var/www/html/test/DB_Functions.php",
+		"/var/www/html/test/index.php",
+		"/var/www/html/test/xmlWrite.php",
+		"/usr/lib/apache2/modules/mod_rewrite.so",
+		"/home/kokila/Desktop/Last Chart! - See the Music_files/fastbutton.html",
+		"/home/kokila/Desktop/Last Chart! - See the Music.html",
+		"/home/kokila/Desktop/Last Chart! - See the Music_files/core-rpc-shindig.random-shindig.sha1.js"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_POST",
+			"window.open",
+			"badge.html",
+			"lh3.googleusercontent.com",
+			"fas",
+			"}else throw\"Error requesting"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/kokila/IdeaProjects/restful-server/src/main/webapp/WEB-INF/web.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 997,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "untitled.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 274.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
