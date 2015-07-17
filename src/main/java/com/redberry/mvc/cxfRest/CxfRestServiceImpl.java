@@ -19,6 +19,8 @@ public class CxfRestServiceImpl implements CxfRestService {
 
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private EmployeeService employeeService;
 
     @Override
     public Response getEmployeeDetail(String employeeId) {
@@ -37,5 +39,13 @@ public class CxfRestServiceImpl implements CxfRestService {
         list.add("Front office manager");
         list.add("Cleaning Staff");
         return Response.ok(list).build();
+    }
+
+    @Override
+    public Response addEmployee(String name, String salary, String ssn, String date) {
+
+        employeeService.insert(new Employee(name,date,Double.valueOf(salary),ssn));
+
+        return Response.status(Response.Status.OK).build();
     }
 }

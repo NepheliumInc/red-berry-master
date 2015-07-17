@@ -8,4 +8,5 @@ import com.redberry.mvc.hbnt.Employee;
 public interface EmployeeDao {
     public void insert(Employee employee);
     public Employee getEmployeeById(int id);
+
 }

@@ -23,4 +23,12 @@ public interface CxfRestService {
     @Path("/getemployeerole")
     public Response getEmployeeRoles();
 
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("/addemployee")
+    public Response addEmployee(@QueryParam("name")String name,
+                                @QueryParam("salary")String designation,
+                                @QueryParam("ssn") String ssn,
+                                @QueryParam("date")String date);
+
 }

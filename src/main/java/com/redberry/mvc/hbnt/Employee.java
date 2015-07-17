@@ -14,15 +14,14 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    @Column()
-    private Date joiningDate;
+    private String joiningDate;
     private double salary;
     private String ssn;
 
     public Employee() {
     }
 
-    public Employee(String name, Date joiningDate, double salary, String ssn) {
+    public Employee(String name, String joiningDate, double salary, String ssn) {
         this.name = name;
         this.joiningDate = joiningDate;
         this.salary = salary;
@@ -51,11 +50,11 @@ public class Employee {
 
     @Basic
     @Column(name = "joining_date", nullable = false, insertable = true, updatable = true)
-    public Date getJoiningDate() {
+    public String getJoiningDate() {
         return joiningDate;
     }
 
-    public void setJoiningDate(Date joiningDate) {
+    public void setJoiningDate(String joiningDate) {
         this.joiningDate = joiningDate;
     }
 
