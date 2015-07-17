@@ -42,7 +42,9 @@
 
         });
     </script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+
+
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
 </head>
 
 <body>
@@ -250,12 +252,15 @@
                             </p>
 
                             <p>
-                                <label>Gender</label>
-                                    <span class="field"><select name="" class="uniformselect">
+                                <label>Role</label>
+
+
+                                    <span class="field">
+                                        <select id="roleselect" name="roleselect" class="uniformselect">
                                         <option value="">Choose One</option>
-                                        <option value="1">Female</option>
-                                        <option value="2">Male</option>
-                                    </select></span>
+
+                                        </select>
+                                    </span>
                             </p>
 
 
@@ -299,6 +304,18 @@
 </div><!--mainwrapper-->
 <script type="text/javascript">
     jQuery(document).ready(function() {
+
+        //get Roles of employee
+
+        jQuery.get("/redberry/employeeservices/getemployeerole",function(data){
+
+            for(x in data){
+                jQuery("#roleselect").append("<option>"+ data[x] +"</option>");
+            }
+
+        });
+
+
 
       // simple chart
 		var flash = [[0, 11], [1, 9], [2,12], [3, 8], [4, 7], [5, 3], [6, 1]];
@@ -370,5 +387,6 @@
     
     });
 </script>
+
 </body>
 </html>

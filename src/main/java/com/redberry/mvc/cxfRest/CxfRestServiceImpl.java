@@ -9,6 +9,8 @@ import com.redberry.mvc.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Amila on 7/13/15.
@@ -26,5 +28,14 @@ public class CxfRestServiceImpl implements CxfRestService {
             Customer c = (Customer)customerService.getCustomerById(Integer.parseInt(employeeId));
             return Response.ok(c).build();
         }
+    }
+
+    @Override
+    public Response getEmployeeRoles() {
+        List<String> list = new ArrayList<String>();
+        list.add("Administrator");
+        list.add("Front office manager");
+        list.add("Cleaning Staff");
+        return Response.ok(list).build();
     }
 }
