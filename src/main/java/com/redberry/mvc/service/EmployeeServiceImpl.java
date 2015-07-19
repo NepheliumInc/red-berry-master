@@ -1,10 +1,12 @@
 package com.redberry.mvc.service;
 
-import com.redberry.mvc.dao.EmployeeDao;
+import com.redberry.mvc.dao.EmployeeDaoImpl;
 import com.redberry.mvc.hbnt.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.ws.rs.core.Response;
 
 /**
  * Created by Amila on 7/12/15.
@@ -13,17 +15,44 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmployeeServiceImpl implements EmployeeService{
 
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeDaoImpl employeeDaoImpl;
 
-    @Override
     @Transactional
-    public void insert(Employee employee) {
-        employeeDao.insert(employee);
+    @Override
+    public Response getEmployees() {
+
+        return Response.ok(employeeDaoImpl.getEmployees()).build();
     }
 
-    @Override
+
     @Transactional
-    public Employee getEmployeeById(int id) {
-        return employeeDao.getEmployeeById(id);
+    @Override
+    public Response getEmployeeById(int employeeId) {
+        return Response.ok(employeeDaoImpl.getEmployeeById(employeeId)).build();
+    }
+
+    @Transactional
+    @Override
+    public Response addEmployee(Employee employee) {
+
+
+        employeeDaoImpl.addEmployee(employee);
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+
+    @Transactional
+    @Override
+    public Response updateEmployee(Employee employee) {
+        employeeDaoImpl.updateEmployee(employee);
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @Transactional
+
+    @Override
+    public Response removeEmployee(Employee employee) {
+        employeeDaoImpl.removeEmployee(employee);
+        return Response.status(Response.Status.GONE).build();
     }
 }

@@ -19,6 +19,19 @@ public class Customer {
     private String address;
     private String country;
 
+    public Customer() {
+
+    }
+
+    public Customer(int id, String name, String email, String telephoneNumber, String address, String country) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.telephoneNumber = telephoneNumber;
+        this.address = address;
+        this.country = country;
+    }
+
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
