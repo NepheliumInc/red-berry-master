@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <link rel="stylesheet" href="prettify/prettify.css" type="text/css" />
 <link rel="stylesheet" href="css/responsive-tables.css">
-    <link rel="stylesheet" href="css/bootstrap-timepicker.min.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap-timepicker.min.css" type="text/css" />
 
 <link rel="stylesheet" href="css/responsive-tables.css">
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
@@ -15,7 +15,9 @@
 <script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
 <script type="text/javascript" src="js/modernizr.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="js/knockout-3.3-min.js"></script>
+<script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 <script type="text/javascript" src="js/flot/jquery.flot.min.js"></script>
@@ -27,6 +29,9 @@
 <script type="text/javascript" src="js/elements.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/responsive-tables.js"></script>
+<script type="text/javascript" src="js/jquery.cropit.min.js"></script>
+<script type="text/javascript" src="js/employee.js"></script>
+
 
     <script type="text/javascript" src="js/jquery.smartWizard.min.js"></script>
     <script type="text/javascript">
@@ -224,8 +229,12 @@
 
                 <!-- START OF TABBED WIZARD -->
                 <h4 class="subtitle2">ADD NEW EMPLOYEE WIZARD</h4>
+
+
+
+
                 <br />
-                <form class="stdform" method="post" action="wizards.html">
+                <form class="stdform" id="addEmployee" method="post" action="wizards.html">
                     <div id="wizard3" class="wizard tabbedwizard">
 
                         <ul class="tabbedmenu">
@@ -241,66 +250,155 @@
                                     <span class="label">Account Information</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#wiz3step3">
-                                    <span class="h2">STEP 3</span>
-                                    <span class="label">Terms of Agreement</span>
-                                </a>
-                            </li>
                         </ul>
 
 
                         <div id="wiz3step1" class="formwiz">
-                            <h4>Step 1: Basic Information</h4>
+                            <!--<h4>Step 1: Basic Information</h4>-->
+                            <div class="row-fluid">
+                            <div class="span12">
+                                <p>
+                                    <label>Full Name</label>
+                                    <span class="field"><input type="text" data-bind="value: fullName" name="name" id="name" class="input-block-level" /></span>
+                                </p>
+                            </div>
+
+                            <div class="span8" style="margin-left: 0">
+
+
+                                <p>
+                                    <label>Email </label>
+                                    <span class="field"><input type="text" name="email" data-bind="value: email" id="email" class="input-block-level" /></span>
+                                </p>
+
+
+                                <p>
+                                    <label>Telephone </label>
+                                    <span class="field"><input type="text" name="salary" id="telephone" class="input-block-level" /></span>
+                                </p>
+
+                                <p>
+                                    <label>NIC </label>
+                                    <span class="field"><input type="text" name="salary" id="nic" class="input-block-level" /></span>
+                                </p>
+
+                                <p>
+                                    <label>Date of Birth </label>
+                                    <span class="field"><input type="text" name="salary" id="dob" class="input-block-level" /></span>
+                                </p>
+
+                                <p>
+                                    <label>Date joined </label>
+                                    <span class="field"><input type="text" name="salary" id="doj" class="input-block-level" /></span>
+                                </p>
+
+                                <p>
+                                    <label>Starting Salary </label>
+                                    <span class="field"><input type="text" name="salary" id="s-salary" class="input-block-level" /></span>
+                                </p>
+
+                            </div> 
+                            
+                            
+                            <div class="span4" style="padding:20px 0 0 20px;">
+                                <div class="widgetbox profile-photo">
+                                    <div class="headtitle">
+                                        <h4 class="widgettitle" style="color: #fff">Profile Photo</h4>
+                                    </div>
+                                    <div class="widgetcontent">
+                                        <div class="image-editor">
+
+                                            <input type="file" id="files" class="cropit-image-input hidden">
+
+                                            <label for="files" id="overlay">
+                                                <span class="fa iconfa-camera iconfa-2x"></span><br/>
+                                                Browse Profile Picture
+                                            </label>
+                                            <div class="cropit-image-preview" style="background:url('images/profile.jpg') no-repeat center; background-size: 200px 200px; ">
+                                            </div>
+                                            <input type="range" class="cropit-image-zoom-input">
+
+
+                                            <input type="hidden" name="image-data" class="hidden-image-data" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            
+                            <div class="span12" style="margin-left: 0;">
 
                             <p>
-                                <label>Name</label>
-                                <span class="field"><input type="text" name="name" id="name" class="input-xxlarge" /></span>
+                                <label>Residential Address </label>
+                                <span class="field"><input type="text" name="salary" id="r-address" class="input-block-level" /></span>
                             </p>
 
                             <p>
-                                <label>Salary</label>
-                                <span class="field"><input type="text" name="salary" id="salary" class="input-xxlarge" /></span>
-                            </p>
-
-                            <p>
-                                <label>Role</label>
-
-
-                                    <span class="field">
-                                        <select id="roleselect" name="roleselect" class="uniformselect">
-                                        <option value="">Choose One</option>
-
-                                        </select>
-                                    </span>
+                                <label>Permanent Address </label>
+                                <span class="field"><input type="text" name="salary" id="p-address" class="input-block-level" /></span>
                             </p>
 
 
+                             <p>
+                                <label>Previous Working Experience (According to CV) </label>
+                                <span class="field"><input type="text" name="salary" id="prv-work" class="input-block-level" /></span>
+                            </p>
+
+                             <p>
+                                <label>Comments from previous work places </label>
+                                <span class="field"><input type="text" name="salary" id="comment-prev" class="input-block-level" /></span>
+                            </p>
+
+
+
+
+                             <p>
+                                <label>Contact information in any emergency </label>
+                                <span class="field">
+                                    <input type="text" name="salary" id="salary" class="input-xlarge" placeholder="name" />
+                                    <input type="text" name="salary" id="salary" class="input-medium" placeholder="relationship" />
+                                    <input type="text" name="salary" id="salary" class="input-medium" placeholder="telephone" />
+                                </span>
+                            </p>
+
+</div>
+                                </div>
 
                         </div><!--#wiz13tep1-->
 
                         <div id="wiz3step2" class="formwiz">
-                            <h4>Step 2: Account Information</h4>
+                            <h4>Step 2: Verify Information</h4>
 
-                            <p>
-                                <label>SSN</label>
-                                <span class="field"><input type="text" name="ssn" id="ssn" class="input-xxlarge" /></span>
-                            </p>
-                            <div class="par">
-                                <label>Date</label>
-                                <span class="field"><input id="date" type="text" name="date" class="input-small" /></span>
-                            </div>
+
+
+                            <table id="spec_offers" class="table table-bordered responsive">
+                                <colgroup>
+                                    <col class="con1" />
+                                    <col class="con0" />
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th class="head0">filed</th>
+                                    <th class="head0">information</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="gradeX">
+                                    <td>Full Name </td>
+                                    <td data-bind="text: fullName"> </td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Email </td>
+                                    <td  data-bind="text: email"> </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
 
                         </div><!--#wiz3step2-->
 
-                        <div id="wiz3step3">
-                            <h4>Step 3: Terms of Agreement</h4>
-                            <div class="par terms">
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                                <p><input type="checkbox"  /> I agree with the terms and agreement...</p>
-                            </div>
-                        </div><!--#wiz3step3-->
 
                     </div><!--#wizard-->
                 </form>
@@ -314,8 +412,10 @@
     </div><!--rightpanel-->
 
 </div><!--mainwrapper-->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     jQuery(document).ready(function() {
+
+        jQuery('.image-editor').cropit();
 
         jQuery("#date").datepicker();
         //get Roles of employee
@@ -396,10 +496,12 @@
         // tabbed widget
         jQuery('.tabbedwidget').tabs();
         
+       
+        
         
     
     });
-</script>
+</script>-->
 
 </body>
 </html>

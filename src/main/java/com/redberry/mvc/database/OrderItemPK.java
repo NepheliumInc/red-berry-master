@@ -1,19 +1,18 @@
-package com.redberry.mvc.hbnt;
+package com.redberry.mvc.database;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Amila on 7/12/15.
  */
-@Entity
-@Table(name = "ORDER_ITEM", schema = "", catalog = "redberry")
-@IdClass(OrderItemPK.class)
-public class OrderItem {
+public class OrderItemPK implements Serializable {
     private int itemId;
     private int orderId;
 
-    @Id
     @Column(name = "item_id", nullable = false, insertable = true, updatable = true)
+    @Id
     public int getItemId() {
         return itemId;
     }
@@ -22,8 +21,8 @@ public class OrderItem {
         this.itemId = itemId;
     }
 
-    @Id
     @Column(name = "order_id", nullable = false, insertable = true, updatable = true)
+    @Id
     public int getOrderId() {
         return orderId;
     }
@@ -37,10 +36,10 @@ public class OrderItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        OrderItem orderItem = (OrderItem) o;
+        OrderItemPK that = (OrderItemPK) o;
 
-        if (itemId != orderItem.itemId) return false;
-        if (orderId != orderItem.orderId) return false;
+        if (itemId != that.itemId) return false;
+        if (orderId != that.orderId) return false;
 
         return true;
     }

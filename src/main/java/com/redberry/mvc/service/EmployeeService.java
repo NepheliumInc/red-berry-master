@@ -1,7 +1,6 @@
 package com.redberry.mvc.service;
 
-import com.redberry.mvc.dao.EmployeeDao;
-import com.redberry.mvc.hbnt.Employee;
+import com.redberry.mvc.database.Employee;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;

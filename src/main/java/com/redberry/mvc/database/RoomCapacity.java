@@ -1,4 +1,4 @@
-package com.redberry.mvc.hbnt;
+package com.redberry.mvc.database;
 
 import javax.persistence.*;
 
@@ -6,11 +6,11 @@ import javax.persistence.*;
  * Created by Amila on 7/12/15.
  */
 @Entity
-@Table(name = "ROOM_CLASS", schema = "", catalog = "redberry")
-public class RoomClass {
+@Table(name = "ROOM_CAPACITY", schema = "", catalog = "redberry")
+public class RoomCapacity {
     private int id;
     private String name;
-    private String description;
+    private Integer capacity;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -33,13 +33,13 @@ public class RoomClass {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 1000)
-    public String getDescription() {
-        return description;
+    @Column(name = "capacity", nullable = true, insertable = true, updatable = true)
+    public Integer getCapacity() {
+        return capacity;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 
     @Override
@@ -47,12 +47,11 @@ public class RoomClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RoomClass roomClass = (RoomClass) o;
+        RoomCapacity that = (RoomCapacity) o;
 
-        if (id != roomClass.id) return false;
-        if (name != null ? !name.equals(roomClass.name) : roomClass.name != null) return false;
-        if (description != null ? !description.equals(roomClass.description) : roomClass.description != null)
-            return false;
+        if (id != that.id) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (capacity != null ? !capacity.equals(that.capacity) : that.capacity != null) return false;
 
         return true;
     }
@@ -61,7 +60,7 @@ public class RoomClass {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
         return result;
     }
 }

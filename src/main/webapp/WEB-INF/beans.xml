@@ -23,6 +23,7 @@
         <jaxrs:serviceBeans>
             <ref bean="customerServiceImpl" />
             <ref bean="employeeServiceImpl" />
+            <ref bean="userServiceImpl" />
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
             <entry key="xml" value="application/xml" />
@@ -32,10 +33,12 @@
 
     <bean id="customerServiceImpl" class="com.redberry.mvc.service.CustomerServiceImpl"/>
     <bean id="employeeServiceImpl" class="com.redberry.mvc.service.EmployeeServiceImpl"/>
+    <bean id="userServiceImpl" class="com.redberry.mvc.service.UserServiceImpl"/>
 
 
     <bean id="customerDaoImpl" class="com.redberry.mvc.dao.CustomerDaoImpl"/>
     <bean id="employeeDaoImpl" class="com.redberry.mvc.dao.EmployeeDaoImpl"/>
+    <bean id="userDaoImpl" class="com.redberry.mvc.dao.UserDaoImpl"/>
 
 
     <!-- hibernate -->
@@ -50,7 +53,7 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.redberry.mvc.hbnt" />
+        <property name="packagesToScan" value="com.redberry.mvc.database" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>

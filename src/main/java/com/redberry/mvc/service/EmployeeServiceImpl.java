@@ -1,7 +1,7 @@
 package com.redberry.mvc.service;
 
 import com.redberry.mvc.dao.EmployeeDaoImpl;
-import com.redberry.mvc.hbnt.Employee;
+import com.redberry.mvc.database.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

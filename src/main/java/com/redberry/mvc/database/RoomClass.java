@@ -1,4 +1,4 @@
-package com.redberry.mvc.hbnt;
+package com.redberry.mvc.database;
 
 import javax.persistence.*;
 
@@ -6,11 +6,11 @@ import javax.persistence.*;
  * Created by Amila on 7/12/15.
  */
 @Entity
-@Table(name = "ROOM_CAPACITY", schema = "", catalog = "redberry")
-public class RoomCapacity {
+@Table(name = "ROOM_CLASS", schema = "", catalog = "redberry")
+public class RoomClass {
     private int id;
     private String name;
-    private Integer capacity;
+    private String description;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -33,13 +33,13 @@ public class RoomCapacity {
     }
 
     @Basic
-    @Column(name = "capacity", nullable = true, insertable = true, updatable = true)
-    public Integer getCapacity() {
-        return capacity;
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 1000)
+    public String getDescription() {
+        return description;
     }
 
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -47,11 +47,12 @@ public class RoomCapacity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RoomCapacity that = (RoomCapacity) o;
+        RoomClass roomClass = (RoomClass) o;
 
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (capacity != null ? !capacity.equals(that.capacity) : that.capacity != null) return false;
+        if (id != roomClass.id) return false;
+        if (name != null ? !name.equals(roomClass.name) : roomClass.name != null) return false;
+        if (description != null ? !description.equals(roomClass.description) : roomClass.description != null)
+            return false;
 
         return true;
     }
@@ -60,7 +61,7 @@ public class RoomCapacity {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
 }

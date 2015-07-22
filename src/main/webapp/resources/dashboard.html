@@ -1,61 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Redberry - Dashboard</title>
-<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<link rel="stylesheet" href="prettify/prettify.css" type="text/css" />
-<link rel="stylesheet" href="css/responsive-tables.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shamcey - Metro Style Admin Template</title>
+    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
+    <link rel="stylesheet" href="prettify/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="css/responsive-tables.css">
 
-<link rel="stylesheet" href="css/responsive-tables.css">
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
-<script type="text/javascript" src="js/modernizr.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.cookie.js"></script>
-<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/flot/jquery.flot.min.js"></script>
-<script type="text/javascript" src="js/flot/jquery.flot.resize.min.js"></script>
-<script type="text/javascript" src="js/responsive-tables.js"></script>
-<script type="text/javascript" src="js/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="prettify/prettify.js"></script>   
-<script type="text/javascript" src="js/elements.js"></script>
-<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/responsive-tables.js"></script>
+    <link rel="stylesheet" href="css/responsive-tables.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
+    <script type="text/javascript" src="js/modernizr.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="js/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/responsive-tables.js"></script>
+    <script type="text/javascript" src="js/knockout-3.3-min.js"></script>
+    <script type="text/javascript" src="js/redberry.home.js"></script>
     <script type="text/javascript">
-    jQuery(document).ready(function(){
-        // dynamic table
-        jQuery('#checkins').dataTable({
-            "sPaginationType": "full_numbers",
-            "aaSortingFixed": [[0,'asc']],
-            "fnDrawCallback": function(oSettings) {
-                jQuery.uniform.update();
-            },
-            'iDisplayLength': 5,
-            'sDom': '"top"i',
+        jQuery(document).ready(function(){
+            // dynamic table
+            /*jQuery('#checkins').dataTable({
+                "sPaginationType": "full_numbers",
+                "aaSortingFixed": [[0,'asc']],
+                "fnDrawCallback": function(oSettings) {
+                    jQuery.uniform.update();
+                },
+                'iDisplayLength': 5,
+                "aLengthMenu": [[5, 10, 25,50,100, -1], [5, 10, 25,50,100, "All"]]
+            });
+            jQuery('#checkouts').dataTable({
+                "sPaginationType": "full_numbers",
+                "aaSortingFixed": [[0,'asc']],
+                "fnDrawCallback": function(oSettings) {
+                    jQuery.uniform.update();
+                },
+                'iDisplayLength': 5,
+                "aLengthMenu": [[5, 10, 25,50,100, -1], [5, 10, 25,50,100, "All"]]
+            });
+            jQuery('#spec_offers').dataTable({
+                "sPaginationType": "full_numbers",
+                "aaSortingFixed": [[0,'asc']],
+                "fnDrawCallback": function(oSettings) {
+                    jQuery.uniform.update();
+                },
+                'iDisplayLength': 5,
+                'sDom': '"top"i'
+            });*/
+
+
         });
-        jQuery('#checkouts').dataTable({
-            "sPaginationType": "full_numbers",
-            "aaSortingFixed": [[0,'asc']],
-            "fnDrawCallback": function(oSettings) {
-                jQuery.uniform.update();
-            },
-            'iDisplayLength': 5,
-            'sDom': '"top"i',
-        });
-        
-    });
-</script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+    </script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
 </head>
 
 <body>
 
 <div id="mainwrapper" class="mainwrapper">
-    
+
     <div class="header">
         <div class="logo">
             <a href="dashboard.html"><img src="images/logo.png" alt="" /></a>
@@ -80,9 +89,9 @@
                 </li>
                 <li>
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                    <span class="count">10</span>
-                    <span class="head-icon head-users"></span>
-                    <span class="headmenu-label">New Users</span>
+                        <span class="count">10</span>
+                        <span class="head-icon head-users"></span>
+                        <span class="headmenu-label">New Users</span>
                     </a>
                     <ul class="dropdown-menu newusers">
                         <li class="nav-header">New Users</li>
@@ -125,9 +134,9 @@
                 </li>
                 <li class="odd">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                    <span class="count">1</span>
-                    <span class="head-icon head-bar"></span>
-                    <span class="headmenu-label">Statistics</span>
+                        <span class="count">1</span>
+                        <span class="head-icon head-bar"></span>
+                        <span class="headmenu-label">Statistics</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="nav-header">Statistics</li>
@@ -155,356 +164,418 @@
             </ul><!--headmenu-->
         </div>
     </div>
-    
+
     <div class="leftpanel">
-        
-        <div class="leftmenu">        
+
+        <div class="leftmenu">
             <ul class="nav nav-tabs nav-stacked">
-            	<li class="nav-header">Navigation</li>
-                
-                 <li class="active"><a href="dashboard.html"><span class="iconfa-laptop"></span> Dashboard</a></li>
+                <li class="nav-header">Navigation</li>
+
+                <li class="active"><a href="dashboard.html"><span class="iconfa-laptop"></span> Dashboard</a></li>
                 <li ><a href="employee.html"><span class="iconfa-user"></span> Employee</a></li>
                 <li ><a href="template_page.html"><span class="iconfa-user"></span> Template page</a></li>
-                
-               
-                
-               
+
+
+
+
             </ul>
         </div><!--leftmenu-->
-        
+
     </div><!-- leftpanel -->
-    
+
     <div class="rightpanel">
-        
+
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a> <span class="separator"></span></li>
             <li>Dashboard</li>
             <li class="right">
-                    <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-tint"></i> Color Skins</a>
-                    <ul class="dropdown-menu pull-right skin-color">
-                        <li><a href="default">Default</a></li>
-                        <li><a href="navyblue">Navy Blue</a></li>
-                        <li><a href="palegreen">Pale Green</a></li>
-                        <li><a href="red">Red</a></li>
-                        <li><a href="green">Green</a></li>
-                        <li><a href="brown">Brown</a></li>
-                    </ul>
+                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-tint"></i> Color Skins</a>
+                <ul class="dropdown-menu pull-right skin-color">
+                    <li><a href="default">Default</a></li>
+                    <li><a href="navyblue">Navy Blue</a></li>
+                    <li><a href="palegreen">Pale Green</a></li>
+                    <li><a href="red">Red</a></li>
+                    <li><a href="green">Green</a></li>
+                    <li><a href="brown">Brown</a></li>
+                </ul>
             </li>
         </ul>
-        
-       <!--<div class="pageheader">
-            <form action="results.html" method="post" class="searchbar">
-                <input type="text" name="keyword" placeholder="To search type and hit enter..." />
-            </form>
-            <div class="pageicon"><span class="iconfa-laptop"></span></div>
-            <div class="pagetitle">
-                <h5>All Features Summary</h5>
-                <h1>Dashboard</h1>
-            </div>
-        </div>--><!--pageheader-->
-        
+
+
         <div class="maincontent">
             <div class="maincontentinner">
                 <div class="row-fluid">
                     <div id="dashboard-left" class="span8">
+
                        
-                         <div class="accordion accordion-primary">
-                            <h3><a href="#">Special News</a></h3>
-                            <div>
-                                <p>
-                                    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-                                    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-                                    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-                                    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-                                </p>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                        <div class="widgetbox">
+                            <div class="headtitle">
+
+                                <h4 class="widgettitle"><span class="iconfa-pencil fa-2x"></span>Today Check Ins</h4>
                             </div>
-                            <h3><a href="#">Today Check Ins</a></h3>
-                            <div>
-                                  <table id="checkins" class="table table-bordered responsive">
+                            <div class="widgetcontent">
+                                <table id="checkins" class="table table-bordered responsive">
                                     <colgroup>
-                                        <col class="con0" style="align: center; width: 4%" />
                                         <col class="con1" />
                                         <col class="con0" />
                                         <col class="con1" />
                                         <col class="con0" />
-                                        <col class="con1" />
                                     </colgroup>
                                     <thead>
-                                        <tr>
-                                            <th class="head0 nosort"><input type="checkbox" class="checkall" /></th>
-                                            <th class="head0">Check in date</th>
-                                            <th class="head1">Customer</th>
-                                            <th class="head0">Source</th>
-                                            <th class="head1">No of Rooms</th>
-                                            <th class="head0">CSS grade</th>
-                                        </tr>
+                                    <tr>
+                                        <th class="head0">Check in Time</th>
+                                        <th class="head1">Travel Source</th>
+                                        <th class="head0">Customer Name</th>
+                                        <th class="head1">No of Rooms</th>
+                                    </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody data-bind="foreach: checkin">
+
                                         <tr class="gradeX">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 4.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
+                                            <td>
+                                                <span class="iconfa-2x" data-bind="text: time">00630h</span>
+                                                <br/>
+                                                <span data-bind="text: date">13th November 2015</span> </td>
+                                            <td>
+                                                <b style="display: block" data-bind="text: sourceName">OTA</b>
+                                                <img class="travel-logo" data-bind="attr:{src: imagePath}" src="http://99designs.com/logo-design/store/10072/preview/4717686~3005bdc10f70eba299c402e4c42401112d046f9c-stocklarge">
+                                            </td>
+                                            <td data-bind="text: customerName">Win 95+</td>
+                                            <td data-bind="text: noOfRooms">4</td>
                                         </tr>
-                                        <tr class="gradeC">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 5.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5</td>
-                                            <td class="center">C</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 5.5</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5.5</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 6</td>
-                                            <td>Win 98+</td>
-                                            <td class="center">6</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 7</td>
-                                            <td>Win XP SP2+</td>
-                                            <td class="center">7</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>AOL browser (AOL desktop)</td>
-                                            <td>Win XP</td>
-                                            <td class="center">6</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Gecko</td>
-                                            <td>Firefox 1.0</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td class="center">1.7</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Gecko</td>
-                                            <td>Firefox 1.5</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td class="center">1.8</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Gecko</td>
-                                            <td>Firefox 2.0</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td class="center">1.8</td>
-                                            <td class="center">A</td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+
+
+                        
+                        
+                          <div class="widgetbox">
+                            <div class="headtitle">
+
+                                <h4 class="widgettitle"><span class="iconfa-pencil fa-2x"></span>Today Check outs</h4>
                             </div>
-                            <h3><a href="#">Special Offers</a></h3>
-                            <div>
-                                <p>
-                                    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-                                    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-                                    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-                                    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-                                </p>
-                            </div>
-                            <h3><a href="#">Today Check outs</a></h3>
-                            <div>
-                                 <table id="checkouts" class="table table-bordered responsive">
+                            <div class="widgetcontent" >
+                                <table id="checkouts" class="table table-bordered responsive">
                                     <colgroup>
-                                        <col class="con0" style="align: center; width: 4%" />
                                         <col class="con1" />
                                         <col class="con0" />
                                         <col class="con1" />
                                         <col class="con0" />
-                                        <col class="con1" />
                                     </colgroup>
                                     <thead>
-                                        <tr>
-                                            <th class="head0 nosort"><input type="checkbox" class="checkall" /></th>
-                                            <th class="head0">Check sin date</th>
-                                            <th class="head1">Customer</th>
-                                            <th class="head0">Source</th>
-                                            <th class="head1">No of Rooms</th>
-                                            <th class="head0">CSS grade</th>
-                                        </tr>
+                                    <tr>
+                                        <th class="head0">Check Out Time</th>
+                                        <th class="head1">Customer Name</th>
+                                        <th class="head0">Number of Rooms</th>
+                                        <th class="head1">Charge</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="gradeX">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 4.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        <tr class="gradeC">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 5.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5</td>
-                                            <td class="center">C</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 5.5</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5.5</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 6</td>
-                                            <td>Win 98+</td>
-                                            <td class="center">6</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 7</td>
-                                            <td>Win XP SP2+</td>
-                                            <td class="center">7</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Trident</td>
-                                            <td>AOL browser (AOL desktop)</td>
-                                            <td>Win XP</td>
-                                            <td class="center">6</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Gecko</td>
-                                            <td>Firefox 1.0</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td class="center">1.7</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td class="aligncenter"><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Gecko</td>
-                                            <td>Firefox 1.5</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td class="center">1.8</td>
-                                            <td class="center">A</td>
-                                        </tr>
-                                        <tr class="gradeA">
-                                          <td><span class="center">
-                                            <input type="checkbox" />
-                                          </span></td>
-                                            <td>Gecko</td>
-                                            <td>Firefox 2.0</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td class="center">1.8</td>
-                                            <td class="center">A</td>
-                                        </tr>
+                                    <tr class="gradeX">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 4.0</td>
+                                        <td>Win 95+</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    <tr class="gradeC">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 5.0</td>
+                                        <td>Win 95+</td>
+                                        <td class="center">5</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 5.5</td>
+                                        <td>Win 95+</td>
+                                        <td class="center">5.5</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 6</td>
+                                        <td>Win 98+</td>
+                                        <td class="center">6</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 7</td>
+                                        <td>Win XP SP2+</td>
+                                        <td class="center">7</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Trident</td>
+                                        <td>AOL browser (AOL desktop)</td>
+                                        <td>Win XP</td>
+                                        <td class="center">6</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Gecko</td>
+                                        <td>Firefox 1.0</td>
+                                        <td>Win 98+ / OSX.2+</td>
+                                        <td class="center">1.7</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Gecko</td>
+                                        <td>Firefox 1.5</td>
+                                        <td>Win 98+ / OSX.2+</td>
+                                        <td class="center">1.8</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Gecko</td>
+                                        <td>Firefox 2.0</td>
+                                        <td>Win 98+ / OSX.2+</td>
+                                        <td class="center">1.8</td>
+                                    </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div><!--#accordion-->
-                        
-                    </div><!--span8-->
-                    
-                    <div id="dashboard-right" class="span4">
-                        
-                        <h5 class="subtitle">Announcements</h5>
-                        
-                        <div class="divider15"></div>
-                        
-                        <div class="alert alert-block">
-                              <button data-dismiss="alert" class="close" type="button">&times;</button>
-                              <h4>Warning!</h4>
-                              <p style="margin: 8px 0">Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna.</p>
-                        </div><!--alert-->
-                        
-                        <br />
-                        
-                        <h5 class="subtitle">Summaries</h5>
-                            
-                        <div class="divider15"></div>
-                        
-                        <div class="widgetbox">                        
-                        <div class="headtitle">
-                            <div class="btn-group">
-                                <button data-toggle="dropdown" class="btn dropdown-toggle">Action <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                  <li><a href="#">Action</a></li>
-                                  <li><a href="#">Another action</a></li>
-                                  <li><a href="#">Something else here</a></li>
-                                  <li class="divider"></li>
-                                  <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <h4 class="widgettitle">Widget Box</h4>
-                        </div>
-                        <div class="widgetcontent">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </div><!--widgetcontent-->
+                            </div><!--widgetcontent-->
                         </div><!--widgetbox-->
                         
-                       
                         
+                        
+                        <div class="widgetbox">
+                            <div class="headtitle">
+                                <h4 class="widgettitle"><span class="iconfa-pencil fa-2x"></span>Special Offers</h4>
+                            </div>
+                            <div class="widgetcontent">
+                                <table id="spec_offers" class="table table-bordered responsive">
+                                    <colgroup>
+                                        <col class="con1" />
+                                        <col class="con0" />
+                                        <col class="con1" />
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th class="head0">Offer Name</th>
+                                        <th class="head0">Offer Precentage</th>
+                                        <th class="head1">Description</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="gradeX">
+                                        <td>Introductory</td>
+                                        <td>Introductory</td>
+                                        <td>Introductory offers up to 50% off at our two newest properties!</td>
+                                    </tr>
+                                    <tr class="gradeX">
+                                        <td>Stay 3, Pay for 2</td>
+                                        <td>Stay 3, Pay for 2</td>
+                                        <td>One night Free of Charge on basis selected.The Selected Meal plan for 3 days would be continued for the Free night stay.This offer applies to each room for stays of 3 days.</td>
+                                    </tr>
+                                    <tr class="gradeX">
+                                        <td>Combination</td>
+                                        <td>Combination</td>
+                                        <td>Following rates are on Bed and Breakfast Double Room Rate. Minimum of Three hotels must be booked.</td>
+                                    </tr>
+                                    <tr class="gradeX">
+                                        <td>Introductory</td>
+                                        <td>Introductory</td>
+                                        <td>Introductory offers up to 50% off at our two newest properties!</td>
+                                    </tr>
+                                    <tr class="gradeX">
+                                        <td>Stay 3, Pay for 2</td>
+                                        <td>Stay 3, Pay for 2</td>
+                                        <td>One night Free of Charge on basis selected.The Selected Meal plan for 3 days would be continued for the Free night stay.This offer applies to each room for stays of 3 days.</td>
+                                    </tr>
+
+
+                                    </tbody>
+
+                                </table>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+
+
+                      
+
+                        
+                        
+                        
+                         <div class="widgetbox">
+                            <div class="headtitle">
+
+                            <h4 class="widgettitle"><span class="iconfa-pencil fa-2x"></span>Special News</h4>
+                            </div>
+                            <div class="widgetcontent" style="height: 200px; overflow-y: scroll;">
+                                <hr/>
+                                <div class="spec_news">
+                                    <ul>
+                                        <li>
+                                            <div class="c-thumb"><img class="spec_img" src="images/photos/thumb4.png" alt="" /></div>
+                                            <div class="c-text">
+                                                <h6><a href="">Nusja Nawancali</a> - 20 minutes ago</h6>
+                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr/>
+                                <div class="spec_news">
+                                    <ul>
+                                        <li>
+                                            <div class="c-thumb"><img class="spec_img" src="images/photos/thumb4.png" alt="" /></div>
+                                            <div class="c-text">
+                                                <h6><a href="">Nusja Nawancali</a> - 20 minutes ago</h6>
+                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr/>
+                                <div class="spec_news">
+                                    <ul>
+                                        <li>
+                                            <div class="c-thumb"><img class="spec_img" src="images/photos/thumb4.png" alt="" /></div>
+                                            <div class="c-text">
+                                                <h6><a href="">Nusja Nawancali</a> - 20 minutes ago</h6>
+                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr/>
+                                <div class="spec_news">
+                                    <ul>
+                                        <li>
+                                            <div class="c-thumb"><img class="spec_img" src="images/photos/thumb4.png" alt="" /></div>
+                                            <div class="c-text">
+                                                <h6><a href="">Nusja Nawancali</a> - 20 minutes ago</h6>
+                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+                        
+
+                    </div><!--span8-->
+
+                    <div id="dashboard-right" class="span4">
+
+                        <div class="widgetbox">
+                            <div class="headtitle">
+                                <div class="btn-group">
+                                    <button class="btn"><span class="iconfa-refresh"></span></button>
+                                </div>
+                                <h4 class="widgettitle"><span class="iconfa-unlock fa-2x"></span>Available Rooms</h4>
+                            </div>
+                            <div class="widgetcontent">
+                                 <table>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="3" style="text-align"><span class="fa-2x"> Normal &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">10</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>5</td><td>2</td><td>3</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="3" style="text-align"><span class="fa-2x"> Cat-2 &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">3</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>1</td><td>2</td><td>0</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr><td colspan="3"><span class="fa-2x"> Cat-3 &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td></tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">8</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>1</td><td>2</td><td>5</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr><td colspan="3"><span class="fa-2x"> Cat-4 &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td></tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">41</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>23</td><td>7</td><td>11</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr><td colspan="3"><span class="fa-2x"> Cat-5 &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td></tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">41</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>23</td><td>7</td><td>11</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr><td colspan="3"><span class="fa-2x"> Luxury &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td></tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">41</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>23</td><td>7</td><td>11</td></tr>
+                                    </tbody>
+                                </table>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+
                         <br />
-                                                
+                        
+                        
+
                     </div><!--span4-->
                 </div><!--row-fluid-->
-                
+
                 <div class="footer">
                     <div class="footer-left">
                         <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
@@ -513,84 +584,84 @@
                         <span>Designed by: <a href="http://themepixels.com/">ThemePixels</a></span>
                     </div>
                 </div><!--footer-->
-                
+
             </div><!--maincontentinner-->
         </div><!--maincontent-->
-        
+
     </div><!--rightpanel-->
-    
+
 </div><!--mainwrapper-->
 <script type="text/javascript">
     jQuery(document).ready(function() {
-        
-      // simple chart
-		var flash = [[0, 11], [1, 9], [2,12], [3, 8], [4, 7], [5, 3], [6, 1]];
-		var html5 = [[0, 5], [1, 4], [2,4], [3, 1], [4, 9], [5, 10], [6, 13]];
-      var css3 = [[0, 6], [1, 1], [2,9], [3, 12], [4, 10], [5, 12], [6, 11]];
-			
-		function showTooltip(x, y, contents) {
-			jQuery('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css( {
-				position: 'absolute',
-				display: 'none',
-				top: y + 5,
-				left: x + 5
-			}).appendTo("body").fadeIn(200);
-		}
-	
-			
-		var plot = jQuery.plot(jQuery("#chartplace"),
-			   [ { data: flash, label: "Flash(x)", color: "#6fad04"},
-              { data: html5, label: "HTML5(x)", color: "#06c"},
-              { data: css3, label: "CSS3", color: "#666"} ], {
-				   series: {
-					   lines: { show: true, fill: true, fillColor: { colors: [ { opacity: 0.05 }, { opacity: 0.15 } ] } },
-					   points: { show: true }
-				   },
-				   legend: { position: 'nw'},
-				   grid: { hoverable: true, clickable: true, borderColor: '#666', borderWidth: 2, labelMargin: 10 },
-				   yaxis: { min: 0, max: 15 }
-				 });
-		
-		var previousPoint = null;
-		jQuery("#chartplace").bind("plothover", function (event, pos, item) {
-			jQuery("#x").text(pos.x.toFixed(2));
-			jQuery("#y").text(pos.y.toFixed(2));
-			
-			if(item) {
-				if (previousPoint != item.dataIndex) {
-					previousPoint = item.dataIndex;
-						
-					jQuery("#tooltip").remove();
-					var x = item.datapoint[0].toFixed(2),
-					y = item.datapoint[1].toFixed(2);
-						
-					showTooltip(item.pageX, item.pageY,
-									item.series.label + " of " + x + " = " + y);
-				}
-			
-			} else {
-			   jQuery("#tooltip").remove();
-			   previousPoint = null;            
-			}
-		
-		});
-		
-		jQuery("#chartplace").bind("plotclick", function (event, pos, item) {
-			if (item) {
-				jQuery("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
-				plot.highlight(item.series, item.datapoint);
-			}
-		});
-    
-        
+
+        // simple chart
+        var flash = [[0, 11], [1, 9], [2,12], [3, 8], [4, 7], [5, 3], [6, 1]];
+        var html5 = [[0, 5], [1, 4], [2,4], [3, 1], [4, 9], [5, 10], [6, 13]];
+        var css3 = [[0, 6], [1, 1], [2,9], [3, 12], [4, 10], [5, 12], [6, 11]];
+
+        function showTooltip(x, y, contents) {
+            jQuery('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css( {
+                position: 'absolute',
+                display: 'none',
+                top: y + 5,
+                left: x + 5
+            }).appendTo("body").fadeIn(200);
+        }
+
+
+        var plot = jQuery.plot(jQuery("#chartplace"),
+                [ { data: flash, label: "Flash(x)", color: "#6fad04"},
+                    { data: html5, label: "HTML5(x)", color: "#06c"},
+                    { data: css3, label: "CSS3", color: "#666"} ], {
+                    series: {
+                        lines: { show: true, fill: true, fillColor: { colors: [ { opacity: 0.05 }, { opacity: 0.15 } ] } },
+                        points: { show: true }
+                    },
+                    legend: { position: 'nw'},
+                    grid: { hoverable: true, clickable: true, borderColor: '#666', borderWidth: 2, labelMargin: 10 },
+                    yaxis: { min: 0, max: 15 }
+                });
+
+        var previousPoint = null;
+        jQuery("#chartplace").bind("plothover", function (event, pos, item) {
+            jQuery("#x").text(pos.x.toFixed(2));
+            jQuery("#y").text(pos.y.toFixed(2));
+
+            if(item) {
+                if (previousPoint != item.dataIndex) {
+                    previousPoint = item.dataIndex;
+
+                    jQuery("#tooltip").remove();
+                    var x = item.datapoint[0].toFixed(2),
+                            y = item.datapoint[1].toFixed(2);
+
+                    showTooltip(item.pageX, item.pageY,
+                            item.series.label + " of " + x + " = " + y);
+                }
+
+            } else {
+                jQuery("#tooltip").remove();
+                previousPoint = null;
+            }
+
+        });
+
+        jQuery("#chartplace").bind("plotclick", function (event, pos, item) {
+            if (item) {
+                jQuery("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
+                plot.highlight(item.series, item.datapoint);
+            }
+        });
+
+
         //datepicker
         jQuery('#datepicker').datepicker();
-        
+
         // tabbed widget
         jQuery('.tabbedwidget').tabs();
-        
-        
-    
+
+
+
     });
 </script>
 </body>
