@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shamcey - Metro Style Admin Template</title>
+    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
+    <link rel="stylesheet" href="prettify/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="css/responsive-tables.css">
+
+    <link rel="stylesheet" href="css/responsive-tables.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
+    <script type="text/javascript" src="js/modernizr.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="js/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/responsive-tables.js"></script>
+    <script type="text/javascript" src="js/knockout-3.3-min.js"></script>
+    <script type="text/javascript" src="js/redberry.home.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            // dynamic table
+            /*jQuery('#checkins').dataTable({
+                "sPaginationType": "full_numbers",
+                "aaSortingFixed": [[0,'asc']],
+                "fnDrawCallback": function(oSettings) {
+                    jQuery.uniform.update();
+                },
+                'iDisplayLength': 5,
+                "aLengthMenu": [[5, 10, 25,50,100, -1], [5, 10, 25,50,100, "All"]]
+            });
+            jQuery('#checkouts').dataTable({
+                "sPaginationType": "full_numbers",
+                "aaSortingFixed": [[0,'asc']],
+                "fnDrawCallback": function(oSettings) {
+                    jQuery.uniform.update();
+                },
+                'iDisplayLength': 5,
+                "aLengthMenu": [[5, 10, 25,50,100, -1], [5, 10, 25,50,100, "All"]]
+            });
+            jQuery('#spec_offers').dataTable({
+                "sPaginationType": "full_numbers",
+                "aaSortingFixed": [[0,'asc']],
+                "fnDrawCallback": function(oSettings) {
+                    jQuery.uniform.update();
+                },
+                'iDisplayLength': 5,
+                'sDom': '"top"i'
+            });*/
+
+
+        });
+    </script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div id="mainwrapper" class="mainwrapper">
+
+    <div class="header">
+        <div class="logo">
+            <a href="dashboard.html"><img src="images/logo.png" alt="" /></a>
+        </div>
+        <div class="headerinner">
+            <ul class="headmenu">
+                <li class="odd">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="count">4</span>
+                        <span class="head-icon head-message"></span>
+                        <span class="headmenu-label">Messages</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-header">Messages</li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jack</strong> <small class="muted"> - 19 hours ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Daniel</strong> <small class="muted"> - 2 days ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jane</strong> <small class="muted"> - 3 days ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Tanya</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Lee</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li class="viewmore"><a href="messages.html">View More Messages</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                        <span class="count">10</span>
+                        <span class="head-icon head-users"></span>
+                        <span class="headmenu-label">New Users</span>
+                    </a>
+                    <ul class="dropdown-menu newusers">
+                        <li class="nav-header">New Users</li>
+                        <li>
+                            <a href="">
+                                <img src="images/photos/thumb1.png" alt="" class="userthumb" />
+                                <strong>Draniem Daamul</strong>
+                                <small>April 20, 2013</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="images/photos/thumb2.png" alt="" class="userthumb" />
+                                <strong>Shamcey Sindilmaca</strong>
+                                <small>April 19, 2013</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="images/photos/thumb3.png" alt="" class="userthumb" />
+                                <strong>Nusja Paul Nawancali</strong>
+                                <small>April 19, 2013</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="images/photos/thumb4.png" alt="" class="userthumb" />
+                                <strong>Rose Cerona</strong>
+                                <small>April 18, 2013</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="images/photos/thumb5.png" alt="" class="userthumb" />
+                                <strong>John Doe</strong>
+                                <small>April 16, 2013</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="odd">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                        <span class="count">1</span>
+                        <span class="head-icon head-bar"></span>
+                        <span class="headmenu-label">Statistics</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-header">Statistics</li>
+                        <li><a href=""><span class="icon-align-left"></span> New Reports from <strong>Products</strong> <small class="muted"> - 19 hours ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Users</strong> <small class="muted"> - 2 days ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Comments</strong> <small class="muted"> - 3 days ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> Most Popular in <strong>Products</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> Most Viewed in <strong>Blog</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li class="viewmore"><a href="charts.html">View More Statistics</a></li>
+                    </ul>
+                </li>
+                <li class="right">
+                    <div class="userloggedinfo">
+                        <img src="images/photos/thumb1.png" alt="" />
+                        <div class="userinfo">
+                            <h5>Juan Dela Cruz <small>- juan@themepixels.com</small></h5>
+                            <ul>
+                                <li><a href="editprofile.html">Edit Profile</a></li>
+                                <li><a href="">Account Settings</a></li>
+                                <li><a href="index.html">Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul><!--headmenu-->
+        </div>
+    </div>
+
+    <div class="leftpanel">
+
+        <div class="leftmenu">
+            <ul class="nav nav-tabs nav-stacked">
+                <li class="nav-header">Navigation</li>
+
+                <li class="active"><a href="dashboard.html"><span class="iconfa-laptop"></span> Dashboard</a></li>
+                <li ><a href="employee.html"><span class="iconfa-user"></span> Employee</a></li>
+                <li ><a href="template_page.html"><span class="iconfa-user"></span> Template page</a></li>
+
+
+
+
+            </ul>
+        </div><!--leftmenu-->
+
+    </div><!-- leftpanel -->
+
+    <div class="rightpanel">
+
+        <ul class="breadcrumbs">
+            <li><a href="dashboard.html"><i class="iconfa-home"></i></a> <span class="separator"></span></li>
+            <li>Dashboard</li>
+            <li class="right">
+                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-tint"></i> Color Skins</a>
+                <ul class="dropdown-menu pull-right skin-color">
+                    <li><a href="default">Default</a></li>
+                    <li><a href="navyblue">Navy Blue</a></li>
+                    <li><a href="palegreen">Pale Green</a></li>
+                    <li><a href="red">Red</a></li>
+                    <li><a href="green">Green</a></li>
+                    <li><a href="brown">Brown</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+        <div class="maincontent">
+            <div class="maincontentinner">
+                <div class="row-fluid">
+                    <div id="dashboard-left" class="span8">
+
+                       
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                        <div class="widgetbox">
+                            <div class="headtitle">
+
+                                <h4 class="widgettitle"><span class="iconfa-pencil fa-2x"></span>Today Check Ins</h4>
+                            </div>
+                            <div class="widgetcontent">
+                                <table id="checkins" class="table table-bordered responsive">
+                                    <colgroup>
+                                        <col class="con1" />
+                                        <col class="con0" />
+                                        <col class="con1" />
+                                        <col class="con0" />
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th class="head0">Check in Time</th>
+                                        <th class="head1">Travel Source</th>
+                                        <th class="head0">Customer Name</th>
+                                        <th class="head1">No of Rooms</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: checkin">
+
+                                        <tr class="gradeX">
+                                            <td>
+                                                <span class="iconfa-2x" data-bind="text: time">00630h</span>
+                                                <br/>
+                                                <span data-bind="text: date">13th November 2015</span> </td>
+                                            <td>
+                                                <b style="display: block" data-bind="text: sourceName">OTA</b>
+                                                <img class="travel-logo" data-bind="attr:{src: imagePath}" src="http://99designs.com/logo-design/store/10072/preview/4717686~3005bdc10f70eba299c402e4c42401112d046f9c-stocklarge">
+                                            </td>
+                                            <td data-bind="text: customerName">Win 95+</td>
+                                            <td data-bind="text: noOfRooms">4</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+
+
+                        
+                        
+                          <div class="widgetbox">
+                            <div class="headtitle">
+
+                                <h4 class="widgettitle"><span class="iconfa-pencil fa-2x"></span>Today Check outs</h4>
+                            </div>
+                            <div class="widgetcontent" >
+                                <table id="checkouts" class="table table-bordered responsive">
+                                    <colgroup>
+                                        <col class="con1" />
+                                        <col class="con0" />
+                                        <col class="con1" />
+                                        <col class="con0" />
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th class="head0">Check Out Time</th>
+                                        <th class="head1">Customer Name</th>
+                                        <th class="head0">Number of Rooms</th>
+                                        <th class="head1">Charge</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="gradeX">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 4.0</td>
+                                        <td>Win 95+</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    <tr class="gradeC">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 5.0</td>
+                                        <td>Win 95+</td>
+                                        <td class="center">5</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 5.5</td>
+                                        <td>Win 95+</td>
+                                        <td class="center">5.5</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 6</td>
+                                        <td>Win 98+</td>
+                                        <td class="center">6</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Trident</td>
+                                        <td>Internet Explorer 7</td>
+                                        <td>Win XP SP2+</td>
+                                        <td class="center">7</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Trident</td>
+                                        <td>AOL browser (AOL desktop)</td>
+                                        <td>Win XP</td>
+                                        <td class="center">6</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Gecko</td>
+                                        <td>Firefox 1.0</td>
+                                        <td>Win 98+ / OSX.2+</td>
+                                        <td class="center">1.7</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Gecko</td>
+                                        <td>Firefox 1.5</td>
+                                        <td>Win 98+ / OSX.2+</td>
+                                        <td class="center">1.8</td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>Gecko</td>
+                                        <td>Firefox 2.0</td>
+                                        <td>Win 98+ / OSX.2+</td>
+                                        <td class="center">1.8</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+                        
+                        
+                        
+                        <div class="widgetbox">
+                            <div class="headtitle">
+                                <h4 class="widgettitle"><span class="iconfa-pencil fa-2x"></span>Special Offers</h4>
+                            </div>
+                            <div class="widgetcontent">
+                                <table id="spec_offers" class="table table-bordered responsive">
+                                    <colgroup>
+                                        <col class="con1" />
+                                        <col class="con0" />
+                                        <col class="con1" />
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th class="head0">Offer Name</th>
+                                        <th class="head0">Offer Precentage</th>
+                                        <th class="head1">Description</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="gradeX">
+                                        <td>Introductory</td>
+                                        <td>Introductory</td>
+                                        <td>Introductory offers up to 50% off at our two newest properties!</td>
+                                    </tr>
+                                    <tr class="gradeX">
+                                        <td>Stay 3, Pay for 2</td>
+                                        <td>Stay 3, Pay for 2</td>
+                                        <td>One night Free of Charge on basis selected.The Selected Meal plan for 3 days would be continued for the Free night stay.This offer applies to each room for stays of 3 days.</td>
+                                    </tr>
+                                    <tr class="gradeX">
+                                        <td>Combination</td>
+                                        <td>Combination</td>
+                                        <td>Following rates are on Bed and Breakfast Double Room Rate. Minimum of Three hotels must be booked.</td>
+                                    </tr>
+                                    <tr class="gradeX">
+                                        <td>Introductory</td>
+                                        <td>Introductory</td>
+                                        <td>Introductory offers up to 50% off at our two newest properties!</td>
+                                    </tr>
+                                    <tr class="gradeX">
+                                        <td>Stay 3, Pay for 2</td>
+                                        <td>Stay 3, Pay for 2</td>
+                                        <td>One night Free of Charge on basis selected.The Selected Meal plan for 3 days would be continued for the Free night stay.This offer applies to each room for stays of 3 days.</td>
+                                    </tr>
+
+
+                                    </tbody>
+
+                                </table>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+
+
+                      
+
+                        
+                        
+                        
+                         <div class="widgetbox">
+                            <div class="headtitle">
+
+                            <h4 class="widgettitle"><span class="iconfa-pencil fa-2x"></span>Special News</h4>
+                            </div>
+                            <div class="widgetcontent" style="height: 200px; overflow-y: scroll;">
+                                <hr/>
+                                <div class="spec_news">
+                                    <ul>
+                                        <li>
+                                            <div class="c-thumb"><img class="spec_img" src="images/photos/thumb4.png" alt="" /></div>
+                                            <div class="c-text">
+                                                <h6><a href="">Nusja Nawancali</a> - 20 minutes ago</h6>
+                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr/>
+                                <div class="spec_news">
+                                    <ul>
+                                        <li>
+                                            <div class="c-thumb"><img class="spec_img" src="images/photos/thumb4.png" alt="" /></div>
+                                            <div class="c-text">
+                                                <h6><a href="">Nusja Nawancali</a> - 20 minutes ago</h6>
+                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr/>
+                                <div class="spec_news">
+                                    <ul>
+                                        <li>
+                                            <div class="c-thumb"><img class="spec_img" src="images/photos/thumb4.png" alt="" /></div>
+                                            <div class="c-text">
+                                                <h6><a href="">Nusja Nawancali</a> - 20 minutes ago</h6>
+                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr/>
+                                <div class="spec_news">
+                                    <ul>
+                                        <li>
+                                            <div class="c-thumb"><img class="spec_img" src="images/photos/thumb4.png" alt="" /></div>
+                                            <div class="c-text">
+                                                <h6><a href="">Nusja Nawancali</a> - 20 minutes ago</h6>
+                                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+                        
+
+                    </div><!--span8-->
+
+                    <div id="dashboard-right" class="span4">
+
+                        <div class="widgetbox">
+                            <div class="headtitle">
+                                <div class="btn-group">
+                                    <button class="btn"><span class="iconfa-refresh"></span></button>
+                                </div>
+                                <h4 class="widgettitle"><span class="iconfa-unlock fa-2x"></span>Available Rooms</h4>
+                            </div>
+                            <div class="widgetcontent">
+                                 <table>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="3" style="text-align"><span class="fa-2x"> Normal &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">10</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>5</td><td>2</td><td>3</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="3" style="text-align"><span class="fa-2x"> Cat-2 &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">3</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>1</td><td>2</td><td>0</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr><td colspan="3"><span class="fa-2x"> Cat-3 &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td></tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">8</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>1</td><td>2</td><td>5</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr><td colspan="3"><span class="fa-2x"> Cat-4 &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td></tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">41</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>23</td><td>7</td><td>11</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr><td colspan="3"><span class="fa-2x"> Cat-5 &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td></tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">41</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>23</td><td>7</td><td>11</td></tr>
+                                    </tbody>
+                                </table>
+                                 <table>
+                                    <tbody>
+                                    <tr><td colspan="3"><span class="fa-2x"> Luxury &nbsp;</span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        <span class="iconfa-star text-gold"></span>
+                                        </td></tr>
+                                    <tr><td colspan="3"><span class="badge badge-warning iconfa-2x">41</span></td></tr>
+                                    <tr><td>S</td><td>D</td><td>T</td></tr>
+                                    <tr><td>23</td><td>7</td><td>11</td></tr>
+                                    </tbody>
+                                </table>
+                            </div><!--widgetcontent-->
+                        </div><!--widgetbox-->
+
+                        <br />
+                        
+                        
+
+                    </div><!--span4-->
+                </div><!--row-fluid-->
+
+                <div class="footer">
+                    <div class="footer-left">
+                        <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
+                    </div>
+                    <div class="footer-right">
+                        <span>Designed by: <a href="http://themepixels.com/">ThemePixels</a></span>
+                    </div>
+                </div><!--footer-->
+
+            </div><!--maincontentinner-->
+        </div><!--maincontent-->
+
+    </div><!--rightpanel-->
+
+</div><!--mainwrapper-->
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+
+        // simple chart
+        var flash = [[0, 11], [1, 9], [2,12], [3, 8], [4, 7], [5, 3], [6, 1]];
+        var html5 = [[0, 5], [1, 4], [2,4], [3, 1], [4, 9], [5, 10], [6, 13]];
+        var css3 = [[0, 6], [1, 1], [2,9], [3, 12], [4, 10], [5, 12], [6, 11]];
+
+        function showTooltip(x, y, contents) {
+            jQuery('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css( {
+                position: 'absolute',
+                display: 'none',
+                top: y + 5,
+                left: x + 5
+            }).appendTo("body").fadeIn(200);
+        }
+
+
+        var plot = jQuery.plot(jQuery("#chartplace"),
+                [ { data: flash, label: "Flash(x)", color: "#6fad04"},
+                    { data: html5, label: "HTML5(x)", color: "#06c"},
+                    { data: css3, label: "CSS3", color: "#666"} ], {
+                    series: {
+                        lines: { show: true, fill: true, fillColor: { colors: [ { opacity: 0.05 }, { opacity: 0.15 } ] } },
+                        points: { show: true }
+                    },
+                    legend: { position: 'nw'},
+                    grid: { hoverable: true, clickable: true, borderColor: '#666', borderWidth: 2, labelMargin: 10 },
+                    yaxis: { min: 0, max: 15 }
+                });
+
+        var previousPoint = null;
+        jQuery("#chartplace").bind("plothover", function (event, pos, item) {
+            jQuery("#x").text(pos.x.toFixed(2));
+            jQuery("#y").text(pos.y.toFixed(2));
+
+            if(item) {
+                if (previousPoint != item.dataIndex) {
+                    previousPoint = item.dataIndex;
+
+                    jQuery("#tooltip").remove();
+                    var x = item.datapoint[0].toFixed(2),
+                            y = item.datapoint[1].toFixed(2);
+
+                    showTooltip(item.pageX, item.pageY,
+                            item.series.label + " of " + x + " = " + y);
+                }
+
+            } else {
+                jQuery("#tooltip").remove();
+                previousPoint = null;
+            }
+
+        });
+
+        jQuery("#chartplace").bind("plotclick", function (event, pos, item) {
+            if (item) {
+                jQuery("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
+                plot.highlight(item.series, item.datapoint);
+            }
+        });
+
+
+        //datepicker
+        jQuery('#datepicker').datepicker();
+
+        // tabbed widget
+        jQuery('.tabbedwidget').tabs();
+
+
+
+    });
+</script>
+</body>
+</html>
