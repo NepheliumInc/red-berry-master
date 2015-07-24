@@ -23,6 +23,8 @@
         <jaxrs:serviceBeans>
             <ref bean="customerServiceImpl" />
             <ref bean="employeeServiceImpl" />
+            <ref bean="testService" />
+
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
             <entry key="xml" value="application/xml" />
@@ -32,6 +34,7 @@
 
     <bean id="customerServiceImpl" class="com.redberry.mvc.service.CustomerServiceImpl"/>
     <bean id="employeeServiceImpl" class="com.redberry.mvc.service.EmployeeServiceImpl"/>
+    <bean id="testService" class="com.redberry.mvc.service.TestService" />
 
 
     <bean id="customerDaoImpl" class="com.redberry.mvc.dao.CustomerDaoImpl"/>

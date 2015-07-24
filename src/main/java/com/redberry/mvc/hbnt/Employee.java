@@ -2,7 +2,8 @@ package com.redberry.mvc.hbnt;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  * Created by Amila on 7/12/15.
@@ -13,99 +14,159 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name;
-    private String joiningDate;
-    private double salary;
-    private String ssn;
+    private String fullName;
+    private String residentialAddress;
+    private String permanentAddress;
+    private String residentialPhone;
+    private String permanentPhone;
+    private String NIC;
+    private String email;
+    private Date dob;
+    private Date joinedDate;
+    private String prevExperience;
+    private String commentsFromPrevWorkPlace;
+    private Double startingSalary;
+    private String emergencyContact;
+    private String imageURL;
+
 
     public Employee() {
     }
 
-    public Employee(int id,String name, String joiningDate, double salary, String ssn) {
-        this.id=id;
-        this.name = name;
-        this.joiningDate = joiningDate;
-        this.salary = salary;
-        this.ssn = ssn;
-    }
-
-    @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
-    public int getId() {
-        return id;
+    public Employee(String fullName, String residentialAddress, String permanentAddress, String residentialPhone, String permanentPhone, String NIC, String email, Date dob, Date joinedDate, String prevExperience, String commentsFromPrevWorkPlace, Double startingSalary, String emergencyContact, String imageURL) {
+        this.fullName = fullName;
+        this.residentialAddress = residentialAddress;
+        this.permanentAddress = permanentAddress;
+        this.residentialPhone = residentialPhone;
+        this.permanentPhone = permanentPhone;
+        this.NIC = NIC;
+        this.email = email;
+        this.dob = dob;
+        this.joinedDate = joinedDate;
+        this.prevExperience = prevExperience;
+        this.commentsFromPrevWorkPlace = commentsFromPrevWorkPlace;
+        this.startingSalary = startingSalary;
+        this.emergencyContact = emergencyContact;
+        this.imageURL = imageURL;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 50)
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getFullName() {
+        return fullName;
     }
 
-    @Basic
-    @Column(name = "joining_date", nullable = false, insertable = true, updatable = true)
-    public String getJoiningDate() {
-        return joiningDate;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public void setJoiningDate(String joiningDate) {
-        this.joiningDate = joiningDate;
+    public String getResidentialAddress() {
+        return residentialAddress;
     }
 
-    @Basic
-    @Column(name = "salary", nullable = false, insertable = true, updatable = true, precision = 0)
-    public double getSalary() {
-        return salary;
+    public void setResidentialAddress(String residentialAddress) {
+        this.residentialAddress = residentialAddress;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public String getPermanentAddress() {
+        return permanentAddress;
     }
 
-    @Basic
-    @Column(name = "ssn", nullable = false, insertable = true, updatable = true, length = 30)
-    public String getSsn() {
-        return ssn;
+    public void setPermanentAddress(String permanentAddress) {
+        this.permanentAddress = permanentAddress;
     }
 
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
+    public String getResidentialPhone() {
+        return residentialPhone;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Employee employee = (Employee) o;
-
-        if (id != employee.id) return false;
-        if (Double.compare(employee.salary, salary) != 0) return false;
-        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
-        if (joiningDate != null ? !joiningDate.equals(employee.joiningDate) : employee.joiningDate != null)
-            return false;
-        if (ssn != null ? !ssn.equals(employee.ssn) : employee.ssn != null) return false;
-
-        return true;
+    public void setResidentialPhone(String residentialPhone) {
+        this.residentialPhone = residentialPhone;
     }
 
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (joiningDate != null ? joiningDate.hashCode() : 0);
-        temp = Double.doubleToLongBits(salary);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (ssn != null ? ssn.hashCode() : 0);
-        return result;
+    public String getPermanentPhone() {
+        return permanentPhone;
+    }
+
+    public void setPermanentPhone(String permanentPhone) {
+        this.permanentPhone = permanentPhone;
+    }
+
+    public String getNIC() {
+        return NIC;
+    }
+
+    public void setNIC(String NIC) {
+        this.NIC = NIC;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public Date getJoinedDate() {
+        return joinedDate;
+    }
+
+    public void setJoinedDate(Date joinedDate) {
+        this.joinedDate = joinedDate;
+    }
+
+    public String getPrevExperience() {
+        return prevExperience;
+    }
+
+    public void setPrevExperience(String prevExperience) {
+        this.prevExperience = prevExperience;
+    }
+
+    public String getCommentsFromPrevWorkPlace() {
+        return commentsFromPrevWorkPlace;
+    }
+
+    public void setCommentsFromPrevWorkPlace(String commentsFromPrevWorkPlace) {
+        this.commentsFromPrevWorkPlace = commentsFromPrevWorkPlace;
+    }
+
+    public Double getStartingSalary() {
+        return startingSalary;
+    }
+
+    public void setStartingSalary(Double startingSalary) {
+        this.startingSalary = startingSalary;
+    }
+
+    public String getEmergencyContact() {
+        return emergencyContact;
+    }
+
+    public void setEmergencyContact(String emergencyContact) {
+        this.emergencyContact = emergencyContact;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

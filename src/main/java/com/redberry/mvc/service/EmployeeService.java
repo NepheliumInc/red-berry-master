@@ -2,11 +2,19 @@ package com.redberry.mvc.service;
 
 import com.redberry.mvc.dao.EmployeeDao;
 import com.redberry.mvc.hbnt.Employee;
+import org.apache.cxf.jaxrs.ext.multipart.Attachment;
+import org.apache.cxf.jaxrs.ext.multipart.Multipart;
+import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;
+import org.springframework.http.HttpRequest;
 
 import javax.jws.WebService;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by Amila on 7/12/15.
@@ -43,4 +51,5 @@ public interface EmployeeService {
     @Produces({MediaType.APPLICATION_JSON})
     @Path("deleteemployee")
     public Response removeEmployee(Employee employee);
+//random
 }
