@@ -1,15 +1,12 @@
-package com.redberry.mvc.serviceImpl;
+package com.redberry.mvc.service;
 
-import com.redberry.mvc.dao.CustomerDao;
 import com.redberry.mvc.dao.CustomerDaoImpl;
-import com.redberry.mvc.hbnt.Customer;
-import com.redberry.mvc.service.CustomerService;
+import com.redberry.mvc.database.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
