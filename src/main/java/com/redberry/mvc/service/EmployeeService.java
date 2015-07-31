@@ -1,7 +1,7 @@
 package com.redberry.mvc.service;
 
 import com.redberry.mvc.dao.EmployeeDao;
-import com.redberry.mvc.hbnt.Employee;
+import com.redberry.mvc.database.Employee;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;

@@ -1,6 +1,6 @@
 package com.redberry.mvc.dao;
 
-import com.redberry.mvc.hbnt.Room;
+import com.redberry.mvc.database.Room;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

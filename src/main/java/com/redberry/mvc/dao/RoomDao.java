@@ -1,7 +1,7 @@
 package com.redberry.mvc.dao;
 
-import com.redberry.mvc.hbnt.Employee;
-import com.redberry.mvc.hbnt.Room;
+import com.redberry.mvc.database.Employee;
+import com.redberry.mvc.database.Room;
 
 import java.util.List;
 

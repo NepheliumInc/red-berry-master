@@ -1,6 +1,6 @@
 package com.redberry.mvc.dao;
 
-import com.redberry.mvc.hbnt.Employee;
+import com.redberry.mvc.database.Employee;
 
 import java.util.List;
 

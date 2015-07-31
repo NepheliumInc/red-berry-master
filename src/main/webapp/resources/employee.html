@@ -37,15 +37,15 @@
             });
 
 
-            //populating employee table
-
             jQuery.ajax({
                 url:"/redberry/services/employee/getemployees",
                 method: "GET",
                 dataType: "JSON",
                 success: function(data){
                     ko.applyBindings({
-                        employees: data
+                        employees: data,
+                        firstName : ko.observable(""),
+                        lastName : ko.observable("")
                     });
 
                 }
@@ -58,6 +58,29 @@
 </head>
 
 <body>
+
+<!-- Modal -->
+<div id="empModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+<p data-bind="text: firstName"></p>
+<p data-bind="text: lastName"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <div id="mainwrapper" class="mainwrapper">
 
@@ -78,18 +101,7 @@
                         <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jack</strong>
                             <small class="muted"> - 19 hours ago</small>
                         </a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Daniel</strong>
-                            <small class="muted"> - 2 days ago</small>
-                        </a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jane</strong>
-                            <small class="muted"> - 3 days ago</small>
-                        </a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Tanya</strong>
-                            <small class="muted"> - 1 week ago</small>
-                        </a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Lee</strong>
-                            <small class="muted"> - 1 week ago</small>
-                        </a></li>
+
                         <li class="viewmore"><a href="messages.html">View More Messages</a></li>
                     </ul>
                 </li>
@@ -108,34 +120,7 @@
                                 <small>April 20, 2013</small>
                             </a>
                         </li>
-                        <li>
-                            <a href="">
-                                <img src="images/photos/thumb2.png" alt="" class="userthumb"/>
-                                <strong>Shamcey Sindilmaca</strong>
-                                <small>April 19, 2013</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="images/photos/thumb3.png" alt="" class="userthumb"/>
-                                <strong>Nusja Paul Nawancali</strong>
-                                <small>April 19, 2013</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="images/photos/thumb4.png" alt="" class="userthumb"/>
-                                <strong>Rose Cerona</strong>
-                                <small>April 18, 2013</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="images/photos/thumb5.png" alt="" class="userthumb"/>
-                                <strong>John Doe</strong>
-                                <small>April 16, 2013</small>
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
                 <li class="odd">
@@ -245,37 +230,38 @@
                     <a href="add-employee.html" class="btn">Add new employee</a>
                     <button class="btn btn-danger">Remove an employee</button>
                 </h4>
-                <table class="table table-bordered table-infinite" id="">
+                <table class="table table-bordered table-infinite" id="emp">
                     <colgroup>
-                        <col class="con0" style="align: center; width: 4%"/>
                         <col class="con1"/>
                         <col class="con0"/>
                         <col class="con1"/>
                         <col class="con0"/>
                         <col class="con1"/>
+                        <col class="con0"/>
                     </colgroup>
                     <thead>
                     <tr>
-                        <th class="head0 nosort"><input type="checkbox" class="checkall"/></th>
                         <th class="head0">Full Name</th>
                         <th class="head1">NIC</th>
                         <th class="head0">Email</th>
                         <th class="head1">Contact No</th>
                         <th class="head0">Address</th>
+                        <th class="head0">Action</th>
                     </tr>
                     </thead>
                     <tbody data-bind="{foreach: employees,afterRender: runWhenAllRenderDone}">
                     <tr class="gradeX">
-                        <td class="aligncenter">
-                            <span class="center">
-                                <input type="checkbox"/>
-                            </span>
-                        </td>
+                        <td class="emp-id" data-bind="text: id" style="display: none;"></td>
                         <td data-bind="text: fullName"></td>
                         <td data-bind="text: nic"></td>
                         <td data-bind="text: email"></td>
                         <td class="center" data-bind="text: residentialPhone"></td>
                         <td class="center" data-bind="text: permanentAddress"></td>
+                        <td class="center" style="padding: 2px;">
+                            <button class="btn btn-primary view" style=" margin: auto;"><span class="iconfa-eye-open"></span></button>
+                            <button class="btn btn-primary edit" style=" margin: auto;"><span class="iconfa-pencil"></span></button>
+                            <button class="btn btn-danger delete" style=" margin: auto;"><span class="iconfa-remove"></span></button>
+                        </td>
                     </tr>
 
                     </tbody>
@@ -291,80 +277,26 @@
 </div>
 <!--mainwrapper-->
 <script type="text/javascript">
-    jQuery(document).ready(function () {
 
 
+     jQuery(document).on('click', ".view", function() {
+         var id = jQuery(this).closest('tr').find(".emp-id").text();
+         jQuery.ajax({
+             url:"/redberry/services/employee/getemployeebyid?employeeId="+ id ,
+             method: "GET",
+             dataType: "JSON",
+             success: function(data){
+                 ko.applyBindings({
+                     firstName : ko.observable(data['id']),
+                     lastName : ko.observable("Bertington")
+                 });
+
+             }
+         });
+         jQuery('#empModal').modal('show');
+      });
 
 
-
-        // simple chart
-        var flash = [[0, 11], [1, 9], [2, 12], [3, 8], [4, 7], [5, 3], [6, 1]];
-        var html5 = [[0, 5], [1, 4], [2, 4], [3, 1], [4, 9], [5, 10], [6, 13]];
-        var css3 = [[0, 6], [1, 1], [2, 9], [3, 12], [4, 10], [5, 12], [6, 11]];
-
-        function showTooltip(x, y, contents) {
-            jQuery('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css({
-                position: 'absolute',
-                display: 'none',
-                top: y + 5,
-                left: x + 5
-            }).appendTo("body").fadeIn(200);
-        }
-
-
-        var plot = jQuery.plot(jQuery("#chartplace"),
-                [{data: flash, label: "Flash(x)", color: "#6fad04"},
-                    {data: html5, label: "HTML5(x)", color: "#06c"},
-                    {data: css3, label: "CSS3", color: "#666"}], {
-                    series: {
-                        lines: {show: true, fill: true, fillColor: {colors: [{opacity: 0.05}, {opacity: 0.15}]}},
-                        points: {show: true}
-                    },
-                    legend: {position: 'nw'},
-                    grid: {hoverable: true, clickable: true, borderColor: '#666', borderWidth: 2, labelMargin: 10},
-                    yaxis: {min: 0, max: 15}
-                });
-
-        var previousPoint = null;
-        jQuery("#chartplace").bind("plothover", function (event, pos, item) {
-            jQuery("#x").text(pos.x.toFixed(2));
-            jQuery("#y").text(pos.y.toFixed(2));
-
-            if (item) {
-                if (previousPoint != item.dataIndex) {
-                    previousPoint = item.dataIndex;
-
-                    jQuery("#tooltip").remove();
-                    var x = item.datapoint[0].toFixed(2),
-                            y = item.datapoint[1].toFixed(2);
-
-                    showTooltip(item.pageX, item.pageY,
-                            item.series.label + " of " + x + " = " + y);
-                }
-
-            } else {
-                jQuery("#tooltip").remove();
-                previousPoint = null;
-            }
-
-        });
-
-        jQuery("#chartplace").bind("plotclick", function (event, pos, item) {
-            if (item) {
-                jQuery("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
-                plot.highlight(item.series, item.datapoint);
-            }
-        });
-
-
-        //datepicker
-        jQuery('#datepicker').datepicker();
-
-        // tabbed widget
-        jQuery('.tabbedwidget').tabs();
-
-
-    });
 </script>
 </body>
 </html>

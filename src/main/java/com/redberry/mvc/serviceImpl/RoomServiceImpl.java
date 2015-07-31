@@ -1,7 +1,7 @@
 package com.redberry.mvc.serviceImpl;
 
 import com.redberry.mvc.dao.RoomDaoImpl;
-import com.redberry.mvc.hbnt.Room;
+import com.redberry.mvc.database.Room;
 import com.redberry.mvc.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

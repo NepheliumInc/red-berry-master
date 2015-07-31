@@ -1,18 +1,16 @@
-package com.redberry.mvc.hbnt;
+package com.redberry.mvc.database;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Amila on 7/12/15.
  */
 @Entity
-public class Season {
+@Table(name = "MEAL_CONFIGURATION", schema = "", catalog = "redberry")
+public class MealConfiguration {
     private int id;
     private String name;
-    private String description;
+    private Integer description;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -35,12 +33,12 @@ public class Season {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 1000)
-    public String getDescription() {
+    @Column(name = "description", nullable = true, insertable = true, updatable = true)
+    public Integer getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Integer description) {
         this.description = description;
     }
 
@@ -49,11 +47,11 @@ public class Season {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Season season = (Season) o;
+        MealConfiguration that = (MealConfiguration) o;
 
-        if (id != season.id) return false;
-        if (name != null ? !name.equals(season.name) : season.name != null) return false;
-        if (description != null ? !description.equals(season.description) : season.description != null) return false;
+        if (id != that.id) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
 
         return true;
     }

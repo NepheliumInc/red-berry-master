@@ -1,4 +1,4 @@
-package com.redberry.mvc.hbnt;
+package com.redberry.mvc.database;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;

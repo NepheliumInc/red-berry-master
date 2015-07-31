@@ -53,13 +53,13 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/redberry" />
         <property name="username" value="root" />
-        <property name="password" value="123" />
+        <property name="password" value="" />
         <property name="validationQuery" value="SELECT 1" />
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.redberry.mvc.hbnt" />
+        <property name="packagesToScan" value="com.redberry.mvc.database" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>

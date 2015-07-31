@@ -1,8 +1,8 @@
 package com.redberry.mvc.serviceImpl;
 
-import com.javafx.tools.doclets.internal.toolkit.util.DocFinder;
+
 import com.redberry.mvc.dao.EmployeeDaoImpl;
-import com.redberry.mvc.hbnt.Employee;
+import com.redberry.mvc.database.Employee;
 import com.redberry.mvc.service.EmployeeService;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
