@@ -1,6 +1,6 @@
 package com.redberry.mvc.service;
 
-import com.redberry.mvc.hbnt.Room;
+import com.redberry.mvc.database.Room;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;

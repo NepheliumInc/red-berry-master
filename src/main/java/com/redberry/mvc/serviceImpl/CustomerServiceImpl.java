@@ -1,7 +1,8 @@
-package com.redberry.mvc.service;
+package com.redberry.mvc.serviceImpl;
 
 import com.redberry.mvc.dao.CustomerDaoImpl;
 import com.redberry.mvc.database.Customer;
+import com.redberry.mvc.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

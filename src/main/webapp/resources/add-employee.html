@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Redberry - Add Employee</title>
-<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<link rel="stylesheet" href="prettify/prettify.css" type="text/css" />
-<link rel="stylesheet" href="css/responsive-tables.css">
-<link rel="stylesheet" href="css/bootstrap-timepicker.min.css" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Redberry - Add Employee</title>
+    <link rel="stylesheet" href="css/style.default.css" type="text/css"/>
+    <link rel="stylesheet" href="prettify/prettify.css" type="text/css"/>
+    <link rel="stylesheet" href="css/responsive-tables.css">
+    <link rel="stylesheet" href="css/bootstrap-timepicker.min.css" type="text/css"/>
 
-<link rel="stylesheet" href="css/responsive-tables.css">
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
-<script type="text/javascript" src="js/modernizr.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/knockout-3.3-min.js"></script>
-<script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="js/jquery.cookie.js"></script>
-<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/flot/jquery.flot.min.js"></script>
-<script type="text/javascript" src="js/flot/jquery.flot.resize.min.js"></script>
-<script type="text/javascript" src="js/responsive-tables.js"></script>
-<script type="text/javascript" src="js/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="prettify/prettify.js"></script>   
-<script type="text/javascript" src="js/elements.js"></script>
-<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/responsive-tables.js"></script>
-<script type="text/javascript" src="js/jquery.cropit.min.js"></script>
-<script type="text/javascript" src="js/employee.js"></script>
+    <link rel="stylesheet" href="css/responsive-tables.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
+    <script type="text/javascript" src="js/modernizr.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/knockout-3.3-min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="js/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/responsive-tables.js"></script>
+    <script type="text/javascript" src="js/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="prettify/prettify.js"></script>
+    <script type="text/javascript" src="js/elements.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/responsive-tables.js"></script>
+    <script type="text/javascript" src="js/jquery.cropit.min.js"></script>
+    <script type="text/javascript" src="js/employee.js"></script>
 
 
     <script type="text/javascript" src="js/jquery.smartWizard.min.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function(){
+        jQuery(document).ready(function () {
 
             // Smart Wizard
             jQuery('#wizard').smartWizard({onFinish: onFinishCallback});
             jQuery('#wizard2').smartWizard({onFinish: onFinishCallback});
             jQuery('#wizard3').smartWizard({onFinish: onFinishCallback});
 
-            function onFinishCallback(){
+            function onFinishCallback() {
                 //alert('Finish Clicked');
 
-                var empName = jQuery("#name").val();
-                var empSalary = jQuery("#salary").val();
-                var empSSN = jQuery("#ssn").val();
-                var empDate = jQuery("#date").val();
+                var formdata = jQuery("#addEmployee").serialize().replace("+", " ").split("&");
+                var obj={};
+                for(var key in formdata)
+                {
+                    obj[formdata[key].split("=")[0]] = formdata[key].split("=")[1];
+                }
 
-                jQuery.get("/redberry/employeeservices/addemployee",{name:empName, salary:empSalary, ssn:empSSN, date:empDate},function(data){
-                    alert(data);
+                jQuery.ajax({
+                    type: "POST",
+                    url: "/redberry/services/employee/addemployee",
+                    data: JSON.stringify(obj)
+
                 });
+
+                alert(JSON.stringify(obj));
             }
 
             jQuery('select, input:checkbox').uniform();
@@ -61,16 +68,17 @@
     </script>
 
 
-    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+    <!--[if lte IE 8]>
+    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
 </head>
 
 <body>
 
 <div id="mainwrapper" class="mainwrapper">
-    
+
     <div class="header">
         <div class="logo">
-            <a href="dashboard.html"><img src="images/logo.png" alt="" /></a>
+            <a href="dashboard.html"><img src="images/logo.png" alt=""/></a>
         </div>
         <div class="headerinner">
             <ul class="headmenu">
@@ -82,53 +90,63 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="nav-header">Messages</li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jack</strong> <small class="muted"> - 19 hours ago</small></a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Daniel</strong> <small class="muted"> - 2 days ago</small></a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jane</strong> <small class="muted"> - 3 days ago</small></a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Tanya</strong> <small class="muted"> - 1 week ago</small></a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Lee</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jack</strong>
+                            <small class="muted"> - 19 hours ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Daniel</strong>
+                            <small class="muted"> - 2 days ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jane</strong>
+                            <small class="muted"> - 3 days ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Tanya</strong>
+                            <small class="muted"> - 1 week ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Lee</strong>
+                            <small class="muted"> - 1 week ago</small>
+                        </a></li>
                         <li class="viewmore"><a href="messages.html">View More Messages</a></li>
                     </ul>
                 </li>
                 <li>
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                    <span class="count">10</span>
-                    <span class="head-icon head-users"></span>
-                    <span class="headmenu-label">New Users</span>
+                        <span class="count">10</span>
+                        <span class="head-icon head-users"></span>
+                        <span class="headmenu-label">New Users</span>
                     </a>
                     <ul class="dropdown-menu newusers">
                         <li class="nav-header">New Users</li>
                         <li>
                             <a href="">
-                                <img src="images/photos/thumb1.png" alt="" class="userthumb" />
+                                <img src="images/photos/thumb1.png" alt="" class="userthumb"/>
                                 <strong>Draniem Daamul</strong>
                                 <small>April 20, 2013</small>
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="images/photos/thumb2.png" alt="" class="userthumb" />
+                                <img src="images/photos/thumb2.png" alt="" class="userthumb"/>
                                 <strong>Shamcey Sindilmaca</strong>
                                 <small>April 19, 2013</small>
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="images/photos/thumb3.png" alt="" class="userthumb" />
+                                <img src="images/photos/thumb3.png" alt="" class="userthumb"/>
                                 <strong>Nusja Paul Nawancali</strong>
                                 <small>April 19, 2013</small>
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="images/photos/thumb4.png" alt="" class="userthumb" />
+                                <img src="images/photos/thumb4.png" alt="" class="userthumb"/>
                                 <strong>Rose Cerona</strong>
                                 <small>April 18, 2013</small>
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="images/photos/thumb5.png" alt="" class="userthumb" />
+                                <img src="images/photos/thumb5.png" alt="" class="userthumb"/>
                                 <strong>John Doe</strong>
                                 <small>April 16, 2013</small>
                             </a>
@@ -137,25 +155,39 @@
                 </li>
                 <li class="odd">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                    <span class="count">1</span>
-                    <span class="head-icon head-bar"></span>
-                    <span class="headmenu-label">Statistics</span>
+                        <span class="count">1</span>
+                        <span class="head-icon head-bar"></span>
+                        <span class="headmenu-label">Statistics</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="nav-header">Statistics</li>
-                        <li><a href=""><span class="icon-align-left"></span> New Reports from <strong>Products</strong> <small class="muted"> - 19 hours ago</small></a></li>
-                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Users</strong> <small class="muted"> - 2 days ago</small></a></li>
-                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Comments</strong> <small class="muted"> - 3 days ago</small></a></li>
-                        <li><a href=""><span class="icon-align-left"></span> Most Popular in <strong>Products</strong> <small class="muted"> - 1 week ago</small></a></li>
-                        <li><a href=""><span class="icon-align-left"></span> Most Viewed in <strong>Blog</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Reports from <strong>Products</strong>
+                            <small class="muted"> - 19 hours ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Users</strong>
+                            <small class="muted"> - 2 days ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Statistics from
+                            <strong>Comments</strong>
+                            <small class="muted"> - 3 days ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-align-left"></span> Most Popular in <strong>Products</strong>
+                            <small class="muted"> - 1 week ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-align-left"></span> Most Viewed in <strong>Blog</strong>
+                            <small class="muted"> - 1 week ago</small>
+                        </a></li>
                         <li class="viewmore"><a href="charts.html">View More Statistics</a></li>
                     </ul>
                 </li>
                 <li class="right">
                     <div class="userloggedinfo">
-                        <img src="images/photos/thumb1.png" alt="" />
+                        <img src="images/photos/thumb1.png" alt=""/>
+
                         <div class="userinfo">
-                            <h5>Juan Dela Cruz <small>- juan@themepixels.com</small></h5>
+                            <h5>Juan Dela Cruz
+                                <small>- juan@themepixels.com</small>
+                            </h5>
                             <ul>
                                 <li><a href="editprofile.html">Edit Profile</a></li>
                                 <li><a href="">Account Settings</a></li>
@@ -164,28 +196,29 @@
                         </div>
                     </div>
                 </li>
-            </ul><!--headmenu-->
+            </ul>
+            <!--headmenu-->
         </div>
     </div>
-    
+
     <div class="leftpanel">
-        
-        <div class="leftmenu">        
+
+        <div class="leftmenu">
             <ul class="nav nav-tabs nav-stacked">
-            	<li class="nav-header">Navigation</li>
-                
-                 <li ><a href="dashboard.html"><span class="iconfa-laptop"></span> Dashboard</a></li>
+                <li class="nav-header">Navigation</li>
+
+                <li><a href="dashboard.html"><span class="iconfa-laptop"></span> Dashboard</a></li>
                 <li class="active"><a href="employee.html"><span class="iconfa-user"></span> Employee</a></li>
-                <li ><a href="template_page.html"><span class="iconfa-user"></span> Template page</a></li>
-                
-               
-                
-               
+                <li><a href="template_page.html"><span class="iconfa-user"></span> Template page</a></li>
+
+
             </ul>
-        </div><!--leftmenu-->
-        
-    </div><!-- leftpanel -->
-    
+        </div>
+        <!--leftmenu-->
+
+    </div>
+    <!-- leftpanel -->
+
     <div class="rightpanel">
 
         <ul class="breadcrumbs">
@@ -193,7 +226,6 @@
             <li><a href="dashboard.html">Dashboard</a> <span class="separator"></span></li>
             <li><a href="employee.html">Employee</a> <span class="separator"></span></li>
             <li>Add new employee</li>
-
 
 
             <li class="right">
@@ -231,9 +263,8 @@
                 <h4 class="subtitle2">ADD NEW EMPLOYEE WIZARD</h4>
 
 
+                <br/>
 
-
-                <br />
                 <form class="stdform" id="addEmployee" method="post" action="wizards.html">
                     <div id="wizard3" class="wizard tabbedwizard">
 
@@ -247,7 +278,7 @@
                             <li>
                                 <a href="#wiz3step2">
                                     <span class="h2">STEP 2</span>
-                                    <span class="label">Account Information</span>
+                                    <span class="label">Confirmation</span>
                                 </a>
                             </li>
                         </ul>
@@ -256,126 +287,152 @@
                         <div id="wiz3step1" class="formwiz">
                             <!--<h4>Step 1: Basic Information</h4>-->
                             <div class="row-fluid">
-                            <div class="span12">
-                                <p>
-                                    <label>Full Name</label>
-                                    <span class="field"><input type="text" data-bind="value: fullName" name="name" id="name" class="input-block-level" /></span>
-                                </p>
-                            </div>
+                                <div class="span12">
+                                    <p>
+                                        <label>Full Name</label>
+                                        <span class="field"><input type="text" data-bind="value: fullName"
+                                                                   name="fullName" id="fullName" placeholder="John Doe"
+                                                                   class="input-block-level"/></span>
+                                    </p>
+                                </div>
 
-                            <div class="span8" style="margin-left: 0">
-
-
-                                <p>
-                                    <label>Email </label>
-                                    <span class="field"><input type="text" name="email" data-bind="value: email" id="email" class="input-block-level" /></span>
-                                </p>
+                                <div class="span8" style="margin-left: 0">
 
 
-                                <p>
-                                    <label>Telephone </label>
-                                    <span class="field"><input type="text" name="salary" id="telephone" class="input-block-level" /></span>
-                                </p>
+                                    <p>
+                                        <label>Email </label>
+                                        <span class="field"><input type="text" name="email" data-bind="value: email"
+                                                                   id="email" class="input-block-level"
+                                                                   placeholder="johndoe@email.com"/></span>
+                                    </p>
 
-                                <p>
-                                    <label>NIC </label>
-                                    <span class="field"><input type="text" name="salary" id="nic" class="input-block-level" /></span>
-                                </p>
 
-                                <p>
-                                    <label>Date of Birth </label>
-                                    <span class="field"><input type="text" name="salary" id="dob" class="input-block-level" /></span>
-                                </p>
+                                    <p>
+                                        <label>Telephone </label>
+                                        <span class="field"><input type="tel" name="residentialPhone"
+                                                                   id="residentialPhone" data-bind="value: residentialPhone" class="input-large"
+                                                                   placeholder="(+94)7X XXXXXXX"/> (Residential)</span> <br>
+                                        <span class="field"><input type="tel" name="permanentPhone" id="permanentPhone"
+                                                                   class="input-large"
+                                                                   placeholder="(+94)7X XXXXXXX"/> (Permanent)</span>
+                                    </p>
 
-                                <p>
-                                    <label>Date joined </label>
-                                    <span class="field"><input type="text" name="salary" id="doj" class="input-block-level" /></span>
-                                </p>
+                                    <p>
+                                        <label>NIC </label>
+                                        <span class="field"><input type="text" name="nic" id="nic" data-bind="value: nic" class="input-large"
+                                                                   placeholder="000000000v"/></span>
+                                    </p>
 
-                                <p>
-                                    <label>Starting Salary </label>
-                                    <span class="field"><input type="text" name="salary" id="s-salary" class="input-block-level" /></span>
-                                </p>
+                                    <p>
+                                        <label>Date of Birth </label>
+                                        <span class="field"><input type="text" name="dob" id="dob" data-bind="value: dob" class="input-large"
+                                                                   placeholder="mm/dd/yyyy"/></span>
+                                    </p>
 
-                            </div> 
-                            
-                            
-                            <div class="span4" style="padding:20px 0 0 20px;">
-                                <div class="widgetbox profile-photo">
-                                    <div class="headtitle">
-                                        <h4 class="widgettitle" style="color: #fff">Profile Photo</h4>
-                                    </div>
-                                    <div class="widgetcontent">
-                                        <div class="image-editor">
+                                    <p>
+                                        <label>Date Joined </label>
+                                        <span class="field"><input type="text" name="joinedDate" id="joinedDate"
+                                                                   class="input-large" data-bind="value: joinedDate" placeholder="mm/dd/yyyy"/></span>
+                                    </p>
 
-                                            <input type="file" id="files" class="cropit-image-input hidden">
+                                    <p>
+                                        <label>Starting Salary (Rs.)</label>
+                                        <span class="field"><input type="text" name="startingSalary" id="startingSalary"
+                                                                   class="input-large" data-bind="value: startingSalary" placeholder="00000.00"/></span>
+                                    </p>
 
-                                            <label for="files" id="overlay">
-                                                <span class="fa iconfa-camera iconfa-2x"></span><br/>
-                                                Browse Profile Picture
-                                            </label>
-                                            <div class="cropit-image-preview" style="background:url('images/profile.jpg') no-repeat center; background-size: 200px 200px; ">
+                                </div>
+
+
+                                <div class="span4" style="padding:20px 0 0 20px;">
+                                    <div class="widgetbox profile-photo">
+                                        <div class="headtitle">
+                                            <h4 class="widgettitle" style="color: #fff">Profile Photo</h4>
+                                        </div>
+                                        <div class="widgetcontent">
+                                            <div class="image-editor">
+
+                                                <input type="file" id="files" class="cropit-image-input hidden">
+
+                                                <label for="files" id="overlay">
+                                                    <span class="fa iconfa-camera iconfa-2x"></span><br/>
+                                                    Browse Profile Picture
+                                                </label>
+
+                                                <div class="cropit-image-preview"
+                                                     style="background:url('images/profilethumb.png') no-repeat center; background-size: 200px 200px; ">
+                                                </div>
+                                                <input type="range" class="cropit-image-zoom-input">
+
+
+                                                <input type="hidden" name="" class="hidden-image-data"/>
                                             </div>
-                                            <input type="range" class="cropit-image-zoom-input">
-
-
-                                            <input type="hidden" name="image-data" class="hidden-image-data" />
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="span12" style="margin-left: 0;">
+
+                                    <p>
+                                        <label>Residential Address </label>
+                                        <span class="field"> <textarea cols="80" rows="5" id="residentialAddress"
+                                                                       name="residentialAddress"
+                                                                       data-bind="value: residentialAddress"
+                                                                       class="span5"></textarea></span>
+                                    </p>
+
+                                    <p>
+                                        <label>Permanent Address </label>
+                                        <span class="field"><textarea cols="80" rows="5" id="permanentAddress"
+                                                                      data-bind="value: permanentAddress"
+                                                                      name="permanentAddress" class="span5"></textarea></span>
+                                    </p>
+
+
+                                    <p>
+                                        <label>Previous Working Experience (According to CV) </label>
+                                        <span class="field"><textarea cols="80" rows="5" id="prevExperience"
+                                                                      data-bind="value: prevExperience"
+                                                                      name="prevExperience"
+                                                                      class="span5"></textarea></span>
+                                    </p>
+
+                                    <p>
+                                        <label>Comments from previous work places </label>
+                                        <span class="field"><textarea cols="80" rows="5" id="commentsFromPrevWorkPlace"
+                                                                      name="commentsFromPrevWorkPlace"
+                                                                      data-bind="value: commentsFromPrevWorkPlace"
+                                                                      class="span5"></textarea></span>
+                                    </p>
+
+
+                                    <p>
+                                        <label>Contact information in any emergency </label>
+                                <span class="field">
+                                    <input type="text" name="" id="e_name" class="input-xlarge"
+                                           placeholder="name"/><br>
+                                    <input type="text" name="" id="e_relationship" class="input-medium"
+                                           placeholder="relationship"/><br>
+                                    <input type="text" name="emergencyContact" id="emergencyContact" data-bind="value: emergencyContact" class="input-medium"
+                                           placeholder="telephone"/>
+                                </span>
+                                    </p>
+
+                                </div>
                             </div>
 
-
-                            
-                            <div class="span12" style="margin-left: 0;">
-
-                            <p>
-                                <label>Residential Address </label>
-                                <span class="field"><input type="text" name="salary" id="r-address" class="input-block-level" /></span>
-                            </p>
-
-                            <p>
-                                <label>Permanent Address </label>
-                                <span class="field"><input type="text" name="salary" id="p-address" class="input-block-level" /></span>
-                            </p>
-
-
-                             <p>
-                                <label>Previous Working Experience (According to CV) </label>
-                                <span class="field"><input type="text" name="salary" id="prv-work" class="input-block-level" /></span>
-                            </p>
-
-                             <p>
-                                <label>Comments from previous work places </label>
-                                <span class="field"><input type="text" name="salary" id="comment-prev" class="input-block-level" /></span>
-                            </p>
-
-
-
-
-                             <p>
-                                <label>Contact information in any emergency </label>
-                                <span class="field">
-                                    <input type="text" name="salary" id="salary" class="input-xlarge" placeholder="name" />
-                                    <input type="text" name="salary" id="salary" class="input-medium" placeholder="relationship" />
-                                    <input type="text" name="salary" id="salary" class="input-medium" placeholder="telephone" />
-                                </span>
-                            </p>
-
-</div>
-                                </div>
-
-                        </div><!--#wiz13tep1-->
+                        </div>
+                        <!--#wiz13tep1-->
 
                         <div id="wiz3step2" class="formwiz">
                             <h4>Step 2: Verify Information</h4>
 
 
-
-                            <table id="spec_offers" class="table table-bordered responsive">
+                            <table id="spec_offers" class="table table-wrapper responsive">
                                 <colgroup>
-                                    <col class="con1" />
-                                    <col class="con0" />
+                                    <col class="con1"/>
+                                    <col class="con0"/>
                                 </colgroup>
                                 <thead>
                                 <tr>
@@ -385,22 +442,68 @@
                                 </thead>
                                 <tbody>
                                 <tr class="gradeX">
-                                    <td>Full Name </td>
-                                    <td data-bind="text: fullName"> </td>
+                                    <td>Full Name</td>
+                                    <td data-bind="text: fullName"></td>
                                 </tr>
                                 <tr class="gradeX">
-                                    <td>Email </td>
-                                    <td  data-bind="text: email"> </td>
+                                    <td>Email</td>
+                                    <td data-bind="text: email"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Telephone: (Residential)</td>
+                                    <td data-bind="text: residentialPhone"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Telephone: (Permanent)</td>
+                                    <td data-bind="text: permanentPhone"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>NIC</td>
+                                    <td data-bind="text: nic"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Date of Birth</td>
+                                    <td data-bind="text: dob"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Date Joined</td>
+                                    <td data-bind="text: joinedDate"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Starting Salary</td>
+                                    <td data-bind="text: startingSalary"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Address (Residential)</td>
+                                    <td data-bind="text: residentialAddress"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Address (Permanent)</td>
+                                    <td data-bind="text: permanentAddress"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Previous Working Experience</td>
+                                    <td data-bind="text: prevExperience"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Comments from previous work place</td>
+                                    <td data-bind="text: commentsFromPrevWorkPlace"></td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>Contact information in any emergency</td>
+                                    <td data-bind="text: emergencyContact"></td>
                                 </tr>
                                 </tbody>
 
                             </table>
 
 
-                        </div><!--#wiz3step2-->
+                        </div>
+                        <!--#wiz3step2-->
 
 
-                    </div><!--#wizard-->
+                    </div>
+                    <!--#wizard-->
                 </form>
 
                 <!-- END OF TABBED WIZARD -->
@@ -409,9 +512,11 @@
             <!--maincontentinner-->
         </div>
         <!--maincontent-->
-    </div><!--rightpanel-->
+    </div>
+    <!--rightpanel-->
 
-</div><!--mainwrapper-->
+</div>
+<!--mainwrapper-->
 <!--<script type="text/javascript">
     jQuery(document).ready(function() {
 
@@ -502,6 +607,17 @@
     
     });
 </script>-->
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+
+        jQuery("addEmployee").submit(function(){
+            alert("Hey");
+        });
+
+
+    });
+</script>
 
 </body>
 </html>
