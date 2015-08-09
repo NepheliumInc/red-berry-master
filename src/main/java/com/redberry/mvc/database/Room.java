@@ -10,6 +10,7 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int roomId;
+    private String roomName;
     private Integer airconditionState;
     @OneToOne
     private RoomCapacity roomCapacity;
@@ -65,5 +66,13 @@ public class Room {
 
     public void setExtensionNumber(Integer extensionNumber) {
         this.extensionNumber = extensionNumber;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }

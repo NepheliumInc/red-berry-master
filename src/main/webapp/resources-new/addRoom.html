@@ -264,15 +264,9 @@ desired effect
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class=""><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>room</span></a></li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i
-                            class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
-                        <li><a href="#">Link in level 2</a></li>
-                    </ul>
-                </li>
+                <li class=""><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
+                <li class="active"><a href="rooms.html"><i class="fa fa-link"></i> <span>Room</span></a></li>
+
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -284,12 +278,13 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                room
+                Room
                 <small>Room Management</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li class="active">Room</li>
+                <li><a href="rooms.html">Room</a></li>
+                <li class="active">Add New Room</li>
             </ol>
         </section>
 
@@ -298,120 +293,163 @@ desired effect
 
             <!-- Your Page Content Here -->
             <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
 
-                    <!-- tabbed div begins -->
-                    <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#tab-editor" data-toggle="tab">Room details</a>
-                            </li>
-                            <li>
-                                <a href="#tab-confirmation" data-toggle="tab">Confirmation</a>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content">
-
-                            <div class="tab-pane active" id="tab-editor">
-
-                                <!-- box begins -->
-                                <div class="box box-info">
-                                    <!-- box header-->
-                                    <div class="box-header">
-                                        <!--<h3 class="box-title">Add New rooms</h3>-->
-                                    </div>
-                                    <!--box header ends-->
-
-                                    <!--box content begins-->
-                                    <div class="row box-body" style="padding: 20px">
-                                        <!-- room details form-->
-                                        <form role="form">
-                                            <!--Column for text details-->
-                                            <div class="col-md-8">
-
-                                                <div class="row form-group">
-                                                    <label for="fullName" class="col-md-4">Room Name: </label>
-
-                                                    <div class="col-md-8">
-                                                        <input id="fullName" name="fullName" data-bind="value: fullName" class="form-control" type="text"
-                                                               placeholder="John Doe"/>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <label for="email" class="col-md-4">Category: </label>
-
-                                                    <div class="col-md-8">
-                                                        <input id="email" name="email" data-bind="value: email" class="form-control" type="email"
-                                                               placeholder="john.doe@mail.com"/>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </form>
-                                        <!--room form ends-->
-                                    </div>
-                                    <!-- box content ends-->
-
-                                    <!-- box footer begins-->
-                                    <center>
-                                    <div class="box-footer">
-                                        <button type="button"  onclick="$('form').trigger('reset')" class="btn btn-danger ">Clear All</button>
-                                        <a href="#tab-confirmation" class="btn btn-info" data-toggle="tab">Next</a>
-                                    </div>
-                                    </center>
-                                    <!-- box footer ends-->
-
-                                </div>
-                                <!-- box ends-->
+                <div class="col-md-10 col-md-offset-1">
 
 
-                            </div>
-                            <div class="tab-pane" id="tab-confirmation">
-
-                                <div class="box box-solid">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Confirm these informations</h3>
-                                    </div>
-                                    <div class="box-body no-padding">
-
-                                        <table class="table table-striped">
-                                            <tbody>
-                                                <tr>
-                                                    <td><b>Room Name: </b></td>
-                                                    <td data-bind="text: fullName"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Category: </b></td>
-                                                    <td data-bind="text: email"></td>
-                                                </tr>
-
-
-
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-
-                                    <div class="box-footer">
-                                        <center>
-                                            <button class="btn btn-info">Confirm</button>
-                                            <a href="#tab-editor" class="btn btn-danger" data-toggle="tab">Back</a>
-
-                                        </center>
-                                    </div>
-
-                                </div>
-                            </div>
-
+                    <!-- box begins -->
+                    <div class="box box-info">
+                        <!-- box header-->
+                        <div class="box-header">
+                            <h3 class="box-title">Add New Room</h3>
                         </div>
+                        <!--box header ends-->
+
+                        <!--box content begins-->
+                        <div class="row box-body" style="padding: 20px">
+                            <!-- room details form-->
+                            <form role="form">
+                                <!--Column for text details-->
+                                <div class="col-md-8">
+
+                                    <div class="row form-group">
+                                        <label for="roomName" class="col-md-4">Room Name: </label>
+
+                                        <div class="col-md-8">
+                                            <input id="roomName" name="roomName" data-bind="value: roomName"
+                                                   class="form-control" type="text"
+                                                   placeholder="Sample Room"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="displayNumber" class="col-md-4">Display Number: </label>
+
+                                        <div class="col-md-8">
+                                            <input id="displayNumber" name="displayNumber"
+                                                   data-bind="value: displayNumber" class="form-control"
+                                                   type="number"
+                                                   placeholder="101"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="roomCategory" class="col-md-4">Category: </label>
+
+                                        <div class="col-md-8">
+                                            <input id="roomCategory" name="roomCategory" data-bind="value: roomCategory"
+                                                   class="form-control"
+                                                   type="text"
+                                                   placeholder="Deulux"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="roomCapacity" class="col-md-4">Capacity: </label>
+
+                                        <div class="col-md-8 select2-container--default">
+                                            <select id="roomCapacity" name="roomCapacity"
+                                                    data-bind="value: roomCapacity" class="form-control"
+                                                    type="text"
+                                                    placeholder="Single">
+                                                <option>Single</option>
+                                                <option>Double</option>
+                                                <option>Family</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="airconditionState" class="col-md-4">Air Condition State: </label>
+
+                                        <div class="col-md-8">
+                                            <select id="airconditionState" name="airconditionState"
+                                                    data-bind="value: airconditionState" class="form-control"
+                                                    type="text"
+                                                    placeholder="Non A/C">
+                                                <option>A/C</option>
+                                                <option>Non A/C</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                            <!--room form ends-->
+                        </div>
+                        <!-- box content ends-->
+
+                        <!-- box footer begins-->
+                        <center>
+                            <div class="box-footer">
+                                <button type="button" onclick="$('form').trigger('reset')" class="btn btn-danger ">Clear
+                                    All
+                                </button>
+                                <a href="#tab-confirmation" class="btn btn-info" data-toggle="modal"
+                                   data-target="#modal-1">Create</a>
+                            </div>
+                        </center>
+                        <!-- box footer ends-->
 
 
                     </div>
 
 
                 </div>
+            </div>
+
+            <div class="modal" id="modal-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td><b>Room Name: </b></td>
+                                    <td data-bind="text: roomName"></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Room Name: </b></td>
+                                    <td data-bind="text: displayNumber"></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Category: </b></td>
+                                    <td data-bind="text: roomCategory"></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Capacity: </b></td>
+                                    <td data-bind="text: roomCapacity"></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Air Condition State: </b></td>
+                                    <td data-bind="text: airconditionState"></td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="alert(makeEmployeeJSON())">Save
+                                changes
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
             </div>
 
 
@@ -525,7 +563,22 @@ desired effect
 <script type="text/javascript">
 
 
+    function AppViewModel() {
+        this.roomName = ko.observable();
+        this.displayNumber = ko.observable();
+        this.roomCategory = ko.observable();
+        this.roomCapacity = ko.observable();
+        this.airconditionState = ko.observable();
 
+    }
+
+    // Activates knockout.js
+    var roomModel = new AppViewModel();
+    ko.applyBindings(roomModel);
+
+    function makeRoomJSON() {
+        return ko.toJSON(roomModel);
+    }
 
 </script>
 </body>
