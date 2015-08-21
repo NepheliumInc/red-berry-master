@@ -3,22 +3,30 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://cxf.apache.org/jaxrs
         http://cxf.apache.org/schemas/jaxrs.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <import resource="classpath:META-INF/cxf/cxf.xml" />
-    <context:component-scan base-package="com.redberry.mvc.cxfRest.*" />
+    <context:component-scan base-package="com.redberry.mvc.service.*" />
+    <mvc:resources mapping="/home/**" location="/resources/"/>
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <jaxrs:server id="employeeServices" address="/employeeservices">
+    <jaxrs:server id="services" address="/services">
         <jaxrs:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
         </jaxrs:providers>
         <jaxrs:serviceBeans>
-            <ref bean="cxfServiceImpl" />
+            <ref bean="customerServiceImpl" />
+            <ref bean="employeeServiceImpl" />
+            <ref bean="roomServiceImpl" />
+            <ref bean="roomCategoryServiceImpl"/>
+            <ref bean="testService" />
+
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
             <entry key="xml" value="application/xml" />
@@ -26,8 +34,17 @@
         </jaxrs:extensionMappings>
     </jaxrs:server>
 
-    <bean id="cxfServiceImpl" class="com.redberry.mvc.cxfRest.CxfRestServiceImpl"/>
+    <bean id="customerServiceImpl" class="com.redberry.mvc.serviceImpl.CustomerServiceImpl"/>
+    <bean id="employeeServiceImpl" class="com.redberry.mvc.serviceImpl.EmployeeServiceImpl"/>
+    <bean id="roomServiceImpl" class="com.redberry.mvc.serviceImpl.RoomServiceImpl" />
+    <bean id="roomCategoryServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCategoryServiceImpl" />
+    <bean id="testService" class="com.redberry.mvc.service.TestService" />
 
+
+    <bean id="customerDaoImpl" class="com.redberry.mvc.dao.CustomerDaoImpl"/>
+    <bean id="employeeDaoImpl" class="com.redberry.mvc.dao.EmployeeDaoImpl"/>
+    <bean id="roomDaoImpl" class="com.redberry.mvc.dao.RoomDaoImpl" />
+    <bean id="roomCategoryDaoImpl" class="com.redberry.mvc.dao.RoomCategoryDaoImpl" />
 
 
     <!-- hibernate -->
@@ -42,12 +59,12 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.redberry.mvc.hbnt" />
+        <property name="packagesToScan" value="com.redberry.mvc.database" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
                 <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/redberry</prop>
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
@@ -58,15 +75,4 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
-
-
-    <bean id="employeeDao" class="com.redberry.mvc.dao.EmployeeDaoImpl"/>
-
-    <bean id="employeeService" class="com.redberry.mvc.service.EmployeeServiceImpl"/>
-
-
-    <bean id="customerDao" class="com.redberry.mvc.dao.CustomerDaoImpl"/>
-
-    <bean id="customerService" class="com.redberry.mvc.service.CustomerServiceImpl"/>
 </beans>

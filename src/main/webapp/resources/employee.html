@@ -1,64 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shamcey - Metro Style Admin Template</title>
-<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<link rel="stylesheet" href="prettify/prettify.css" type="text/css" />
-<link rel="stylesheet" href="css/responsive-tables.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Redberry - Employee</title>
+    <link rel="stylesheet" href="css/style.default.css" type="text/css"/>
+    <link rel="stylesheet" href="prettify/prettify.css" type="text/css"/>
+    <link rel="stylesheet" href="css/responsive-tables.css">
 
-<link rel="stylesheet" href="css/responsive-tables.css">
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
-<script type="text/javascript" src="js/modernizr.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.cookie.js"></script>
-<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/flot/jquery.flot.min.js"></script>
-<script type="text/javascript" src="js/flot/jquery.flot.resize.min.js"></script>
-<script type="text/javascript" src="js/responsive-tables.js"></script>
-<script type="text/javascript" src="js/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="prettify/prettify.js"></script>   
-<script type="text/javascript" src="js/elements.js"></script>
-<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/responsive-tables.js"></script>
+    <link rel="stylesheet" href="css/responsive-tables.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
+    <script type="text/javascript" src="js/modernizr.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="js/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/responsive-tables.js"></script>
+    <script type="text/javascript" src="js/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="prettify/prettify.js"></script>
+    <script type="text/javascript" src="js/elements.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/responsive-tables.js"></script>
+    <script type="text/javascript" src="js/knockout-3.3-min.js"></script>
     <script type="text/javascript">
-    jQuery(document).ready(function(){
-        // dynamic table
-        jQuery('#checkins').dataTable({
-            "sPaginationType": "full_numbers",
-            "aaSortingFixed": [[0,'asc']],
-            "fnDrawCallback": function(oSettings) {
-                jQuery.uniform.update();
-            },
-            'iDisplayLength': 5,
-            'sDom': '"top"i',
+        jQuery(document).ready(function () {
+
+            // dynamic table
+            var tbl = jQuery('#dyntable2').dataTable({
+                "bScrollInfinite": true,
+                "bScrollCollapse": true,
+                "sScrollY": "300px"
+            });
+
+
+            jQuery.ajax({
+                url:"/redberry/services/employee/getemployees",
+                method: "GET",
+                dataType: "JSON",
+                success: function(data){
+                    ko.applyBindings({
+                        employees: data,
+                        firstName : ko.observable(""),
+                        lastName : ko.observable("")
+                    });
+
+                }
+            });
+
         });
-        jQuery('#checkouts').dataTable({
-            "sPaginationType": "full_numbers",
-            "aaSortingFixed": [[0,'asc']],
-            "fnDrawCallback": function(oSettings) {
-                jQuery.uniform.update();
-            },
-            'iDisplayLength': 5,
-            'sDom': '"top"i',
-        });
-        
-    });
-</script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+    </script>
+    <!--[if lte IE 8]>
+    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
 </head>
 
 <body>
 
+<!-- Modal -->
+<div id="empModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+<p data-bind="text: firstName"></p>
+<p data-bind="text: lastName"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 <div id="mainwrapper" class="mainwrapper">
-    
+
     <div class="header">
         <div class="logo">
-            <a href="dashboard.html"><img src="images/logo.png" alt="" /></a>
+            <a href="dashboard.html"><img src="images/logo.png" alt=""/></a>
         </div>
         <div class="headerinner">
             <ul class="headmenu">
@@ -70,80 +98,66 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="nav-header">Messages</li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jack</strong> <small class="muted"> - 19 hours ago</small></a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Daniel</strong> <small class="muted"> - 2 days ago</small></a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jane</strong> <small class="muted"> - 3 days ago</small></a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Tanya</strong> <small class="muted"> - 1 week ago</small></a></li>
-                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Lee</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jack</strong>
+                            <small class="muted"> - 19 hours ago</small>
+                        </a></li>
+
                         <li class="viewmore"><a href="messages.html">View More Messages</a></li>
                     </ul>
                 </li>
                 <li>
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                    <span class="count">10</span>
-                    <span class="head-icon head-users"></span>
-                    <span class="headmenu-label">New Users</span>
+                        <span class="count">10</span>
+                        <span class="head-icon head-users"></span>
+                        <span class="headmenu-label">New Users</span>
                     </a>
                     <ul class="dropdown-menu newusers">
                         <li class="nav-header">New Users</li>
                         <li>
                             <a href="">
-                                <img src="images/photos/thumb1.png" alt="" class="userthumb" />
+                                <img src="images/photos/thumb1.png" alt="" class="userthumb"/>
                                 <strong>Draniem Daamul</strong>
                                 <small>April 20, 2013</small>
                             </a>
                         </li>
-                        <li>
-                            <a href="">
-                                <img src="images/photos/thumb2.png" alt="" class="userthumb" />
-                                <strong>Shamcey Sindilmaca</strong>
-                                <small>April 19, 2013</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="images/photos/thumb3.png" alt="" class="userthumb" />
-                                <strong>Nusja Paul Nawancali</strong>
-                                <small>April 19, 2013</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="images/photos/thumb4.png" alt="" class="userthumb" />
-                                <strong>Rose Cerona</strong>
-                                <small>April 18, 2013</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="images/photos/thumb5.png" alt="" class="userthumb" />
-                                <strong>John Doe</strong>
-                                <small>April 16, 2013</small>
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
                 <li class="odd">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                    <span class="count">1</span>
-                    <span class="head-icon head-bar"></span>
-                    <span class="headmenu-label">Statistics</span>
+                        <span class="count">1</span>
+                        <span class="head-icon head-bar"></span>
+                        <span class="headmenu-label">Statistics</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="nav-header">Statistics</li>
-                        <li><a href=""><span class="icon-align-left"></span> New Reports from <strong>Products</strong> <small class="muted"> - 19 hours ago</small></a></li>
-                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Users</strong> <small class="muted"> - 2 days ago</small></a></li>
-                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Comments</strong> <small class="muted"> - 3 days ago</small></a></li>
-                        <li><a href=""><span class="icon-align-left"></span> Most Popular in <strong>Products</strong> <small class="muted"> - 1 week ago</small></a></li>
-                        <li><a href=""><span class="icon-align-left"></span> Most Viewed in <strong>Blog</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Reports from <strong>Products</strong>
+                            <small class="muted"> - 19 hours ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Users</strong>
+                            <small class="muted"> - 2 days ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Statistics from
+                            <strong>Comments</strong>
+                            <small class="muted"> - 3 days ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-align-left"></span> Most Popular in <strong>Products</strong>
+                            <small class="muted"> - 1 week ago</small>
+                        </a></li>
+                        <li><a href=""><span class="icon-align-left"></span> Most Viewed in <strong>Blog</strong>
+                            <small class="muted"> - 1 week ago</small>
+                        </a></li>
                         <li class="viewmore"><a href="charts.html">View More Statistics</a></li>
                     </ul>
                 </li>
                 <li class="right">
                     <div class="userloggedinfo">
-                        <img src="images/photos/thumb1.png" alt="" />
+                        <img src="images/photos/thumb1.png" alt=""/>
+
                         <div class="userinfo">
-                            <h5>Juan Dela Cruz <small>- juan@themepixels.com</small></h5>
+                            <h5>Juan Dela Cruz
+                                <small>- juan@themepixels.com</small>
+                            </h5>
                             <ul>
                                 <li><a href="editprofile.html">Edit Profile</a></li>
                                 <li><a href="">Account Settings</a></li>
@@ -152,140 +166,137 @@
                         </div>
                     </div>
                 </li>
-            </ul><!--headmenu-->
+            </ul>
+            <!--headmenu-->
         </div>
     </div>
-    
+
     <div class="leftpanel">
-        
-        <div class="leftmenu">        
+
+        <div class="leftmenu">
             <ul class="nav nav-tabs nav-stacked">
-            	<li class="nav-header">Navigation</li>
-                
-                <li ><a href="dashboard.html"><span class="iconfa-laptop"></span> Dashboard</a></li>
+                <li class="nav-header">Navigation</li>
+
+                <li><a href="dashboard.html"><span class="iconfa-laptop"></span> Dashboard</a></li>
                 <li class="active"><a href="employee.html"><span class="iconfa-user"></span> Employee</a></li>
-                <li ><a href="template_page.html"><span class="iconfa-user"></span> Template page</a></li>
-                
-               
+                <li><a href="template_page.html"><span class="iconfa-user"></span> Template page</a></li>
+
+
             </ul>
-        </div><!--leftmenu-->
-        
-    </div><!-- leftpanel -->
-    
+        </div>
+        <!--leftmenu-->
+
+    </div>
+    <!-- leftpanel -->
+
     <div class="rightpanel">
-        
+
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a> <span class="separator"></span></li>
+            <li><a href="dashboard.html">Dashboard</a> <span class="separator"></span></li>
             <li>Employee</li>
+
+
             <li class="right">
-                    <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-tint"></i> Color Skins</a>
-                    <ul class="dropdown-menu pull-right skin-color">
-                        <li><a href="default">Default</a></li>
-                        <li><a href="navyblue">Navy Blue</a></li>
-                        <li><a href="palegreen">Pale Green</a></li>
-                        <li><a href="red">Red</a></li>
-                        <li><a href="green">Green</a></li>
-                        <li><a href="brown">Brown</a></li>
-                    </ul>
+                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-tint"></i> Color Skins</a>
+                <ul class="dropdown-menu pull-right skin-color">
+                    <li><a href="default">Default</a></li>
+                    <li><a href="navyblue">Navy Blue</a></li>
+                    <li><a href="palegreen">Pale Green</a></li>
+                    <li><a href="red">Red</a></li>
+                    <li><a href="green">Green</a></li>
+                    <li><a href="brown">Brown</a></li>
+                </ul>
             </li>
         </ul>
-        
-       <!--<div class="pageheader">
+
+        <div class="pageheader">
             <form action="results.html" method="post" class="searchbar">
-                <input type="text" name="keyword" placeholder="To search type and hit enter..." />
+                <input type="text" name="keyword" placeholder="To search type and hit enter..."/>
             </form>
-            <div class="pageicon"><span class="iconfa-laptop"></span></div>
+            <div class="pageicon"><span class="iconfa-user"></span></div>
             <div class="pagetitle">
-                <h5>All Features Summary</h5>
-                <h1>Dashboard</h1>
+                <h5>Employee Management</h5>
+
+                <h1>Employee</h1>
             </div>
-        </div>--><!--pageheader-->
-        
+        </div>
+        <!--pageheader-->
+
         <div class="maincontent">
             <div class="maincontentinner">
-                <div class="row-fluid">
-                    <div id="dashboard-left" class="span8">
-                       
-                         <P>
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                             main content main contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmain contentmai
-                            
-                        </P>
-                         
-                    </div><!--span8-->
-                    
-                    <div id="dashboard-right" class="span4">
-                        
-                        <h5 class="subtitle">Announcements</h5>
-                          <P>
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                              sidebar content Announcements
-                          </P>
-                        <br />
-                        
-                        <h5 class="subtitle">Summaries</h5>
-                             <P>
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                                 sidebar content Summaries
-                        </P>
-                            
-                        <br />
-                                                
-                    </div><!--span4-->
-                </div><!--row-fluid-->
-                
-                <div class="footer">
-                    <div class="footer-left">
-                        <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
-                    </div>
-                    <div class="footer-right">
-                        <span>Designed by: <a href="http://themepixels.com/">ThemePixels</a></span>
-                    </div>
-                </div><!--footer-->
-                
-            </div><!--maincontentinner-->
-        </div><!--maincontent-->
-        
-    </div><!--rightpanel-->
-    
-</div><!--mainwrapper-->
+                <h4 class="widgettitle">Employee Details</h4>
+                <h4 class="widgettitle">
+                    <a href="add-employee.html" class="btn">Add new employee</a>
+                    <button class="btn btn-danger">Remove an employee</button>
+                </h4>
+                <table class="table table-bordered table-infinite" id="emp">
+                    <colgroup>
+                        <col class="con1"/>
+                        <col class="con0"/>
+                        <col class="con1"/>
+                        <col class="con0"/>
+                        <col class="con1"/>
+                        <col class="con0"/>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="head0">Full Name</th>
+                        <th class="head1">NIC</th>
+                        <th class="head0">Email</th>
+                        <th class="head1">Contact No</th>
+                        <th class="head0">Address</th>
+                        <th class="head0">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody data-bind="{foreach: employees,afterRender: runWhenAllRenderDone}">
+                    <tr class="gradeX">
+                        <td class="emp-id" data-bind="text: id" style="display: none;"></td>
+                        <td data-bind="text: fullName"></td>
+                        <td data-bind="text: nic"></td>
+                        <td data-bind="text: email"></td>
+                        <td class="center" data-bind="text: residentialPhone"></td>
+                        <td class="center" data-bind="text: permanentAddress"></td>
+                        <td class="center" style="padding: 2px;">
+                            <button class="btn btn-primary view" style=" margin: auto;"><span class="iconfa-eye-open"></span></button>
+                            <button class="btn btn-primary edit" style=" margin: auto;"><span class="iconfa-pencil"></span></button>
+                            <button class="btn btn-danger delete" style=" margin: auto;"><span class="iconfa-remove"></span></button>
+                        </td>
+                    </tr>
 
+                    </tbody>
+                </table>
+
+            </div>
+            <!--maincontentinner-->
+        </div>
+        <!--maincontent-->
+    </div>
+    <!--rightpanel-->
+
+</div>
+<!--mainwrapper-->
+<script type="text/javascript">
+
+
+     jQuery(document).on('click', ".view", function() {
+         var id = jQuery(this).closest('tr').find(".emp-id").text();
+         jQuery.ajax({
+             url:"/redberry/services/employee/getemployeebyid?employeeId="+ id ,
+             method: "GET",
+             dataType: "JSON",
+             success: function(data){
+                 ko.applyBindings({
+                     firstName : ko.observable(data['id']),
+                     lastName : ko.observable("Bertington")
+                 });
+
+             }
+         });
+         jQuery('#empModal').modal('show');
+      });
+
+
+</script>
 </body>
 </html>
