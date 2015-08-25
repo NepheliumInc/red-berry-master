@@ -273,124 +273,211 @@
         <!-- Main content -->
         <section class="content">
 
+            <!-- Your Page Content Here -->
             <div class="row" style="margin-top: 22px;">
+
                 <div class="col-md-1"></div>
-                      <div class="col-md-10">
-                          <!-- general form elements -->
-                          <div class="box box-info">
-                              <div class="box-header">
-                                  <h3 class="box-title">Create New Travel Agents</h3>
-                              </div><!-- /.box-header -->
-                                    <div class="row">
-                                        <!-- crete new agent form start -->
-                                        <form role="form">
-                                           <div class="col-md-8">
-                                               <div class="box-body">
-                                                    <div class="row form-group" style="margin-top: 20px;">
-                                                        <label class="col-md-4" for="travelAgentName">Travel Agent Name:</label>
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control" id="travelAgentName" data-bind="value:travelAgentName"
-                                                                   placeholder="Enter Name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label class="col-md-4" for="travelAgentAddress">Address:</label>
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control"  id="travelAgentAddress" placeholder="Enter Address" data-bind="value:travelAgentAddress">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label class="col-md-4"  for="travelAgentPhoneNo">Phone No:</label>
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control" id="travelAgentPhoneNo" placeholder="Enter Phone Number" data-bind="value:travelAgentPhoneNo">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label class="col-md-4" for="travelAgentEmail">Email:</label>
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control"  id="travelAgentEmail"  placeholder="Enter Email" data-bind="value:travelAgentEmail">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label class="col-md-4">Bank Name:</label>
+                   <div class="col-md-10">
+                    <!-- box begins -->
+                    <div class="box box-info">
+                        <!-- box header-->
+                        <div class="box-header">
+                            <h3 class="box-title">Create New Travel Agents</h3>
 
-                                                        <div class="col-md-8">
-                                                            <select class="form-control" data-bind="optionsCaption: 'Select Bank', options: optionValues, value: travelAgentBankName"></select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label class="col-md-4" for="travelAgentAccountNo">Account No:</label>
+                        </div>
+                        <!--box header ends-->
 
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control"  id="travelAgentAccountNo" placeholder="Enter Account Number" data-bind="value:travelAgentAccountNo">
-                                                        </div>
+                        <!--box content begins-->
+                        <div class="box-body" style="padding: 20px">
+                            <!-- Employee details form-->
+                            <form role="form">
+                                <!--Column for text details-->
+                                <div class="col-md-8">
 
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label class="col-md-4" for="travelAgentAccountName">Account Name:</label>
-
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control" id="travelAgentAccountName" placeholder="Enter Account Name" data-bind="value:travelAgentAccountName">
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label class="col-md-4" for="travelAgentAccountBranch">Branch Name:</label>
-
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control" id="travelAgentAccountBranch" placeholder="Enter Branch Name" data-bind="value:travelAgentAccountBranch">
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label class="col-md-4" for="travelAgentRates">Rates:</label>
-
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control"
-                                                                   id="travelAgentRates" placeholder="Enter Rates" data-bind="value:travelAgentRates">
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <!-- /.box-body -->
-                                                <div class="box-footer">
-                                                    <div class="col-md-8"></div>
-                                                    <div class="col-md-2">
-                                                        <button type="submit" class="btn btn-primary">Create</button>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <button type="reset" class="btn btn-danger">Reset</button>
-                                                    </div>
-                                                 </div>
-                                           </div>
-                                            <!--end of left column-->
-
-
-                                        <div class="col-md-4">
-
-                                                <div class="box-body">
-                                                    <div class="row form-group" style="margin-top: 20px;  ">
-                                                        <img id="agentImage" src="dist/img/avatar5.png" class="img-rounded img-responsive"style="width:140px;height:140px;">
-                                                        <input id="agentLogo" name="agentLogo" type="file" onchange="show_pic(this)" style="margin-top: 18px;" data-bind="value:travelAgentImage">
-
-
-
-
-                                                    </div>
-                                                </div>
+                                    <div class="row form-group" style="margin-top: 20px;">
+                                        <label class="col-md-4" for="travelAgentName">Travel Agent Name:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" name="travelAgentName" id="travelAgentName" data-bind="value:travelAgentName"
+                                                   placeholder="Enter Name">
                                         </div>
-                                        <!--end of right colum-->
-                                        </form>
-                                        <!--end of crete new agent form-->
                                     </div>
-                                    <!-- end of inside row -->
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentAddress">Address:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control"  id="travelAgentAddress" placeholder="Enter Address" data-bind="value:travelAgentAddress">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4"  for="travelAgentPhoneNo">Phone No:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="travelAgentPhoneNo" placeholder="Enter Phone Number" data-bind="value:travelAgentPhoneNo">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentEmail">Email:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control"  id="travelAgentEmail"  placeholder="Enter Email" data-bind="value:travelAgentEmail">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4">Bank Name:</label>
+
+                                        <div class="col-md-8">
+                                            <select class="form-control" data-bind="optionsCaption: 'Select Bank',options: optionValues,value: travelAgentBank"></select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentAccountNo">Account No:</label>
+
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control"  id="travelAgentAccountNo" placeholder="Enter Account Number" data-bind="value:travelAgentAccountNo">
+                                        </div>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentAccountName">Account Name:</label>
+
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="travelAgentAccountName" placeholder="Enter Account Name" data-bind="value:travelAgentAccountName">
+                                        </div>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentAccountBranch">Branch Name:</label>
+
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="travelAgentAccountBranch" placeholder="Enter Branch Name" data-bind="value:travelAgentAccountBranch">
+                                        </div>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentRates">Rates:</label>
+
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control"
+                                                   id="travelAgentRates" placeholder="Enter Rates" data-bind="value:travelAgentRates">
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
-                                <!-- /.box -->
-                         </div>
-                <!-- end of colum -->
-             </div>
-            <!--end of outer  row -->
-          </section>
+
+                                <!--column for profile picture-->
+                                <div class="col-md-4">
+                                    <div class="box-body">
+                                        <div class="row form-group" style="margin-top: 10px;">
+                                            <img id="employeeImage" src="dist/img/avatar5.png" class="img-rounded img-responsive"  style="width:140px;height:140px;">
+                                            <input id="imageURL" name="imageURL" type="file" onchange="$('#employeeImage')[0].src = window.URL.createObjectURL(this.files[0])" style="margin-top: 18px;">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                            <!--travel agent form ends-->
+                        </div>
+                        <!-- box content(body) ends-->
+
+                        <!-- box footer begins-->
+                        <center>
+                            <div class="box-footer">
+                                <button type="button" onclick="$('form').trigger('reset')" class="btn btn-danger ">
+                                    Clear
+                                </button>
+                                <a href="" class="btn btn-info" data-toggle="modal" data-target="#NewAgentDetails">Next&nbsp;<i class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </center>
+                        <!-- box footer ends-->
+
+                    </div>
+                    <!-- box ends-->
+
+
+                </div>
+            </div><!-- end of row-->
+
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="NewAgentDetails" role="dialog" data-bind="modal: { visible: modalVisible}">
+                <div class="modal-dialog" style="height: auto">
+                    <div class="box box-info">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">New Travel Agent Details</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <table  class="table table-bordered table-striped">
+
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Travel Agent Name: </b></td>
+                                                <td data-bind="text: travelAgentName" ></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Address: </b></td>
+                                                <td data-bind="text: travelAgentAddress"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Phone No: </b></td>
+                                                <td data-bind="text: travelAgentPhoneNo"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Email: </b></td>
+                                                <td data-bind="text: travelAgentEmail"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Bank Name: </b></td>
+                                                <td data-bind="text: travelAgentBank"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Account No: </b></td>
+                                                <td data-bind="text:travelAgentAccountNo"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Account Name: </b></td>
+                                                <td data-bind="text: travelAgentAccountName"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Branch Name: </b></td>
+                                                <td data-bind="text: travelAgentAccountBranch"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><b>Rates(Rs): </b></td>
+                                                <td data-bind="text: travelAgentRates"></td>
+                                            </tr>
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <img id="agentImage" src="dist/img/avatar5.png" class="img-rounded img-responsive"style="width:140px;height:140px;"
+                                             width="215" height="215">
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                                <a href="" class="btn btn-info" data-toggle="modal" data-target="#NewAgentDetails"><i class="fa fa-floppy-o"></i>&nbsp;Save</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!--end of model-->
+
+
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -490,6 +577,15 @@
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js" type="text/javascript"></script>
+<!-- KnockoutJs -->
+<script type="text/javascript" src="plugins/knockout/knockout-3.3-min.js"></script>
+<script src="plugins/knockout/knockout.mapping-latest.js"></script>
+
+
+<!-- DATA TABES SCRIPT -->
+<script src="plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+
 <script type="text/javascript">
     //function for preview image before upload
     function show_pic(input) {
@@ -503,41 +599,56 @@
         }
     }
 </script>
-<!-- KnockoutJs -->
-<script type="text/javascript" src="plugins/knockout/knockout-3.3-min.js">
-
-</script>
-<!-- DATA TABES SCRIPT -->
-<script src="plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
             $(function () {
                $("#travelAgentDetails").dataTable();});
 
 </script>
+
 <script type="text/javascript">
-    function loadTravelAgentDetails(){
-        var self = this;
-        self.optionValues = ko.observableArray(["Seylan Bank", "People's Bank", "Bank of Ceylon","Commercial Bank"]);
 
 
-        self.travelAgentName=ko.observable("");
-        self.travelAgentAddress=ko.observable("");
-        self.travelAgentPhoneNo=ko.observable("");
-        self.travelAgentEmail=ko.observable("");
-        self.travelAgentBankName = ko.observable("")
-        self.travelAgentAccountNo=ko.observable("");
-        self.travelAgentAccountName=ko.observable("");
-        self.travelAgentAccountBranch=ko.observable("");
-        self.travelAgentRates=ko.observable("");
-
+    function NewTravelAgentModel() {
+        this.travelAgentName = ko.observable();
+        this.travelAgentAddress = ko.observable();
+        this.travelAgentPhoneNo = ko.observable();
+        this.travelAgentEmail = ko.observable();
+        this.optionValues = ko.observableArray(["Seylan Bank", "People's Bank", "Bank of Ceylon","Commercial Bank"]);
+        this.travelAgentBank=ko.observable();
+        this.travelAgentAccountNo = ko.observable();
+        this.travelAgentAccountName = ko.observable();
+        this.travelAgentAccountBranch= ko.observable();
+        this.travelAgentRates = ko.observable();
 
     }
 
+    // Activates knockout.js
 
-    //Activate Knockout.js
-    ko.applyBindings(new loadTravelAgentDetails());
+    ko.applyBindings(new NewTravelAgentModel());
+
+    function makeEmployeeJSON() {
+        return ko.toJSON(employeeModel);
+    }
+
+
+    function sendEmployeeRequest(){
+
+        $.ajax({
+            type: 'POST',
+            url: '/redberry/services/employee/addemployee',
+            contentType: 'application/json',
+            dataType: 'JSON',
+            data: makeEmployeeJSON(),
+
+
+        });
+
+        $('#modal-1').modal('hide');
+        window.location.href='employee.html';
+
+    }
+
 </script>
 
 
