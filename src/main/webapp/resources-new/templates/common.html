@@ -1,0 +1,32 @@
+<script type="text/html" id="monthTemplate">
+    <li>
+        <span data-bind="text: month"></span>
+        is in
+        <span data-bind="text: season.name"></span>
+    </li>
+
+    <li class="active">
+        <a href="#checkin" data-bind="click: loadCheckIn">
+            <i class="fa fa-th"></i> <span>Check-In</span>
+        </a>
+    </li>
+</script>
+
+<script type="text/html" id="seasonTemplate">
+    <li>
+        <strong data-bind="text: name"></strong>
+        <ul data-bind="template: { name: 'monthTemplate', foreach: months, as: 'month' }"></ul>
+    </li>
+
+
+    <li class="active treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+        </ul>
+    </li>
+
+</script>
