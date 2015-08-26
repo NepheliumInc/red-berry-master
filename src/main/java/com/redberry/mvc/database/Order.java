@@ -1,14 +1,14 @@
 package com.redberry.mvc.database;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Timestamp;
 
 /**
  * Created by Amila on 7/12/15.
  */
+@XmlRootElement(name="employee")
+@Table(name = "ORDER", schema = "", catalog = "redberry")
 @Entity
 public class Order {
     private int id;
