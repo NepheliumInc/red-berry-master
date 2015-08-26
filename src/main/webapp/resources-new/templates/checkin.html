@@ -1,0 +1,205 @@
+<!--<script type="text/html" id="monthTemplate">
+    <li>
+        <span data-bind="text: month"></span>
+        is in
+        <span data-bind="text: season.name"></span>
+    </li>
+</script>
+
+<script type="text/html" id="seasonTemplate">
+    <li>
+        <strong data-bind="text: name"></strong>
+        <ul data-bind="template: { name: 'monthTemplate', foreach: months, as: 'month' }"></ul>
+    </li>
+</script>-->
+
+<script type="text/html" id="checkin_tmpl">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom" id="checkinTabs">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_1" data-toggle="tab">Step One</a></li>
+                    <li><a href="#tab_2" >Step Two</a></li>
+                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>Check in - Check out [Date & Time] :</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-clock-o"></i>
+                                            </div>
+                                            <input type="text" data-bind="textInput: checkInToOut" class="form-control pull-right" id="checkInToOut"/>
+                                        </div><!-- /.input group -->
+                                    </div><!-- /.form group -->
+
+                                    <div class="form-group">
+                                            <label for="name">Name :</label>
+                                            <input type="text" data-bind="textInput: name" class="form-control" id="name" placeholder="Enter name">
+                                    </div><!-- /.form group -->
+
+                                    <div class="form-group">
+                                        <label>Address :</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-home"></i>
+                                            </div>
+                                            <input type="text" data-bind="textInput: address" class="form-control pull-right" id="address"/>
+                                        </div><!-- /.input group -->
+                                    </div><!-- /.form group -->
+
+                                    <div class="form-group">
+                                        <label for="name">NIC / Telephone / Email :</label>
+                                        <div class="row">
+                                            <div class="col-md-3 col-sm-6 col-xs-12 margin-bottom">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                                    <input type="text" data-bind="textInput: nic" class="form-control" placeholder="NIC">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12 margin-bottom">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                    <input type="text" data-bind="textInput: telephone" class="form-control" placeholder="Telephone">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                    <input type="text" data-bind="textInput: email" class="form-control" placeholder="Email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-4">
+
+                                    <div class="form-group" style="height: 59px">
+                                        <br/>
+                                        <div class="input-group">
+                                            <label>
+                                                <input type="checkbox"/>
+                                                 &nbsp;Comes From Travel Agent
+                                            </label>
+                                        </div><!-- /.input group -->
+                                    </div><!-- /.form group -->
+
+
+                                    <div class="form-group">
+                                        <label>Travel Source :</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-home"></i>
+                                            </div>
+
+                                            <select class="form-control" data-bind="options: TravelSources"></select>
+
+                                        </div><!-- /.input group -->
+                                    </div><!-- /.form group -->
+
+                                    <div class="form-group">
+                                        <label>No of Rooms :</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa  fa-shopping-cart"></i>
+                                            </div>
+                                            <input type="number" data-bind="textInput: noOfRooms" class="form-control pull-right" id="noOfRooms"/>
+                                        </div><!-- /.input group -->
+                                    </div><!-- /.form group -->
+
+                                    <div class="form-group">
+                                        <label>&nbsp;</label>
+                                        <button class="btn btn-primary" data-bind="click: goToSecondStep" style="width: 100%">Next >></button>
+
+                                    </div><!-- /.form group -->
+
+                                </div>
+
+
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_2">
+                        <div class="nav-tabs-custom" id="roomTabs">
+                            <ul data-bind="template: { name: 'roomConfig_header',foreach: noOfRooms}" class="nav nav-tabs"></ul>
+                            <div class="tab-content" data-bind="template: { name: 'roomConfig_body',foreach: noOfRooms}"></div><!-- /.tab-content -->
+                        </div>
+                    </div><!-- /.tab-pane -->
+                </div><!-- /.tab-content -->
+            </div><!-- nav-tabs-custom -->
+        </div><!-- /.col -->
+        </div>
+</script>
+
+
+<script type="text/html" id="roomConfig_header">
+        <li class="active"><a href="#room1" data-toggle="tab">Room 1</a></li>
+</script>
+
+<script type="text/html" id="roomConfig_body">
+        <div class="tab-pane active" id="room1">
+            <div class="col-md-8">
+
+                <div class="form-group">
+                    <label>Room Category :</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-home"></i>
+                        </div>
+
+                        <select class="form-control" data-bind="options: category"></select>
+
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+
+                <div class="form-group">
+                    <label>Room Occupancy :</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-home"></i>
+                        </div>
+
+                        <select class="form-control" data-bind="options: occupancy"></select>
+
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+            </div>
+
+            <div class="form-group">
+                <label>A/C :</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-home"></i>
+                    </div>
+
+                    <select class="form-control" data-bind="options: ac"></select>
+
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+
+
+            <div class="form-group">
+                <label>Meal Configuration :</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-home"></i>
+                    </div>
+
+                    <select class="form-control" data-bind="options: meal"></select>
+
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+
+        </div><!-- /.tab-pane -->
+</script>

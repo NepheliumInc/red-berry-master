@@ -286,51 +286,51 @@
 
                         </div>
                         <!--box header ends-->
-
+                        <!-- Employee details form-->
+                        <form role="form">
                         <!--box content begins-->
                         <div class="box-body" style="padding: 20px">
-                            <!-- Employee details form-->
-                            <form role="form">
+
                                 <!--Column for text details-->
                                 <div class="col-md-8">
 
                                     <div class="row form-group" style="margin-top: 20px;">
                                         <label class="col-md-4" for="travelAgentName">Travel Agent Name:</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="travelAgentName" id="travelAgentName" data-bind="value:travelAgentName"
+                                            <input type="text" class="form-control" required name="travelAgentName" id="travelAgentName" data-bind="value:travelAgentName"
                                                    placeholder="Enter Name">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-md-4" for="travelAgentAddress">Address:</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control"  id="travelAgentAddress" placeholder="Enter Address" data-bind="value:travelAgentAddress">
+                                            <input type="text" class="form-control" required id="travelAgentAddress" placeholder="Enter Address" data-bind="value:travelAgentAddress">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-md-4"  for="travelAgentPhoneNo">Phone No:</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" id="travelAgentPhoneNo" placeholder="Enter Phone Number" data-bind="value:travelAgentPhoneNo">
+                                            <input type="tel" class="form-control" required id="travelAgentPhoneNo" placeholder="Enter Phone Number" data-bind="value:travelAgentPhoneNo">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-md-4" for="travelAgentEmail">Email:</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control"  id="travelAgentEmail"  placeholder="Enter Email" data-bind="value:travelAgentEmail">
+                                            <input type="email" class="form-control" required id="travelAgentEmail"  placeholder="Enter Email" data-bind="value:travelAgentEmail">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-md-4">Bank Name:</label>
 
                                         <div class="col-md-8">
-                                            <select class="form-control" data-bind="optionsCaption: 'Select Bank',options: optionValues,value: travelAgentBank"></select>
+                                            <select class="form-control" required data-bind="optionsCaption: 'Select Bank',options: optionValues,value: travelAgentBank"></select>
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label class="col-md-4" for="travelAgentAccountNo">Account No:</label>
+                                        <label class="col-md-4"  for="travelAgentAccountNo">Account No:</label>
 
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control"  id="travelAgentAccountNo" placeholder="Enter Account Number" data-bind="value:travelAgentAccountNo">
+                                            <input type="number"required class="form-control"  id="travelAgentAccountNo" placeholder="Enter Account Number" data-bind="value:travelAgentAccountNo">
                                         </div>
 
                                     </div>
@@ -338,7 +338,7 @@
                                         <label class="col-md-4" for="travelAgentAccountName">Account Name:</label>
 
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" id="travelAgentAccountName" placeholder="Enter Account Name" data-bind="value:travelAgentAccountName">
+                                            <input type="text" required class="form-control" id="travelAgentAccountName" placeholder="Enter Account Name" data-bind="value:travelAgentAccountName">
                                         </div>
 
                                     </div>
@@ -346,7 +346,7 @@
                                         <label class="col-md-4" for="travelAgentAccountBranch">Branch Name:</label>
 
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" id="travelAgentAccountBranch" placeholder="Enter Branch Name" data-bind="value:travelAgentAccountBranch">
+                                            <input type="text" required class="form-control" id="travelAgentAccountBranch" placeholder="Enter Branch Name" data-bind="value:travelAgentAccountBranch">
                                         </div>
 
                                     </div>
@@ -354,7 +354,7 @@
                                         <label class="col-md-4" for="travelAgentRates">Rates:</label>
 
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control"
+                                            <input type="number" required class="form-control"
                                                    id="travelAgentRates" placeholder="Enter Rates" data-bind="value:travelAgentRates">
                                         </div>
 
@@ -374,21 +374,23 @@
                                     </div>
 
                                 </div>
-                            </form>
-                            <!--travel agent form ends-->
+
                         </div>
                         <!-- box content(body) ends-->
 
-                        <!-- box footer begins-->
-                        <center>
-                            <div class="box-footer">
+                            <center>
                                 <button type="button" onclick="$('form').trigger('reset')" class="btn btn-danger ">
                                     Clear
                                 </button>
-                                <a href="" class="btn btn-info" data-toggle="modal" data-target="#NewAgentDetails">Next&nbsp;<i class="fa fa-angle-double-right"></i></a>
-                            </div>
-                        </center>
-                        <!-- box footer ends-->
+
+                                <button type="submit" class="btn btn-info " data-toggle="modal" data-target="#NewAgentDetails">
+                                    Next&nbsp;<i class="fa fa-angle-double-right"></i>
+                                </button>
+                            </center>
+
+                        </form>
+                        <!--travel agent form ends-->
+
 
                     </div>
                     <!-- box ends-->

@@ -305,7 +305,7 @@
                                                     <td data-bind="text:agentRates"></td>
                                                     <td>
 
-                                                     <a data-toggle="modal" title="view agent details" data-target="#AgentDetails" data-bind="click: $root.show">View&nbsp;&nbsp;</a>
+                                                     <a data-toggle="modal" title="view agent details" data-target="#AgentDetails" data-bind="click:  $parent.show">View&nbsp;&nbsp;</a>
                                                      <a href="#" data-bind="click: $root.editAgent" title="Edit Agent Details"><i class="fa fa-pencil-square-o" ></i>&nbsp;&nbsp;</a>
                                                      <a href="#" data-bind="click: $parent.removeAgent" title="Remove Agent"><i class="btn-xs fa fa-trash-o"></i></a>
                                                     </td>
@@ -343,8 +343,8 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-md-8">
-                                        <table  class="table table-bordered table-striped">
+                                    <div class="col-md-8" >
+                                        <table  class="table table-bordered table-striped" >
 
                                             <tbody>
                                             <tr>
@@ -545,8 +545,12 @@
 <script type="text/javascript">
     function loadTravelAgentDetails(){
         var self = this;
-        self.agentName=ko.observable('sds');
-        self.agentAdd=ko.observable('');
+
+        var agentObject=function(agent){
+            self=this;
+            self.agentName=ko.observable(agent.agentName);
+            self.agentAdd=ko.observable(agent.agentAdd);
+        }
 
 
 
@@ -563,7 +567,10 @@
             self.travelAgents.push( { agentName: 'lakshan', agentAdd: 'Matara',agentPhone: '0716508688',agentEmail: 'Bertington@gmail.com',agentRates: '70' });
         };
 
-        self.show=function(){
+        self.show=function(a){
+
+           // self.agentName(a.agentName);
+            //self.agentAdd(a.agentAdd);
 
 
 
@@ -572,9 +579,10 @@
 
 
 
-        // Behaviors
-        this.edit = function() { this.editing(true) }
+
     }
+
+
 
 
 //Activate Knockout.js

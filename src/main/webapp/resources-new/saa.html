@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="ReportNamediv">
+    <ul class="ulclass" data-bind="foreach:Reports">
+        <li>
+            <a data-bind="click:$root.SelectedReport">
+                <span data-bind="text: ReportName"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="ReportContentdiv" data-bind="with:SelectedReport">
+    <table data-bind="foreach:SubReports">
+        <tr>
+            <td data-bind="text:SubReportName"></td>
+            <td data-bind="text:SubReportDate"></td>
+            <td data-bind="text:SubReportNote"></td>
+            <td data-bind="text:SubReportType"></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript" src="plugins/knockout/knockout-3.3-min.js"></script>
+<script type="text/javascript">
+
+
+    var model = {
+        Reports: ko.observableArray([]), //An observable list of reports...you can set this yourself.
+        SelectedReport: ko.observable(null)
+    };
+
+    //Activate Knockout.js
+    ko.applyBindings(model);
+</script>
+</body>
+
+</html>
