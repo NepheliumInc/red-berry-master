@@ -1,0 +1,58 @@
+<script type="text/html" id="main_content">
+    <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <!-- box begins -->
+                    <div class="box box-info">
+                        <!-- box header-->
+                        <div class="box-header">
+                            <h3 class="box-title">Existing Employees</h3>
+                            <hr>
+                            <a class="btn btn-primary btn-sm pull-left" href="addEmployee.html">Add New</a>
+                        </div>
+
+                        <!--box header ends-->
+
+                        <!--box content begins-->
+                        <div class="row box-body" style="padding: 20px">
+                            <table id="employeeDetails" class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>NIC</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="{foreach: employees,afterRender: runWhenAllRenderDone}">
+                                <tr>
+                                    <td data-bind="text: id" hidden></td>
+                                    <td data-bind="text: fullName"></td>
+                                    <td data-bind="text: nic"></td>
+                                    <td data-bind="text: email"></td>
+                                    <td data-bind="text: residentialAddress"></td>
+                                    <td data-bind="text: residentialPhone"></td>
+                                    <td><a class="label label-danger" href=""
+                                           data-bind="click: $root.removeEmp">Remove</a> <a class="label label-info"
+                                                                                            href=""
+                                                                                            data-bind="click: $root.viewEmp">View</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- box content ends-->
+                    </div>
+                    <!-- box ends-->
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+</script>

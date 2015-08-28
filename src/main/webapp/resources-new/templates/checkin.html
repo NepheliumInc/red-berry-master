@@ -1,19 +1,4 @@
-<!--<script type="text/html" id="monthTemplate">
-    <li>
-        <span data-bind="text: month"></span>
-        is in
-        <span data-bind="text: season.name"></span>
-    </li>
-</script>
-
-<script type="text/html" id="seasonTemplate">
-    <li>
-        <strong data-bind="text: name"></strong>
-        <ul data-bind="template: { name: 'monthTemplate', foreach: months, as: 'month' }"></ul>
-    </li>
-</script>-->
-
-<script type="text/html" id="checkin_tmpl">
+<script type="text/html" id="main_content">
     <div class="row">
         <div class="col-md-12">
             <!-- Custom Tabs -->
@@ -113,7 +98,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa  fa-shopping-cart"></i>
                                             </div>
-                                            <input type="number" data-bind="textInput: noOfRooms" class="form-control pull-right" id="noOfRooms"/>
+                                            <input type="number" min="1" max="20" value="1" data-bind="textInput: noOfRooms" class="form-control pull-right" id="noOfRooms"/>
                                         </div><!-- /.input group -->
                                     </div><!-- /.form group -->
 
@@ -129,11 +114,16 @@
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.tab-pane -->
+
                     <div class="tab-pane" id="tab_2">
-                        <div class="nav-tabs-custom" id="roomTabs">
-                            <ul data-bind="template: { name: 'roomConfig_header',foreach: noOfRooms}" class="nav nav-tabs"></ul>
-                            <div class="tab-content" data-bind="template: { name: 'roomConfig_body',foreach: noOfRooms}"></div><!-- /.tab-content -->
-                        </div>
+                            <ul id="interest_tabs" data-bind="template: { name: 'roomConfig_header',foreach: Rooms,as:Room}" class="nav nav-tabs"></ul>
+                            <div class="tab-content" data-bind="template: { name: 'roomConfig_body',foreach: Rooms,as:Room}"></div><!-- /.tab-content -->
+
+
+                        <!--<ul data-bind="template: { name: 'seasonTemplate', foreach: seasons, as: 'season' }"></ul>-->
+
+
+
                     </div><!-- /.tab-pane -->
                 </div><!-- /.tab-content -->
             </div><!-- nav-tabs-custom -->
@@ -142,12 +132,13 @@
 </script>
 
 
+
 <script type="text/html" id="roomConfig_header">
-        <li class="active"><a href="#room1" data-toggle="tab">Room 1</a></li>
+        <li><a data-toggle="tab" data-bind="text: 'Room '+no() , attr: {href: 'room'+no()},click: $parent.roomSelect" ></a></li>
 </script>
 
 <script type="text/html" id="roomConfig_body">
-        <div class="tab-pane active" id="room1">
+        <div class="tab-pane active" data-bind="attr: {id: 'room'+no()},visible : show()">
             <div class="col-md-8">
 
                 <div class="form-group">
@@ -183,10 +174,11 @@
                         <i class="fa fa-home"></i>
                     </div>
 
-                    <select class="form-control" data-bind="options: ac"></select>
+                    <select class="form-control" data-bind="options: AC"></select>
 
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
+
 
 
             <div class="form-group">
@@ -196,7 +188,7 @@
                         <i class="fa fa-home"></i>
                     </div>
 
-                    <select class="form-control" data-bind="options: meal"></select>
+                    <select class="form-control" data-bind="options: mealConfig"></select>
 
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
