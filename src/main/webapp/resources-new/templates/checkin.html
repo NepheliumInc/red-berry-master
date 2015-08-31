@@ -1,18 +1,3 @@
-<!--<script type="text/html" id="monthTemplate">
-    <li>
-        <span data-bind="text: month"></span>
-        is in
-        <span data-bind="text: season.name"></span>
-    </li>
-</script>
-
-<script type="text/html" id="seasonTemplate">
-    <li>
-        <strong data-bind="text: name"></strong>
-        <ul data-bind="template: { name: 'monthTemplate', foreach: months, as: 'month' }"></ul>
-    </li>
-</script>-->
-
 <script type="text/html" id="main_content">
     <div class="row">
         <div class="col-md-12">
@@ -113,7 +98,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa  fa-shopping-cart"></i>
                                             </div>
-                                            <input type="number" data-bind="textInput: noOfRooms" class="form-control pull-right" id="noOfRooms"/>
+                                            <input type="number" min="1" max="20" value="1" data-bind="textInput: noOfRooms" class="form-control pull-right" id="noOfRooms"/>
                                         </div><!-- /.input group -->
                                     </div><!-- /.form group -->
 
@@ -131,8 +116,8 @@
                     </div><!-- /.tab-pane -->
 
                     <div class="tab-pane" id="tab_2">
-                            <ul id="interest_tabs" data-bind="template: { name: 'roomConfig_header',foreach: Rooms, as: 'room'}" class="nav nav-tabs"></ul>
-                            <div class="tab-content" data-bind="template: { name: 'roomConfig_body',foreach: Rooms,as: 'room'}"></div><!-- /.tab-content -->
+                            <ul id="interest_tabs" data-bind="template: { name: 'roomConfig_header',foreach: Rooms,as:Room}" class="nav nav-tabs"></ul>
+                            <div class="tab-content" data-bind="template: { name: 'roomConfig_body',foreach: Rooms,as:Room}"></div><!-- /.tab-content -->
 
 
                         <!--<ul data-bind="template: { name: 'seasonTemplate', foreach: seasons, as: 'season' }"></ul>-->
@@ -145,34 +130,15 @@
         </div><!-- /.col -->
         </div>
 </script>
-<script>
-
-</script>
-
-
-<script type="text/html" id="seasonTemplate">
-    <li>
-        <strong data-bind="text: name"></strong>
-        <ul data-bind="template: { name: 'monthTemplate', foreach: months, as: 'month' }"></ul>
-    </li>
-</script>
-
-<script type="text/html" id="monthTemplate">
-    <li>
-        <span data-bind="text: month"></span>
-        is in
-        <span data-bind="text: season.name"></span>
-    </li>
-</script>
 
 
 
 <script type="text/html" id="roomConfig_header">
-        <li><a data-toggle="tab" data-bind="text: 'Room '+room.no , attr: {href: '#room'+room.no}" ></a></li>
+        <li><a data-toggle="tab" data-bind="text: 'Room '+no() , attr: {href: 'room'+no()},click: $parent.roomSelect" ></a></li>
 </script>
 
 <script type="text/html" id="roomConfig_body">
-        <div class="tab-pane" data-bind="attr: {id: '#room'+room.no}" >
+        <div class="tab-pane active" data-bind="attr: {id: 'room'+no()},visible : show()">
             <div class="col-md-8">
 
                 <div class="form-group">
@@ -182,7 +148,7 @@
                             <i class="fa fa-home"></i>
                         </div>
 
-                        <select class="form-control" data-bind="options: room.category"></select>
+                        <select class="form-control" data-bind="options: category"></select>
 
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
@@ -195,7 +161,7 @@
                             <i class="fa fa-home"></i>
                         </div>
 
-                        <select class="form-control" data-bind="options: room.occupancy"></select>
+                        <select class="form-control" data-bind="options: occupancy"></select>
 
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
@@ -208,10 +174,11 @@
                         <i class="fa fa-home"></i>
                     </div>
 
-                    <select class="form-control" data-bind="options: room.AC"></select>
+                    <select class="form-control" data-bind="options: AC"></select>
 
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
+
 
 
             <div class="form-group">
@@ -221,7 +188,7 @@
                         <i class="fa fa-home"></i>
                     </div>
 
-                    <select class="form-control" data-bind="options: room.mealConfig"></select>
+                    <select class="form-control" data-bind="options: mealConfig"></select>
 
                 </div><!-- /.input group -->
             </div><!-- /.form group -->

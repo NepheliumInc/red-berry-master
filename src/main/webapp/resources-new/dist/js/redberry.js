@@ -42,6 +42,17 @@ ko.applyBindings(sidebar,document.getElementById('admin-sidebar'));
 ko.applyBindings(sidebar,document.getElementById('content-header'));
 
 
+var Room = function(no, show) {
+    var self = this;
+    self.no = ko.observable(no);
+    self.category = ko.observableArray(['dulux','supper','luxury']);
+    self.AC = ko.observableArray(['NO','YES']);
+    self.occupancy = ko.observableArray(['yes','no']);
+    self.mealConfig = ko.observableArray(['Vegetarian', 'non vege']);
+    self.show = ko.observable(show);
+};
+
+
 
 var checkinViewModel = {
     checkInToOut: ko.observable(),
@@ -50,11 +61,11 @@ var checkinViewModel = {
     nic: ko.observable(),
     email: ko.observable(),
     telephone: ko.observable(),
-    noOfRooms: ko.observable(),
+    noOfRooms: ko.observable(1),
+
 
     Rooms: ko.observableArray([
-        { no: 1, category: ['dulux','supper','luxury'] , AC: ['NO','YES'], occupancy:'' ,mealConfig:['Vegetarian', 'non vege']},
-        { no: 2, category: ['dulux','supper','luxury'] , AC: ['NO','YES'], occupancy:'' ,mealConfig:['Vegetarian', 'non vege']}
+        new Room(1,true)
     ]),
 
     TravelSources: ko.observableArray(['none','Lanka Tours','Sri Tours','Sl Tour Guide','Jhon Snow']),
@@ -63,32 +74,28 @@ var checkinViewModel = {
     initialiseUI:function(){
         $('#checkInToOut').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
 
-        $('body #interest_tabs').on('click', 'a[data-toggle="tab"]', function(e) {
-            e.preventDefault();
-
-            var $link = $(this);
-
-            if (!$link.parent().hasClass('active')) {
-
-                //remove active class from other tab-panes
-                $('.tab-content:not(.' + $link.attr('href').replace('#','') + ') .tab-pane').removeClass('active');
-
-                // click first submenu tab for active section
-                $('a[href="' + $link.attr('href') + '_all"][data-toggle="tab"]').click();
-
-                // activate tab-pane for active section
-                $('.tab-content.' + $link.attr('href').replace('#','') + ' .tab-pane:first').addClass('active');
-            }
-
-        });
     },
 
 
+    roomSelect: function(room){
+        var r = ko.utils.arrayFirst(this.Rooms, function(r) {
+            return r.no == room.no;
+        });
+
+        if (r.show) {
+            alert(r.show);
+            r.show(false);
+        }else{
+            r.show(true);
+        }
+    },
+
     goToSecondStep: function(){
-        this.Rooms.destroyAll();
+        this.Rooms([new Room(1,true)]);
         $('#checkinTabs a[href="#tab_2"]').tab('show');
-        for(i=1;i<=this.noOfRooms();i++){
-            this.Rooms.push({no: i, category: ['dulux','supper','luxury'] , AC: ['NO','YES'], occupancy:'' ,mealConfig:['Vegetarian', 'non vege']});
+        for(i=2;i<=this.noOfRooms();i++){
+            //this.Rooms.push({no: i, category: ['dulux','supper','luxury'] , AC: ['NO','YES'], occupancy:['yes','no'] ,mealConfig:['Vegetarian', 'non vege'],show:false});
+            this.Rooms.push(new Room(i,false));
         }
     }
 };
@@ -104,3 +111,4 @@ var dashboardViewModel = {
 
     }
 };
+
