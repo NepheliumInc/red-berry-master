@@ -1,58 +1,132 @@
-<script type="text/html" id="main_content">
-    <!-- Main content -->
-        <section class="content">
+<script type="text/html" id="checkin_tmpl">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <!-- box begins -->
+            <div class="box box-info">
+                <!-- box header-->
+                <div class="box-header">
+                    <h3 class="box-title">Existing Employees</h3>
+                    <hr>
+                    <a class="btn btn-primary btn-sm pull-left" href="addEmployee.html">Add New</a>
+                </div>
 
-            <!-- Your Page Content Here -->
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <!-- box begins -->
-                    <div class="box box-info">
-                        <!-- box header-->
-                        <div class="box-header">
-                            <h3 class="box-title">Existing Employees</h3>
-                            <hr>
-                            <a class="btn btn-primary btn-sm pull-left" href="addEmployee.html">Add New</a>
-                        </div>
+                <!--box header ends-->
 
-                        <!--box header ends-->
+                <!--box content begins-->
+                <div class="row box-body" style="padding: 20px">
+                    <table id="employeeDetails" class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>NIC</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody data-bind="{foreach: employees,afterRender: runWhenAllRenderDone}">
+                        <tr>
+                            <td data-bind="text: id" hidden></td>
+                            <td data-bind="text: fullName"></td>
+                            <td data-bind="text: nic"></td>
+                            <td data-bind="text: email"></td>
+                            <td data-bind="text: residentialAddress"></td>
+                            <td data-bind="text: residentialPhone"></td>
+                            <td><a class="label label-danger" href=""
+                                   data-bind="click: $root.removeEmp">Remove</a> <a class="label label-info"
+                                                                                    href=""
+                                                                                    data-bind="click: $root.viewEmp">View</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- box content ends-->
+            </div>
+            <!-- box ends-->
+        </div>
+    </div>
 
-                        <!--box content begins-->
-                        <div class="row box-body" style="padding: 20px">
-                            <table id="employeeDetails" class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Full Name</th>
-                                    <th>NIC</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Phone</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody data-bind="{foreach: employees,afterRender: runWhenAllRenderDone}">
-                                <tr>
-                                    <td data-bind="text: id" hidden></td>
-                                    <td data-bind="text: fullName"></td>
-                                    <td data-bind="text: nic"></td>
-                                    <td data-bind="text: email"></td>
-                                    <td data-bind="text: residentialAddress"></td>
-                                    <td data-bind="text: residentialPhone"></td>
-                                    <td><a class="label label-danger" href=""
-                                           data-bind="click: $root.removeEmp">Remove</a> <a class="label label-info"
-                                                                                            href=""
-                                                                                            data-bind="click: $root.viewEmp">View</a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- box content ends-->
-                    </div>
-                    <!-- box ends-->
+
+    <div class="modal" id="modal-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Modal Default</h4>
+                </div>
+                <div class="modal-body">
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td><b>Full Name: </b></td>
+                            <td data-bind="text: current.fullName"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Email: </b></td>
+                            <td data-bind="text: current.email"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Residential Phone: </b></td>
+                            <td data-bind="text: current.residentialPhone"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Permanent Phone: </b></td>
+                            <td data-bind="text: current.permanentPhone"></td>
+                        </tr>
+                        <tr>
+                            <td><b>NIC Number: </b></td>
+                            <td data-bind="text: current.nic"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Date of Birth: </b></td>
+                            <td data-bind="text: current.dob"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Joined Date: </b></td>
+                            <td data-bind="text: current.joinedDate"></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Starting Salary(Rs): </b></td>
+                            <td data-bind="text: current.startingSalary"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Residential Address: </b></td>
+                            <td data-bind="text: current.residentialAddress"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Permanent Address: </b></td>
+                            <td data-bind="text: current.permanentAddress"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Previous Experience: </b></td>
+                            <td data-bind="text: current.prevExperience"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Comments from previous work places: </b></td>
+                            <td data-bind="text: current.commentsFromPrevWorkPlace"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency Contact: </b></td>
+                            <td data-bind="text: current.emergencyContact"></td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+
                 </div>
             </div>
-
-        </section>
-        <!-- /.content -->
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 </script>

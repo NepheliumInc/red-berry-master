@@ -1,23 +1,14 @@
 package com.redberry.mvc.serviceImpl;
 
-
 import com.redberry.mvc.dao.EmployeeDaoImpl;
 import com.redberry.mvc.database.Employee;
 import com.redberry.mvc.service.EmployeeService;
-import org.apache.cxf.jaxrs.ext.multipart.Attachment;
-import org.apache.cxf.jaxrs.ext.multipart.Multipart;
-import org.apache.cxf.jaxrs.ext.multipart.MultipartBody;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import java.io.*;
-import java.util.Scanner;
 
 /**
  * Created by Amila on 7/12/15.

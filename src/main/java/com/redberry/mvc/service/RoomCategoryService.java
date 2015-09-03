@@ -1,7 +1,5 @@
 package com.redberry.mvc.service;
 
-import com.redberry.mvc.database.Employee;
-import com.redberry.mvc.database.Room;
 import com.redberry.mvc.database.RoomCategory;
 
 import javax.jws.WebService;

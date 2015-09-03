@@ -112,3 +112,40 @@ var dashboardViewModel = {
     }
 };
 
+
+var employeeViewModel= function (){
+    var self = this;
+self.current = ko.observableArray([]);
+self.employees = ko.observableArray();
+self.removeEmp = function () {
+
+    var r = confirm("Do you realy want to remove this employee?");
+    if (r == true) {
+        alert(JSON.stringify(self.employees()[self.employees.indexOf(this)]));
+        jQuery.ajax({
+            url: "/redberry/services/employee/deleteemployee",
+            method: "DELETE",
+            dataType: "JSON",
+            contentType: "application/json",
+            data: JSON.stringify(self.employees()[self.employees.indexOf(this)]),
+            success: function (data) {
+
+                alert(data);
+            }
+        });
+        self.employees.remove(this);
+    }
+
+
+}
+self.viewEmp = function () {
+    self.current = ko.mapping.fromJSON(self.employees()[self.employees.indexOf(this)]);
+
+    //alert(self.current.fullName);
+    $('#modal-1').modal('toggle');
+}
+
+    self.initCheckIn = function(){
+
+    }
+}
