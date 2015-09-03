@@ -88,6 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
+                    alert(data[0]);
                     for (var x in data) {
                         model.employees.push(data[x]);
                     }

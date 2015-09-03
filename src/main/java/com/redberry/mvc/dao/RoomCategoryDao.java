@@ -1,6 +1,6 @@
 package com.redberry.mvc.dao;
 
-2import com.redberry.mvc.database.RoomCategory;
+import com.redberry.mvc.database.RoomCategory;
 
 import java.util.List;
 

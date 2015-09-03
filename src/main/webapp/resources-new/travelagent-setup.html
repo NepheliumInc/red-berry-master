@@ -291,28 +291,28 @@
                                                     <th>Phone No</th>
                                                     <th>Email</th>
                                                     <th>Rates</th>
-                                                    <th class="no-sort"></th>
+                                                    <th class="no-sort">Options</th>
 
 
                                                 </tr>
                                                 </thead>
                                                 <tbody data-bind="foreach:travelAgents">
                                                 <tr>
-                                                    <td data-bind="text:agentName"></td>
-                                                    <td data-bind="text:agentAdd"></td>
-                                                    <td data-bind="text:agentPhone"></td>
-                                                    <td data-bind="text:agentEmail"></td>
-                                                    <td data-bind="text:agentRates"></td>
+                                                    <td data-bind="text:fullName"></td>
+                                                    <td data-bind="text:address"></td>
+                                                    <td data-bind="text:phoneNo"></td>
+                                                    <td data-bind="text:email"></td>
+                                                    <td data-bind="text:rates"></td>
                                                     <td>
-
+                                                    <div class="tools">
                                                      <a data-toggle="modal" title="view agent details" data-target="#AgentDetails" data-bind="click:  $parent.show">View&nbsp;&nbsp;</a>
-                                                     <a href="#" data-bind="click: $root.editAgent" title="Edit Agent Details"><i class="fa fa-pencil-square-o" ></i>&nbsp;&nbsp;</a>
+
                                                      <a href="#" data-bind="click: $parent.removeAgent" title="Remove Agent"><i class="btn-xs fa fa-trash-o"></i></a>
+                                                    </div>
                                                     </td>
 
 
                                                 </tr>
-                                                <button data-bind="click: addPerson">Add</button>
                                                 </tbody>
 
                                             </table>
@@ -349,40 +349,69 @@
                                             <tbody>
                                             <tr>
                                                 <td><b>Travel Agent Name: </b></td>
-                                                <td data-bind="text: agentName" ></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: fullName, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: fullName, hasFocus: editing"/>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><b>Address: </b></td>
-                                                <td data-bind="text: agentAdd"></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: address, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: address, hasFocus: editing"/>
+                                                </td>
+
                                             </tr>
                                             <tr>
                                                 <td><b>Phone No: </b></td>
-                                                <td data-bind="text: agentPhone"></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: phoneNo, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: phoneNo, hasFocus: editing"/>
+                                                </td>
+
                                             </tr>
                                             <tr>
                                                 <td><b>Email: </b></td>
-                                                <td data-bind="text: travelAgentEmail"></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: email, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: email, hasFocus: editing"/>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><b>Bank Name: </b></td>
-                                                <td data-bind="text: travelAgentBank"></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: bankName, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: bankName, hasFocus: editing"/>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><b>Account No: </b></td>
-                                                <td data-bind="text:travelAgentAccountNo"></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: accountNo, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: accountNo, hasFocus: editing"/>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><b>Account Name: </b></td>
-                                                <td data-bind="text: travelAgentAccountName"></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: accountName, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: accountName, hasFocus: editing"/>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><b>Branch Name: </b></td>
-                                                <td data-bind="text: travelAgentAccountBranch"></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: accountBranch, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: accountBranch, hasFocus: editing"/>
+                                                </td>
                                             </tr>
 
                                             <tr>
                                                 <td><b>Rates(Rs): </b></td>
-                                                <td data-bind="text: travelAgentRates"></td>
+                                                <td>
+                                                    <div data-bind="visible: !editing(), text: rates, click: edit"></div>
+                                                    <input data-bind="visible: editing, value: rates, hasFocus: editing"/>
+                                                </td>
                                             </tr>
                                             </tbody>
 
@@ -544,49 +573,89 @@
 </script>
 <script type="text/javascript">
     function loadTravelAgentDetails(){
-        var self = this;
 
-        var agentObject=function(agent){
-            self=this;
-            self.agentName=ko.observable(agent.agentName);
-            self.agentAdd=ko.observable(agent.agentAdd);
+        var self = this;
+        self.travelAgents= ko.observableArray();
+
+        self.editing = ko.observable(false);
+        self.edit = function() { this.editing(true) }
+
+        self.fullName=ko.observable();
+        self.address=ko.observable();
+        self.phoneNo=ko.observable();
+        self.email=ko.observable();
+        self.bankName=ko.observable();
+        self.accountNo=ko.observable();
+        self.accountName=ko.observable();
+        self.accountBranch=ko.observable();
+        self.rates=ko.observable();
+
+
+
+
+        self.loadTravelAgents = function(){
+            jQuery.ajax({
+                url: "/redberry/services/travelAgent/gettravelagents",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data){
+                    self.travelAgents(data);
+                }
+            });
         }
 
-
-
-        self.travelAgents= ko.observableArray([
-            { agentName: 'Bert', agentAdd: 'Matara',agentPhone: '0716508688',agentEmail: 'Bertington@gmail.com',agentRates: '70' },
-            { agentName: 'Charles', agentAdd: 'Galle',agentPhone: '0711438622',agentEmail: 'Charles@gmail.com',agentRates: '80' },
-            { agentName: 'Denise', agentAdd: 'Colombo',agentPhone: '0718210189',agentEmail: 'Denis@gmail.com',agentRates: '50'}
-        ]);
 
         self.removeAgent = function(a) {
-            self.travelAgents.remove(a);
+            var check = confirm("Do you realy want to remove this Agent?");
+            if (check == true) {
+
+                jQuery.ajax({
+                    url: "/redberry/services/travelAgent/deletetravelagent",
+                    method: "DELETE",
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    data: JSON.stringify(self.travelAgents()[self.travelAgents.indexOf(this)]),
+                    success: function (data) {
+
+                        alert(data);
+                    }
+                });
+                self.travelAgents.remove(a);
+            }
+
         }
-        self.addPerson = function() {
-            self.travelAgents.push( { agentName: 'lakshan', agentAdd: 'Matara',agentPhone: '0716508688',agentEmail: 'Bertington@gmail.com',agentRates: '70' });
-        };
+
 
         self.show=function(a){
 
-           // self.agentName(a.agentName);
-            //self.agentAdd(a.agentAdd);
-
-
-
+            self.fullName(a.fullName);
+            self.address(a.address);
+            self.phoneNo(a.phoneNo);
+            self.email(a.email);
+            self.bankName(a.bankName);
+            self.accountNo(a.accountNo);
+            self.accountName(a.accountName);
+            self.accountBranch(a.accountBranch);
+            self.rates(a.rates);
 
         };
-
-
-
 
     }
 
 
 
 
+
 //Activate Knockout.js
-    ko.applyBindings(new loadTravelAgentDetails());
+
+    $(document).ready(function(){
+
+        var travelAgentDetailsModel = new loadTravelAgentDetails();
+        travelAgentDetailsModel.loadTravelAgents();
+        ko.applyBindings(travelAgentDetailsModel);
+
+
+    });
 </script>
 
 
