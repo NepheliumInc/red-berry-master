@@ -291,7 +291,9 @@ desired effect
                     <div class="box box-info">
                         <!-- box header-->
                         <div class="box-header">
+
                             <h3 class="box-title">Existing Rooms</h3>
+                            <a class="btn btn-info btn-sm pull-right" href="addRoom.html">Add New</a>
                         </div>
                         <!--box header ends-->
 
@@ -301,20 +303,25 @@ desired effect
                                 <thead>
                                 <tr>
                                     <th>Room No</th>
+                                    <th>Room Name</th>
                                     <th>Category</th>
                                     <th>Air Condition Status</th>
                                     <th>Capacity</th>
-                                    <th>Extension No</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody data-bind="{foreach: rooms,afterRender: runWhenAllRenderDone}">
                                 <tr>
-                                    <td data-bind="text: id" hidden></td>
-                                    <td data-bind="text: fullName, click: $root.doIt"></td>
-                                    <td data-bind="text: nic"></td>
-                                    <td data-bind="text: email"></td>
-                                    <td data-bind="text: residentialAddress"></td>
-                                    <td data-bind="text: residentialPhone"></td>
+                                    <td data-bind="text: displayNumber"></td>
+                                    <td data-bind="text: roomName"></td>
+                                    <td data-bind="text: roomCategory.name"></td>
+                                    <td data-bind="text: airconditionState"></td>
+                                    <td data-bind="text: roomCapacity.name"></td>
+                                    <td><a class="label label-danger" href=""
+                                           data-bind="click: $root.removeRoom">Remove</a> <a class="label label-info"
+                                                                                            href=""
+                                                                                            data-bind="click: $root.viewRoom">View</a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -324,6 +331,79 @@ desired effect
                     <!-- box ends-->
                 </div>
             </div>
+
+
+            <!-- modal -->
+
+            <div class="modal" id="modal-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="box box-info">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                                <h4 class="modal-title">Details of the Room</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Room Id: </b></td>
+                                                <td data-bind="text: roomId"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><b>Display Number: </b></td>
+                                                <td data-bind="text: displayNumber"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><b>Room Name: </b></td>
+                                                <td data-bind="text: roomName"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><b>Aircondition State: </b></td>
+                                                <td data-bind="text: airconditionState"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Room Capacity: </b></td>
+                                                <td data-bind="text: roomCapacity"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Room Category: </b></td>
+                                                <td data-bind="text: roomCategory"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Extension Number: </b></td>
+                                                <td data-bind="text: extensionNumber"></td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img id="roomImage" src="dist/img/default_male_avatar.gif"
+                                             class="img-rounded img-responsive"
+                                             style="width:140px;height:140px;">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info pull-right" data-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+
         </section>
         <!-- /.content -->
     </div>
@@ -430,4 +510,102 @@ desired effect
       user experience. Slimscroll is required when using the
       fixed layout. -->
 </body>
+
+
+<script src="plugins/knockout/knockout-3.3-min.js"></script>
+<script type="text/javascript">
+
+
+    var roomViewModel = function () {
+        var self = this;
+
+        self.roomId = ko.observable();
+        self.roomName = ko.observable();
+        self.airconditionState = ko.observable();
+        self.roomCapacity = ko.observable();
+        self.displayNumber = ko.observable();
+        self.roomCategory = ko.observable();
+        self.extensionNumber = ko.observable();
+
+        //load rooms from database
+
+        self.rooms = ko.observableArray();
+
+        self.loadRooms = function(){
+            jQuery.ajax({
+
+                url: "/redberry/services/room/getrooms",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    self.rooms(data);
+
+                }
+            });
+
+        }
+
+
+
+
+        //remove a room
+
+        self.removeRoom = function () {
+
+            var r = confirm("Do you realy want to remove this room?");
+            if (r == true) {
+                alert(JSON.stringify(self.rooms()[self.rooms.indexOf(this)]));
+                jQuery.ajax({
+                    url: "/redberry/services/room/deleteroom",
+                    method: "DELETE",
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    data: JSON.stringify(self.rooms()[self.rooms.indexOf(this)]),
+                    success: function (data) {
+
+                        alert(data);
+                    }
+                });
+                self.rooms.remove(this);
+            }
+
+
+        }
+
+
+        //view a room
+
+        self.viewRoom = function () {
+            self.roomId(this.roomId);
+            self.roomName(this.roomName);
+            self.airconditionState(this.airconditionState);
+            self.roomCapacity(this.roomCapacity.name);
+            self.displayNumber(this.displayNumber);
+            self.roomCategory(this.roomCategory.name);
+            self.extensionNumber(this.extensionNumber);
+
+
+
+            $('#modal-1').modal('toggle');
+        }
+
+
+
+    }
+
+
+    $(document).ready(function () {
+
+
+        var model = new roomViewModel();
+        model.loadRooms();
+        ko.applyBindings(model);
+
+
+    });
+
+
+</script>
+
+
 </html>

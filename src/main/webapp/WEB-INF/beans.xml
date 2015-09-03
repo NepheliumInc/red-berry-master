@@ -25,6 +25,7 @@
             <ref bean="employeeServiceImpl" />
             <ref bean="roomServiceImpl" />
             <ref bean="roomCategoryServiceImpl"/>
+            <ref bean="roomCapacityServiceImpl" />
             <ref bean="testService" />
 
         </jaxrs:serviceBeans>
@@ -38,6 +39,7 @@
     <bean id="employeeServiceImpl" class="com.redberry.mvc.serviceImpl.EmployeeServiceImpl"/>
     <bean id="roomServiceImpl" class="com.redberry.mvc.serviceImpl.RoomServiceImpl" />
     <bean id="roomCategoryServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCategoryServiceImpl" />
+    <bean id="roomCapacityServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCapacityServiceImpl" />
     <bean id="testService" class="com.redberry.mvc.service.TestService" />
 
 
@@ -45,6 +47,7 @@
     <bean id="employeeDaoImpl" class="com.redberry.mvc.dao.EmployeeDaoImpl"/>
     <bean id="roomDaoImpl" class="com.redberry.mvc.dao.RoomDaoImpl" />
     <bean id="roomCategoryDaoImpl" class="com.redberry.mvc.dao.RoomCategoryDaoImpl" />
+    <bean id="roomCapacityDaoImpl" class="com.redberry.mvc.dao.RoomCapacityDaoImpl"/>
 
 
     <!-- hibernate -->
@@ -53,7 +56,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/redberry" />
         <property name="username" value="root" />
-        <property name="password" value="" />
+        <property name="password" value="123" />
         <property name="validationQuery" value="SELECT 1" />
     </bean>
 

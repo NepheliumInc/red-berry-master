@@ -337,13 +337,17 @@ desired effect
                                         <label for="roomCategory" class="col-md-4">Category: </label>
 
                                         <div class="col-md-8">
-                                            <select id="roomCategory" name="roomCategory"
-                                                    data-bind="value: roomCategory"
-                                                    class="form-control"
-                                                    type="text"
-                                                    placeholder="Deulux">
-                                                <option><a data-toggle="widget" data-target="#widget-1">Create new Category</a></option>
-                                            </select>
+
+                                            <div class="col-md-10">
+                                                <select id="roomCategory" name="roomCategory"
+                                                        data-bind="options: roomCategories, optionsText:'name', value: roomCategory, optionsCaption: 'Select Category'"
+                                                        class="form-control"
+                                                        type="text">
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <a class="btn btn-info btn-sm pull-right" href="category.html">New</a>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -352,12 +356,9 @@ desired effect
 
                                         <div class="col-md-8 select2-container--default">
                                             <select id="roomCapacity" name="roomCapacity"
-                                                    data-bind="value: roomCapacity" class="form-control"
-                                                    type="text"
-                                                    placeholder="Single">
-                                                <option>Single</option>
-                                                <option>Double</option>
-                                                <option>Family</option>
+                                                    data-bind="options: roomCapacities, optionsText: 'name', value: roomCapacity, optionsCaption: 'Select Capacity'" class="form-control"
+                                                    type="text">
+
 
                                             </select>
                                         </div>
@@ -368,11 +369,8 @@ desired effect
 
                                         <div class="col-md-8">
                                             <select id="airconditionState" name="airconditionState"
-                                                    data-bind="value: airconditionState" class="form-control"
-                                                    type="text"
-                                                    placeholder="Non A/C">
-                                                <option>A/C</option>
-                                                <option>Non A/C</option>
+                                                    data-bind="options: ['A/C', 'Non A/C'], value: airconditionState, optionsCaption: 'Select Aircondition State'" class="form-control"
+                                                    type="text">
                                             </select>
                                         </div>
                                     </div>
@@ -380,36 +378,6 @@ desired effect
                                 </div>
                             </form>
                             <!--room form ends-->
-                            <div class="col-md-4">
-                                <div class="box box-info" id="widget-1">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Create Category</h3>
-
-                                        <div class="box-tools pull-right">
-                                            <button class="btn btn-box-tool" data-widget="remove"><i
-                                                    class="fa fa-times"></i></button>
-                                        </div>
-                                        <!-- /.box-tools -->
-                                    </div>
-                                    <!-- /.box-header -->
-                                    <div class="box-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="name">Category Name: </label>
-                                                <input class="form-control" type="text" id="name" placeholder="Deulux"/>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="description">Description: </label>
-                                                <textarea class="form-control" id="description"
-                                                          placeholder="Description"></textarea>
-                                            </div>
-                                            <button class="btn btn-info btn-sm pull-right">Create</button>
-                                        </form>
-                                    </div>
-                                    <!-- /.box-body -->
-                                </div>
-                            </div>
                         </div>
                         <!-- box content ends-->
 
@@ -451,24 +419,26 @@ desired effect
                                 </tr>
 
                                 <tr>
-                                    <td><b>Room Name: </b></td>
+                                    <td><b>Display Number: </b></td>
                                     <td data-bind="text: displayNumber"></td>
                                 </tr>
 
-                                <tr>
-                                    <td><b>Category: </b></td>
-                                    <td data-bind="text: roomCategory"></td>
+                                <tr data-bind="with: roomCategory">
+                                    <td><b>Room Category: </b></td>
+                                    <td data-bind="text: name"></td>
+                                </tr>
+
+                                <tr data-bind="with: roomCapacity">
+                                    <td><b>Room Capacity: </b></td>
+                                    <td data-bind="text: name"></td>
                                 </tr>
 
                                 <tr>
-                                    <td><b>Capacity: </b></td>
-                                    <td data-bind="text: roomCapacity"></td>
-                                </tr>
-
-                                <tr>
-                                    <td><b>Air Condition State: </b></td>
+                                    <td><b>Aircondition State: </b></td>
                                     <td data-bind="text: airconditionState"></td>
                                 </tr>
+
+
 
 
                                 </tbody>
@@ -476,7 +446,7 @@ desired effect
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="alert(makeEmployeeJSON())">Save
+                            <button type="button" class="btn btn-primary" onclick="sendRoomRequest()">Save
                                 changes
                             </button>
                         </div>
@@ -516,7 +486,7 @@ desired effect
                 <h3 class="control-sidebar-heading">Recent Activity</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                             <div class="menu-info">
@@ -532,7 +502,7 @@ desired effect
                 <h3 class="control-sidebar-heading">Tasks Progress</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="label label-danger pull-right">70%</span>
@@ -597,22 +567,80 @@ desired effect
 <script type="text/javascript">
 
 
-    function AppViewModel() {
-        this.roomName = ko.observable();
-        this.displayNumber = ko.observable();
-        this.roomCategory = ko.observable();
-        this.roomCapacity = ko.observable();
-        this.airconditionState = ko.observable();
+    function newRoomViewModel() {
+        var self = this;
+        self.roomName = ko.observable();
+        self.displayNumber = ko.observable();
+        self.roomCategory = ko.observable();
+        self.roomCapacity = ko.observable();
+        self.airconditionState = ko.observable();
+
+        self.roomCategories = ko.observableArray();
+        self.roomCapacities = ko.observableArray();
+
+        self.loadCategories = function(){
+            jQuery.ajax({
+
+                url: "/redberry/services/roomCategory/getRoomCategories",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    self.roomCategories(data);
+
+                }
+            });
+        }
+
+        self.loadCapacities = function(){
+            jQuery.ajax({
+
+                url: "/redberry/services/roomCapacity/getRoomCapacities",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    self.roomCapacities(data);
+
+                }
+            });
+        }
 
     }
 
     // Activates knockout.js
-    var roomModel = new AppViewModel();
+    var roomModel = new newRoomViewModel();
+    roomModel.loadCategories();
+    roomModel.loadCapacities();
+
     ko.applyBindings(roomModel);
 
     function makeRoomJSON() {
-        return ko.toJSON(roomModel);
+
+        var obj = ko.toJS(roomModel);
+        delete obj.roomCategories;
+        delete  obj.roomCapacities;
+
+        obj = ko.toJSON(obj);
+
+        return obj;
     }
+
+    function sendRoomRequest(){
+
+        $.ajax({
+            type: 'POST',
+            url: '/redberry/services/room/addroom',
+            contentType: 'application/json',
+            dataType: 'JSON',
+            data: makeRoomJSON(),
+
+
+        });
+
+        $('#modal-1').modal('hide');
+        window.location.href='rooms.html';
+
+    }
+
 
 </script>
 </body>

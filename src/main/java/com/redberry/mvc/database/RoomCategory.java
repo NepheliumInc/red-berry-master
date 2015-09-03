@@ -12,6 +12,7 @@ public class RoomCategory {
     private String name;
     private String description;
 
+
     public int getId() {
         return id;
     }

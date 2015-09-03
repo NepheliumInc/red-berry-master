@@ -11,7 +11,7 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int roomId;
     private String roomName;
-    private Integer airconditionState;
+    private String airconditionState;
     @OneToOne
     private RoomCapacity roomCapacity;
     private Integer displayNumber;
@@ -19,6 +19,18 @@ public class Room {
     private RoomCategory roomCategory;
     private Integer extensionNumber;
 
+
+    public Room() {
+    }
+
+    public Room(String roomName, String airconditionState, RoomCapacity roomCapacity, Integer displayNumber, RoomCategory roomCategory, Integer extensionNumber) {
+        this.roomName = roomName;
+        this.airconditionState = airconditionState;
+        this.roomCapacity = roomCapacity;
+        this.displayNumber = displayNumber;
+        this.roomCategory = roomCategory;
+        this.extensionNumber = extensionNumber;
+    }
 
     public int getRoomId() {
         return roomId;
@@ -28,11 +40,11 @@ public class Room {
         this.roomId = roomId;
     }
 
-    public Integer getAirconditionState() {
+    public String getAirconditionState() {
         return airconditionState;
     }
 
-    public void setAirconditionState(Integer airconditionState) {
+    public void setAirconditionState(String airconditionState) {
         this.airconditionState = airconditionState;
     }
 
