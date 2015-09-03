@@ -26,6 +26,7 @@
             <ref bean="roomServiceImpl" />
             <ref bean="roomCategoryServiceImpl"/>
             <ref bean="roomCapacityServiceImpl" />
+            <ref bean="mealPlanServiceImpl" />
             <ref bean="testService" />
 
         </jaxrs:serviceBeans>
@@ -40,6 +41,7 @@
     <bean id="roomServiceImpl" class="com.redberry.mvc.serviceImpl.RoomServiceImpl" />
     <bean id="roomCategoryServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCategoryServiceImpl" />
     <bean id="roomCapacityServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCapacityServiceImpl" />
+    <bean id="mealPlanServiceImpl" class="com.redberry.mvc.serviceImpl.MealPlanServiceImpl" />
     <bean id="testService" class="com.redberry.mvc.service.TestService" />
 
 
@@ -48,6 +50,7 @@
     <bean id="roomDaoImpl" class="com.redberry.mvc.dao.RoomDaoImpl" />
     <bean id="roomCategoryDaoImpl" class="com.redberry.mvc.dao.RoomCategoryDaoImpl" />
     <bean id="roomCapacityDaoImpl" class="com.redberry.mvc.dao.RoomCapacityDaoImpl"/>
+    <bean id="mealPlanDaoImpl" class="com.redberry.mvc.dao.MealPlanDaoImpl"/>
 
 
     <!-- hibernate -->
