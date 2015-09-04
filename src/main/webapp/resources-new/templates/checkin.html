@@ -12,6 +12,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
                         <div class="box-body">
+                            <form id="roomcheckin">
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group">
@@ -20,7 +21,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-clock-o"></i>
                                             </div>
-                                            <input type="text" data-bind="textInput: checkInToOut" class="form-control pull-right" id="checkInToOut"/>
+                                            <input type="text" data-bind="textInput: checkInToOut" class="form-control pull-right" name="checkInToOut" id="checkInToOut"/>
                                         </div><!-- /.input group -->
                                     </div><!-- /.form group -->
 
@@ -58,7 +59,7 @@
                                             <div class="col-md-5 col-sm-12 col-xs-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                    <input type="text" data-bind="textInput: email" class="form-control" placeholder="Email">
+                                                    <input type="text" data-bind="textInput: email" class="form-control" name="email" placeholder="Email">
                                                 </div>
                                             </div>
                                         </div>
@@ -112,15 +113,17 @@
 
 
                             </div>
+                            </form>
                         </div><!-- /.box-body -->
                     </div><!-- /.tab-pane -->
 
                     <div class="tab-pane" id="tab_2">
+                        <div class="nav-tabs-custom">
                             <ul id="interest_tabs" data-bind="template: { name: 'roomConfig_header',foreach: Rooms,as:Room}" class="nav nav-tabs"></ul>
                             <div class="tab-content" data-bind="template: { name: 'roomConfig_body',foreach: Rooms,as:Room}"></div><!-- /.tab-content -->
+                        </div>
 
 
-                        <!--<ul data-bind="template: { name: 'seasonTemplate', foreach: seasons, as: 'season' }"></ul>-->
 
 
 
@@ -134,10 +137,11 @@
 
 
 <script type="text/html" id="roomConfig_header">
-        <li><a data-toggle="tab" data-bind="text: 'Room '+no() , attr: {href: 'room'+no()},click: $parent.roomSelect" ></a></li>
+        <li><a data-toggle="tab" data-bind="text: 'Room '+no() , attr: {href: 'room'+no()},click: $root.roomSelect" ></a></li>
 </script>
 
 <script type="text/html" id="roomConfig_body">
+
         <div class="tab-pane active" data-bind="attr: {id: 'room'+no()},visible : show()">
             <div class="col-md-8">
 
