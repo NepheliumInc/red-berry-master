@@ -1,7 +1,7 @@
 function SideBarViewModel(){
     var self = this;
     self.menuItems = [
-        {name:'dashboard',icon:'fa-home',dispalyName:'DashBoard'},
+        {name:'home',icon:'fa-home',dispalyName:'Home'},
         {name:'checkin',icon:'fa-shopping-cart',dispalyName:'Check In'},
         {name:'employee',icon:'fa-eye',dispalyName:'Employee'}];
 
@@ -26,9 +26,9 @@ function SideBarViewModel(){
                 var vm = ko.dataFor(document.getElementById('content'));
                 if( vm ) {
                     ko.cleanNode(document.getElementById('content'));
-                    ko.applyBindings(eval(menuHash+'ViewModel'), document.getElementById('content'));
+                    ko.applyBindings(eval('new '+menuHash+'ViewModel'), document.getElementById('content'));
                 }else{
-                    ko.applyBindings(eval(menuHash+'ViewModel'),document.getElementById('content'));
+                    ko.applyBindings(eval('new '+menuHash+'ViewModel'),document.getElementById('content'));
                 }
             });
             }
@@ -36,81 +36,110 @@ function SideBarViewModel(){
 
         this.get('', function() { this.app.runRoute('get', '#dashboard') });
     }).run();
-};
-var sidebar = new SideBarViewModel
+}
+
+var sidebar = new SideBarViewModel;
 ko.applyBindings(sidebar,document.getElementById('admin-sidebar'));
 ko.applyBindings(sidebar,document.getElementById('content-header'));
 
 
+/*Room Checking Script block  ################################################## Start */
+
 var Room = function(no, show) {
-    var self = this;
-    self.no = ko.observable(no);
-    self.category = ko.observableArray(['dulux','supper','luxury']);
-    self.AC = ko.observableArray(['NO','YES']);
-    self.occupancy = ko.observableArray(['yes','no']);
-    self.mealConfig = ko.observableArray(['Vegetarian', 'non vege']);
-    self.show = ko.observable(show);
+    var Rself = this;
+    Rself.no = ko.observable(no);
+    Rself.category = ko.observableArray(['Duplex','Cabana','luxury']);
+    Rself.AC = ko.observableArray(['NO','YES']);
+    Rself.occupancy = ko.observableArray(['Available','Occupied','Cleaning']);
+    Rself.mealConfig = ko.observableArray(['Full-Board','Half-Board', 'All Inclusive']);
+    Rself.show = ko.observable(show);
 };
 
 
 
-var checkinViewModel = {
-    checkInToOut: ko.observable(),
-    name: ko.observable(),
-    address: ko.observable(),
-    nic: ko.observable(),
-    email: ko.observable(),
-    telephone: ko.observable(),
-    noOfRooms: ko.observable(1),
+function checkinViewModel(){
+    var self = this;
+    self.checkInToOut = ko.observable();
+    self.name = ko.observable();
+    self.address = ko.observable();
+    self.nic = ko.observable();
+    self.email = ko.observable();
+    self.telephone = ko.observable();
+    self.noOfRooms = ko.observable(1);
 
 
-    Rooms: ko.observableArray([
+    self.Rooms = ko.observableArray([
         new Room(1,true)
-    ]),
+    ]);
 
-    TravelSources: ko.observableArray(['none','Lanka Tours','Sri Tours','Sl Tour Guide','Jhon Snow']),
+    self.TravelSources = ko.observableArray(['none','Lanka Tours','Sri Tours','Sl Tour Guide','Jhon Snow']);
 
-
-    initialiseUI:function(){
+    self.initialiseUI =function(){
         $('#checkInToOut').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
 
-    },
+        $('#roomcheckin').formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                checkInToOut: {
+                    row: '.col-md-8',
+                    validators: {
+                        notEmpty: {
+                            message: 'The Checking Checkout Date Range is required'
+                        }
+                    }
+                },
+                email: {
+                    row: '.col-md-3',
+                    validators: {
+                        notEmpty: {
+                            message: 'The email address is required'
+                        },
+                        emailAddress: {
+                            message: 'The input is not a valid email address'
+                        }
+                    }
+                }
+            }
+        });
+    };
 
-
-    roomSelect: function(room){
-        var r = ko.utils.arrayFirst(this.Rooms, function(r) {
-            return r.no == room.no;
+    self.roomSelect = function(room){
+        ko.utils.arrayFirst(self.Rooms(), function(r) {
+            r.show(false);
+            if(r.no() == room.no()){
+                r.show(true);
+            }
         });
 
-        if (r.show) {
-            alert(r.show);
-            r.show(false);
-        }else{
-            r.show(true);
-        }
-    },
+    };
 
-    goToSecondStep: function(){
+    self.goToSecondStep = function(){
         this.Rooms([new Room(1,true)]);
         $('#checkinTabs a[href="#tab_2"]').tab('show');
-        for(i=2;i<=this.noOfRooms();i++){
-            //this.Rooms.push({no: i, category: ['dulux','supper','luxury'] , AC: ['NO','YES'], occupancy:['yes','no'] ,mealConfig:['Vegetarian', 'non vege'],show:false});
-            this.Rooms.push(new Room(i,false));
+        for(var i=2;i<=self.noOfRooms();i++){
+
+            self.Rooms.push(new Room(i,false));
         }
+    };
     }
-};
 
-var dashboardViewModel = {
-    seasons: ko.observableArray([
-        { name: 'Spring', months: [ 'March', 'April', 'May' ] },
-        { name: 'Summer', months: [ 'June', 'July', 'August' ] },
-        { name: 'Autumn', months: [ 'September', 'October', 'November' ] },
-        { name: 'Winter', months: [ 'December', 'January', 'February' ] }
-    ]),
-    initialiseUI:function(){
+
+
+/*Room Checking Script block ################################################## End */
+
+
+function homeViewModel(){
+    var self = this;
+
+    self.initialiseUI = function(){
 
     }
-};
+}
 
 
 var employeeViewModel= function (){

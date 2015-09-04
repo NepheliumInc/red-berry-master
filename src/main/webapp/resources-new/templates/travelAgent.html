@@ -1,0 +1,144 @@
+<script type="text/html" id="main_content">
+<!-- Main content -->
+<section class="content">
+
+    <div class="row" style="margin-top: 22px">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <div class="col-md-10"><h3 class="box-title">Existing Travel Agents</h3></div>
+                            <div class="col-md-2"><a title="Add New Travel Agents" href="travelagent.html" class="btn btn-info"><i class='fa fa-user-plus'></i> Add New Agent</a></div>
+
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="travelAgentDetails" class="table table-bordered table-striped" >
+                                <thead>
+                                <tr>
+                                    <th>Agent Name</th>
+                                    <th>Address</th>
+                                    <th>Phone No</th>
+                                    <th>Email</th>
+                                    <th>Rates</th>
+                                    <th class="no-sort"></th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:travelAgents">
+                                <tr>
+                                    <td data-bind="text:agentName"></td>
+                                    <td data-bind="text:agentAdd"></td>
+                                    <td data-bind="text:agentPhone"></td>
+                                    <td data-bind="text:agentEmail"></td>
+                                    <td data-bind="text:agentRates"></td>
+                                    <td>
+
+                                        <a data-toggle="modal" title="view agent details" data-target="#AgentDetails" data-bind="click:  $parent.show">View&nbsp;&nbsp;</a>
+                                        <a href="#" data-bind="click: $root.editAgent" title="Edit Agent Details"><i class="fa fa-pencil-square-o" ></i>&nbsp;&nbsp;</a>
+                                        <a href="#" data-bind="click: $parent.removeAgent" title="Remove Agent"><i class="btn-xs fa fa-trash-o"></i></a>
+                                    </td>
+
+
+                                </tr>
+                                <button data-bind="click: addPerson">Add</button>
+                                </tbody>
+
+                            </table>
+                        </div><!--
+
+                                                       /.box-body -->
+                    </div><!-- /.box -->
+
+                </div>
+                <!--end of column-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="AgentDetails" role="dialog" data-bind="modal: { visible: modalVisible}">
+        <div class="modal-dialog" style="height: auto">
+            <div class="box box-info">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">New Travel Agent Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8" >
+                                <table  class="table table-bordered table-striped" >
+
+                                    <tbody>
+                                    <tr>
+                                        <td><b>Travel Agent Name: </b></td>
+                                        <td data-bind="text: agentName" ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Address: </b></td>
+                                        <td data-bind="text: agentAdd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Phone No: </b></td>
+                                        <td data-bind="text: agentPhone"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Email: </b></td>
+                                        <td data-bind="text: travelAgentEmail"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Bank Name: </b></td>
+                                        <td data-bind="text: travelAgentBank"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Account No: </b></td>
+                                        <td data-bind="text:travelAgentAccountNo"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Account Name: </b></td>
+                                        <td data-bind="text: travelAgentAccountName"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Branch Name: </b></td>
+                                        <td data-bind="text: travelAgentAccountBranch"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>Rates(Rs): </b></td>
+                                        <td data-bind="text: travelAgentRates"></td>
+                                    </tr>
+                                    </tbody>
+
+
+                                </table>
+                            </div>
+
+                            <div class="col-md-4">
+                                <img id="agentImage" src="dist/img/avatar5.png" class="img-rounded img-responsive"style="width:140px;height:140px;"
+                                     width="215" height="215">
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!--end of model-->
+
+
+</section>
+<!-- /.content -->
+</script>
