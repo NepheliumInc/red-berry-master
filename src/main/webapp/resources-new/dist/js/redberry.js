@@ -5,7 +5,7 @@ function SideBarViewModel(){
         {name:'checkin',icon:'fa-shopping-cart',dispalyName:'Check In'},
 
         {name:'employee',icon:'fa-eye',dispalyName:'Employee'},
-        {name:'travelagent',icon:'fa-user-plus',dispalyName:'Travel Agent Setup'},];
+        {name:'travelAgent',icon:'fa-user-plus',dispalyName:'Travel Agent Setup'},];
 
     self.chosenFolderId = ko.observable();
     self.chosenFolderData = ko.observable();
@@ -77,29 +77,56 @@ var dashboardViewModel = {
     }
 };
 
-var travelagentViewModel= {
+var travelAgentViewModel= {
 
+    travelAgents:ko.observableArray(),
 
-    travelAgents:ko.observableArray([
-        { agentName: 'Bert', agentAdd: 'Matara',agentPhone: '0716508688',agentEmail: 'Bertington@gmail.com',agentRates: '70' },
-        { agentName: 'Charles', agentAdd: 'Galle',agentPhone: '0711438622',agentEmail: 'Charles@gmail.com',agentRates: '80' },
-        { agentName: 'Denise', agentAdd: 'Colombo',agentPhone: '0718210189',agentEmail: 'Denis@gmail.com',agentRates: '50'}
-    ]),
+    fullName:ko.observable(),
+    address:ko.observable(),
+    phoneNo:ko.observable(),
+    email:ko.observable(),
+    bankName:ko.observable(),
+    accountNo:ko.observable(),
+    accountName:ko.observable(),
+    accountBranch:ko.observable(),
+    rates:ko.observable(),
+
+    editing:ko.observable(false),
+    edit:function() { this.editing(true) },
+
+    loadTravelAgents:function(){
+    jQuery.ajax({
+        url: "/redberry/services/travelAgent/gettravelagents",
+        method: "GET",
+        dataType: "JSON",
+        success: function (data){
+            this.travelAgents(data);
+        }
+     })
+    },
 
     removeAgent:function(a) {
-        travelAgents.remove(a)
-    },
-    addPerson:function() {
-        self.travelAgents.push( { agentName: 'lakshan', agentAdd: 'Matara',agentPhone: '0716508688',agentEmail: 'Bertington@gmail.com',agentRates: '70' })
-    },
-    initCheckIn:function(){
-        $("#travelAgentDetails").dataTable({
-            "columnDefs": [ {
-                "targets": 'no-sort',
-                "orderable": false,
-            } ]
 
-        });
+        var check = confirm("Do you realy want to remove this Agent?");
+        if (check == true) {
+
+            jQuery.ajax({
+                url: "/redberry/services/travelAgent/deletetravelagent",
+                method: "DELETE",
+                dataType: "JSON",
+                contentType: "application/json",
+                data: JSON.stringify(this.travelAgents()[this.travelAgents.indexOf(this)]),
+                success: function (data) {
+
+                    alert(data);
+                }
+            });
+            this.travelAgents.remove(a);
+        }
+    },
+
+    initCheckIn:function(){
+       new loadTravelAgents();
     }
 
 };
