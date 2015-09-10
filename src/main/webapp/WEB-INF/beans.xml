@@ -26,7 +26,9 @@
             <ref bean="roomServiceImpl" />
             <ref bean="roomCategoryServiceImpl"/>
             <ref bean="roomCapacityServiceImpl" />
+            <ref bean="travelAgentServiceImpl"/>
             <ref bean="testService" />
+            <ref bean="checkInServiceImpl" />
 
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
@@ -40,6 +42,8 @@
     <bean id="roomServiceImpl" class="com.redberry.mvc.serviceImpl.RoomServiceImpl" />
     <bean id="roomCategoryServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCategoryServiceImpl" />
     <bean id="roomCapacityServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCapacityServiceImpl" />
+    <bean id="travelAgentServiceImpl" class="com.redberry.mvc.serviceImpl.TravelAgentServiceImpl" />
+    <bean id="checkInServiceImpl" class="com.redberry.mvc.serviceImpl.CheckInServiceImpl" />
     <bean id="testService" class="com.redberry.mvc.service.TestService" />
 
 
@@ -48,6 +52,8 @@
     <bean id="roomDaoImpl" class="com.redberry.mvc.dao.RoomDaoImpl" />
     <bean id="roomCategoryDaoImpl" class="com.redberry.mvc.dao.RoomCategoryDaoImpl" />
     <bean id="roomCapacityDaoImpl" class="com.redberry.mvc.dao.RoomCapacityDaoImpl"/>
+    <bean id="travelAgentDaoImpl" class="com.redberry.mvc.dao.TravelAgentDaoImpl" />
+    <bean id="checkInAgentDaoImpl" class="com.redberry.mvc.dao.CheckInDaoImpl" />
 
 
     <!-- hibernate -->
@@ -55,7 +61,7 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/redberry" />
-        <property name="username" value="root" />
+        <property name="username" value="test" />
         <property name="password" value="123" />
         <property name="validationQuery" value="SELECT 1" />
     </bean>

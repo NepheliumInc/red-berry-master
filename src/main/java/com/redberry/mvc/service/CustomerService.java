@@ -1,12 +1,10 @@
 package com.redberry.mvc.service;
 
 import com.redberry.mvc.dao.CustomerDao;
+import com.redberry.mvc.database.Customer;
 
 import javax.jws.WebService;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -27,5 +25,23 @@ public interface CustomerService {
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/getcustomerbyid")
     public Response getCustomerById(@QueryParam("customerId")int customerId);
+
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("/addcustomer")
+    public Response addCustomer(Customer customer);
+
+    @PUT
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("updatecustomer")
+    public Response updateCustomer(Customer customer);
+
+    @DELETE
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("deletecustomer")
+    public Response removeCustomer(Customer customer);
 
 }

@@ -2,16 +2,35 @@ package com.redberry.mvc.database;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 @XmlRootElement(name="roomCategory")
 @Entity
-public class RoomCategory {
+public class RoomCategory implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String description;
+    private MealPlan mealPlan;
 
+
+    public RoomCategory() {
+    }
+
+    public RoomCategory(String name, String description, MealPlan mealPlan) {
+        this.name = name;
+        this.description = description;
+        this.mealPlan = mealPlan;
+    }
+
+    public MealPlan getMealPlan() {
+        return mealPlan;
+    }
+
+    public void setMealPlan(MealPlan mealPlan) {
+        this.mealPlan = mealPlan;
+    }
 
     public int getId() {
         return id;

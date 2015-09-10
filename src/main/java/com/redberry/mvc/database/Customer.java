@@ -14,22 +14,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Customer {
     private int id;
     private String name;
-    private String email;
-    private String telephoneNumber;
     private String address;
-    private String country;
+    private String nic;
+    private String telephoneNumber;
+    private String email;
+    //private String country;
 
     public Customer() {
 
     }
 
-    public Customer(int id, String name, String email, String telephoneNumber, String address, String country) {
+    public Customer(int id, String name, String address, String nic, String telephoneNumber, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
         this.address = address;
-        this.country = country;
+        //this.country = country;
     }
 
     @Id
@@ -63,6 +64,16 @@ public class Customer {
     }
 
     @Basic
+    @Column(name = "nic", nullable = true, insertable = true, updatable = true, length = 10)
+    public String getNIC() {
+        return nic;
+    }
+
+    public void setNIC(String nic) {
+        this.nic = nic;
+    }
+
+    @Basic
     @Column(name = "telephone_number", nullable = true, insertable = true, updatable = true, length = 45)
     public String getTelephoneNumber() {
         return telephoneNumber;
@@ -82,7 +93,7 @@ public class Customer {
         this.address = address;
     }
 
-    @Basic
+   /* @Basic
     @Column(name = "country", nullable = true, insertable = true, updatable = true, length = 45)
     public String getCountry() {
         return country;
@@ -90,7 +101,7 @@ public class Customer {
 
     public void setCountry(String country) {
         this.country = country;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -105,7 +116,7 @@ public class Customer {
         if (telephoneNumber != null ? !telephoneNumber.equals(customer.telephoneNumber) : customer.telephoneNumber != null)
             return false;
         if (address != null ? !address.equals(customer.address) : customer.address != null) return false;
-        if (country != null ? !country.equals(customer.country) : customer.country != null) return false;
+      // if (country != null ? !country.equals(customer.country) : customer.country != null) return false;
 
         return true;
     }
@@ -117,7 +128,7 @@ public class Customer {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (telephoneNumber != null ? telephoneNumber.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (country != null ? country.hashCode() : 0);
+      //  result = 31 * result + (country != null ? country.hashCode() : 0);
         return result;
     }
 }

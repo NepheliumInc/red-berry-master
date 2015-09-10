@@ -17,6 +17,8 @@ public class Room {
     private Integer displayNumber;
     @OneToOne
     private RoomCategory roomCategory;
+    //@OneToOne
+   // private MealPlan mealPlan;
     private Integer extensionNumber;
 
 
@@ -29,6 +31,7 @@ public class Room {
         this.roomCapacity = roomCapacity;
         this.displayNumber = displayNumber;
         this.roomCategory = roomCategory;
+        //this.mealPlan = mealPlan;
         this.extensionNumber = extensionNumber;
     }
 
@@ -71,6 +74,14 @@ public class Room {
     public void setRoomCategory(RoomCategory roomCategory) {
         this.roomCategory = roomCategory;
     }
+
+    /*public MealPlan getMealPlan() {
+        return mealPlan;
+    }
+
+    public void setMealPlan(MealPlan mealPlan) {
+        this.mealPlan = mealPlan;
+    }*/
 
     public Integer getExtensionNumber() {
         return extensionNumber;

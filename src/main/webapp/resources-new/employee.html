@@ -64,7 +64,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             self.loadEmployees = function(){
                 jQuery.ajax({
-
                     url: "/redberry/services/employee/getemployees",
                     method: "GET",
                     dataType: "JSON",
@@ -122,24 +121,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 self.imageURL(this.imageURL);
                 self.nic(this.nic);
 
-
-
                 $('#modal-1').modal('toggle');
             }
-
-
-
         }
 
 
         $(document).ready(function () {
-
-
-            var model = new employeeViewModel();
-            model.loadEmployees();
-            ko.applyBindings(model);
-
-
+            jQuery.ajax({
+                url: "/redberry/services/employee/getemployees",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    alert(data[0]);
+                    for (var x in data) {
+                        model.employees.push(data[x]);
+                    }
+                    var model = new employeeViewModel();
+                    model.loadEmployees();
+                    ko.applyBindings(model);
+                }});
         });
 
 
@@ -370,9 +370,8 @@ desired effect
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
-                <!-- Optionally, you can add icons to the links -->
                 <li class=""><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a href="checkin.html"><i class="fa fa-link"></i> <span>Check In</span></a></li>
                 <li class="active"><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
                 <li class=""><a href="rooms.html"><i class="fa fa-link"></i> <span>Room</span></a></li>
 

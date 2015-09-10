@@ -4538,7 +4538,7 @@ $.extend(Datepicker.prototype, {
 			$.datepicker._datepickerShowing = true;
 
 			if ( $.effects && $.effects.effect[ showAnim ] ) {
-				inst.dpDiv.show(showAnim, $.datepicker._get(inst, "showOptions"), duration);
+				inst.dpDiv.show({model: showAnim}, $.datepicker._get(inst, "showOptions"), duration);
 			} else {
 				inst.dpDiv[showAnim || "show"](showAnim ? duration : null);
 			}
