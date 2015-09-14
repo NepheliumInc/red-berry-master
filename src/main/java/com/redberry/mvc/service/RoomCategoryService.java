@@ -1,6 +1,7 @@
 package com.redberry.mvc.service;
 
 import com.redberry.mvc.database.RoomCategory;
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;
@@ -10,6 +11,7 @@ import javax.ws.rs.core.Response;
 /**
  * Created by Amila on 7/31/15.
  */
+@CrossOriginResourceSharing(allowAllOrigins = true)
 @Path("/roomCategory")
 @WebService(name="services")
 public interface RoomCategoryService {
