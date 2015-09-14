@@ -26,14 +26,26 @@ public class TravelAgent {
     private String accountBranch;
     private double rates;
 
+    public TravelAgent() {
+    }
+
+    public TravelAgent(String fullName, String address, String phoneNo, String email, String bankName, String accountNo, String accountName, String accountBranch, double rates) {
+
+        this.fullName = fullName;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.email = email;
+        this.bankName = bankName;
+        this.accountNo = accountNo;
+        this.accountName = accountName;
+        this.accountBranch = accountBranch;
+        this.rates = rates;
+    }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getFullName() {
         return fullName;

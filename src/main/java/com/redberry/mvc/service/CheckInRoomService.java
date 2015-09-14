@@ -1,6 +1,7 @@
 package com.redberry.mvc.service;
 
-import com.redberry.mvc.database.CheckIn;
+import com.redberry.mvc.database.CheckInRoom;
+import com.redberry.mvc.database.CheckInRoom;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;
@@ -11,35 +12,35 @@ import javax.ws.rs.core.Response;
  * Created by Kokila on 9/8/15.
  */
 
-@Path("/checkin")
+@Path("/checkInRoom")
 @WebService(name="services")
-public interface CheckInService {
+public interface CheckInRoomService {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/getcheckins")
-    public Response getCheckIns();
+    @Path("/getCheckInRooms")
+    public Response getCheckInRooms();
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/getcheckin")
-    public Response getCheckIn(@QueryParam("Id") int id);
+    @Path("/getCheckInRoom")
+    public Response getCheckInRoom(@QueryParam("Id") int id);
 
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/addcheckin")
-    public Response addCheckIn(CheckIn checkIn);
+    @Path("/addCheckInRoom")
+    public Response addCheckInRoom(CheckInRoom checkInRoom);
 
     @PUT
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("updatecheckin")
-    public Response updateCheckIn(CheckIn checkIn);
+    @Path("updateCheckInRoom")
+    public Response updateCheckInRoom(CheckInRoom checkInRoom);
 
     @DELETE
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("deletecheckin")
-    public Response removeCheckIn(CheckIn checkIn);
+    @Path("deleteCheckInRoom")
+    public Response removeCheckInRoom(CheckInRoom checkInRoom);
 }
