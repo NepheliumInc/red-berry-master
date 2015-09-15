@@ -10,6 +10,7 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int roomId;
+    private String status;
     private String roomName;
     private String airconditionState;
     @OneToOne
@@ -23,13 +24,22 @@ public class Room {
     public Room() {
     }
 
-    public Room(String roomName, String airconditionState, RoomCapacity roomCapacity, Integer displayNumber, RoomCategory roomCategory, Integer extensionNumber) {
+    public Room(String roomName, String airconditionState, RoomCapacity roomCapacity, Integer displayNumber, RoomCategory roomCategory, Integer extensionNumber, String status) {
         this.roomName = roomName;
         this.airconditionState = airconditionState;
         this.roomCapacity = roomCapacity;
         this.displayNumber = displayNumber;
         this.roomCategory = roomCategory;
         this.extensionNumber = extensionNumber;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getRoomId() {

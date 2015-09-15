@@ -13,15 +13,26 @@ public class RoomCategory implements Serializable{
     private String name;
     private String description;
     private MealPlan mealPlan;
+    private double price;
+
 
 
     public RoomCategory() {
     }
 
-    public RoomCategory(String name, String description, MealPlan mealPlan) {
+    public RoomCategory(String name, String description, MealPlan mealPlan, double price) {
         this.name = name;
         this.description = description;
         this.mealPlan = mealPlan;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public MealPlan getMealPlan() {

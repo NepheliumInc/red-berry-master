@@ -35,115 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- custom jquery-->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="plugins/knockout/knockout-3.3-min.js"></script>
-    <script src="plugins/knockout/knockout.mapping-latest.js"></script>
-    <script type="text/javascript">
 
-
-        var employeeViewModel = function () {
-            var self = this;
-
-            self.id = ko.observable();
-            self.fullName = ko.observable();
-            self.residentialAddress = ko.observable();
-            self.permanentAddress = ko.observable();
-            self.residentialPhone = ko.observable();
-            self.permanentPhone = ko.observable();
-            self.email = ko.observable();
-            self.dob = ko.observable();
-            self.joinedDate = ko.observable();
-            self.prevExperience = ko.observable();
-            self.commentsFromPrevWorkPlace = ko.observable();
-            self.startingSalary = ko.observable();
-            self.emergencyContact = ko.observable();
-            self.imageURL = ko.observable();
-            self.nic = ko.observable();
-
-            //load employees from database
-
-            self.employees = ko.observableArray();
-
-            self.loadEmployees = function(){
-                jQuery.ajax({
-
-                    url: "/redberry/services/employee/getemployees",
-                    method: "GET",
-                    dataType: "JSON",
-                    success: function (data) {
-                         self.employees(data);
-
-                    }
-                });
-
-            }
-
-
-
-            //remove an employee
-
-            self.removeEmp = function () {
-
-                var r = confirm("Do you realy want to remove this employee?");
-                if (r == true) {
-                    alert(JSON.stringify(self.employees()[self.employees.indexOf(this)]));
-                    jQuery.ajax({
-                        url: "/redberry/services/employee/deleteemployee",
-                        method: "DELETE",
-                        dataType: "JSON",
-                        contentType: "application/json",
-                        data: JSON.stringify(self.employees()[self.employees.indexOf(this)]),
-                        success: function (data) {
-
-                            alert(data);
-                        }
-                    });
-                    self.employees.remove(this);
-                }
-
-
-            }
-
-
-            //view an employee
-
-            self.viewEmp = function () {
-                self.id(this.id);
-                self.fullName(this.fullName);
-                self.residentialAddress(this.residentialAddress);
-                self.permanentAddress(this.permanentAddress);
-                self.residentialPhone(this.residentialPhone);
-                self.permanentPhone(this.permanentPhone);
-                self.email(this.email);
-                self.dob(this.dob);
-                self.joinedDate(this.joinedDate);
-                self.prevExperience(this.prevExperience);
-                self.commentsFromPrevWorkPlace(this.commentsFromPrevWorkPlace);
-                self.startingSalary(this.startingSalary);
-                self.emergencyContact(this.emergencyContact);
-                self.imageURL(this.imageURL);
-                self.nic(this.nic);
-
-
-
-                $('#modal-1').modal('toggle');
-            }
-
-
-
-        }
-
-
-        $(document).ready(function () {
-
-
-            var model = new employeeViewModel();
-            model.loadEmployees();
-            ko.applyBindings(model);
-
-
-        });
-
-
-    </script>
 
 
 </head>
@@ -523,7 +415,7 @@ desired effect
                                     <div class="col-md-4">
                                         <img id="employeeImage" src="dist/img/default_male_avatar.gif"
                                              class="img-rounded img-responsive"
-                                             style="width:140px;height:140px;">
+                                             style="width:140px;height:140px;" data-bind="attr: {src: imageURL}">
                                     </div>
                                 </div>
 
@@ -644,4 +536,115 @@ desired effect
       user experience. Slimscroll is required when using the
       fixed layout. -->
 </body>
+
+<script type="text/javascript">
+
+
+    var employeeViewModel = function () {
+        var self = this;
+
+        self.id = ko.observable();
+        self.fullName = ko.observable();
+        self.residentialAddress = ko.observable();
+        self.permanentAddress = ko.observable();
+        self.residentialPhone = ko.observable();
+        self.permanentPhone = ko.observable();
+        self.email = ko.observable();
+        self.dob = ko.observable();
+        self.joinedDate = ko.observable();
+        self.prevExperience = ko.observable();
+        self.commentsFromPrevWorkPlace = ko.observable();
+        self.startingSalary = ko.observable();
+        self.emergencyContact = ko.observable();
+        self.imageURL = ko.observable();
+        self.nic = ko.observable();
+
+        //load employees from database
+
+        self.employees = ko.observableArray();
+
+        self.loadEmployees = function(){
+            jQuery.ajax({
+
+                url: "/redberry/services/employee/getemployees",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    self.employees(data);
+
+                }
+            });
+
+        }
+
+
+
+        //remove an employee
+
+        self.removeEmp = function () {
+
+            var r = confirm("Do you realy want to remove this employee?");
+            if (r == true) {
+                alert(JSON.stringify(self.employees()[self.employees.indexOf(this)]));
+                jQuery.ajax({
+                    url: "/redberry/services/employee/deleteemployee",
+                    method: "DELETE",
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    data: JSON.stringify(self.employees()[self.employees.indexOf(this)]),
+                    success: function (data) {
+
+                        alert(data);
+                    }
+                });
+                self.employees.remove(this);
+            }
+
+
+        }
+
+
+        //view an employee
+
+        self.viewEmp = function () {
+            self.id(this.id);
+            self.fullName(this.fullName);
+            self.residentialAddress(this.residentialAddress);
+            self.permanentAddress(this.permanentAddress);
+            self.residentialPhone(this.residentialPhone);
+            self.permanentPhone(this.permanentPhone);
+            self.email(this.email);
+            self.dob(this.dob);
+            self.joinedDate(this.joinedDate);
+            self.prevExperience(this.prevExperience);
+            self.commentsFromPrevWorkPlace(this.commentsFromPrevWorkPlace);
+            self.startingSalary(this.startingSalary);
+            self.emergencyContact(this.emergencyContact);
+            self.imageURL(this.imageURL);
+            self.nic(this.nic);
+
+
+
+            $('#modal-1').modal('toggle');
+        }
+
+
+
+    }
+
+
+    $(document).ready(function () {
+
+
+        var model = new employeeViewModel();
+        model.loadEmployees();
+        ko.applyBindings(model);
+
+
+    });
+
+
+</script>
+
+
 </html>

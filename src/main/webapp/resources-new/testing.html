@@ -1,1 +1,47 @@
-<h1>Amila</h1>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Upload Test</title>
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+</head>
+<body>
+
+<img id="employeeImage" src="dist/img/default_male_avatar.gif"
+     class="img-rounded img-responsive"
+     style="width:140px;height:140px;">
+<input id="imageURL" name="imageURL" type="file"
+       onchange="$('#employeeImage')[0].src = window.URL.createObjectURL(this.files[0])"
+       style="margin-top: 18px;"/>
+<button type="button" class="btn btn-success btn-xs" onclick="uploadFile()">Upload</button>
+
+<h4 id="myfile"></h4>
+<script type="text/javascript">
+
+
+
+    function uploadFile(){
+        var myFormData = new FormData();
+        myFormData.append('file', $('#imageURL')[0].files[0]);
+
+        $.ajax({
+            url: '/redberry/services/employeeImage/upload',
+            type: 'POST',
+            processData: false, // important
+            contentType: false, // important
+            enctype: 'multipart/form-data',
+            data: myFormData,
+            dataType: 'text',
+            success: function(data){
+                $('#myfile').html(data);
+            }
+        });
+
+
+    }
+
+</script>
+
+
+</body>
+</html>

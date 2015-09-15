@@ -307,6 +307,7 @@ desired effect
                                     <th>Category</th>
                                     <th>Air Condition Status</th>
                                     <th>Capacity</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -317,6 +318,7 @@ desired effect
                                     <td data-bind="text: roomCategory.name"></td>
                                     <td data-bind="text: airconditionState"></td>
                                     <td data-bind="text: roomCapacity.name"></td>
+                                    <td data-bind="text: status"></td>
                                     <td><a class="label label-danger" href=""
                                            data-bind="click: $root.removeRoom">Remove</a> <a class="label label-info"
                                                                                             href=""
@@ -379,6 +381,10 @@ desired effect
                                             <tr>
                                                 <td><b>Extension Number: </b></td>
                                                 <td data-bind="text: extensionNumber"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Status: </b></td>
+                                                <td data-bind="text: status"></td>
                                             </tr>
 
 
@@ -526,6 +532,7 @@ desired effect
         self.displayNumber = ko.observable();
         self.roomCategory = ko.observable();
         self.extensionNumber = ko.observable();
+        self.status = ko.observable();
 
         //load rooms from database
 
@@ -583,6 +590,7 @@ desired effect
             self.displayNumber(this.displayNumber);
             self.roomCategory(this.roomCategory.name);
             self.extensionNumber(this.extensionNumber);
+            self.status(this.status);
 
 
 

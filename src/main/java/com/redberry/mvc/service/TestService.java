@@ -31,7 +31,7 @@ public class TestService {
             @Multipart("file")Attachment attachment
     ){
 
-        String path = "upload/"+attachment.getContentDisposition().getParameter("filename");
+        String path = "upload/avatar/"+attachment.getContentDisposition().getParameter("filename");
 
 
         try{

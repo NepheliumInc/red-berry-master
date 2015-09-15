@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>AdminLTE 2 | Room Category</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
@@ -276,7 +276,8 @@ desired effect
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li class="active">Room</li>
+                <li><a href="addRoom.html">Add New Room</a></li>
+                <li class="active">Room Category</li>
             </ol>
         </section>
 
@@ -322,7 +323,7 @@ desired effect
                                     <div class="row form-group">
                                         <label for="mealPlan" class="col-md-4">Meal Plan: </label>
 
-                                        <div class="col-md-8">
+                                        <div class="col-md-6">
 
                                             <select id="mealPlan" name="mealPlan"
                                                     data-bind="options: mealPlans, optionsText:'description', value: mealPlan, optionsCaption: 'Select Meal Plan'"
@@ -330,14 +331,27 @@ desired effect
                                                     type="text">
                                             </select>
                                         </div>
+                                        <div class="col-md-2" style="padding-right: 0; padding-left: 0;">
+                                            <a class="btn btn-info btn-sm" href="mealPlan.html">New</a>
+                                        </div>
 
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="price" class="col-md-4">Price: </label>
+
+                                        <div class="col-md-8">
+                                            <input id="price" name="price" data-bind="value: price"
+                                                   class="form-control" type="text"
+                                                   placeholder=""/>
+                                        </div>
                                     </div>
 
 
                                 </div>
 
                             </form>
-                            <button class="btn btn-info" onclick="sendRoomCategoryRequest()">Add Category</button>
+                            <button class="btn btn-info" onclick="sendRoomCategoryRequest()">Saves</button>
 
                         </div>
 
@@ -362,6 +376,7 @@ desired effect
                                     <th>Category Name</th>
                                     <th>Description</th>
                                     <th>Meal Plan</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -371,11 +386,12 @@ desired effect
                                     <td data-bind="text: name"></td>
                                     <td data-bind="text: description"></td>
                                     <td data-bind="text: mealPlan.description"></td>
+                                    <td>Rs: <span data-bind="text: price"></span></td>
                                     <td><a class="label label-danger" href=""
                                            data-bind="click: $root.removeCategory">Remove</a> <a
                                             class="label label-info"
                                             href=""
-                                            data-bind="click: ">View</a>
+                                            data-bind="click: ">Edit</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -509,6 +525,7 @@ desired effect
         self.name = ko.observable();
         self.description = ko.observable();
         self.mealPlan = ko.observable();
+        self.price = ko.observable();
 
 
         self.loadMealPlans = function () {

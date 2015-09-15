@@ -27,7 +27,7 @@
             <ref bean="roomCategoryServiceImpl"/>
             <ref bean="roomCapacityServiceImpl" />
             <ref bean="mealPlanServiceImpl" />
-            <ref bean="testService" />
+            <ref bean="employeeImageServiceImpl" />
 
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
@@ -42,7 +42,7 @@
     <bean id="roomCategoryServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCategoryServiceImpl" />
     <bean id="roomCapacityServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCapacityServiceImpl" />
     <bean id="mealPlanServiceImpl" class="com.redberry.mvc.serviceImpl.MealPlanServiceImpl" />
-    <bean id="testService" class="com.redberry.mvc.service.TestService" />
+    <bean id="employeeImageServiceImpl" class="com.redberry.mvc.serviceImpl.EmployeeImageServiceImpl" />
 
 
     <bean id="customerDaoImpl" class="com.redberry.mvc.dao.CustomerDaoImpl"/>

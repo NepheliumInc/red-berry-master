@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>AdminLTE 2 | MealPlan</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
@@ -29,14 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
     <![endif]-->
-
-    <!-- custom jquery-->
-    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <script src="plugins/knockout/knockout-3.3-min.js"></script>
-
-
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -264,7 +257,7 @@ desired effect
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class=""><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
-                <li class=""><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
+                <li><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
                 <li class="active"><a href="rooms.html"><i class="fa fa-link"></i> <span>Room</span></a></li>
 
             </ul>
@@ -278,186 +271,106 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Room
-                <small>Room Management</small>
+                Meal Plans
+                <small>Meal Plan Management</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li><a href="rooms.html">Room</a></li>
-                <li class="active">Add New Room</li>
+                <li><a href="addRoom.html">Add New Room</a></li>
+                <li><a href="category.html">Room Category</a></li>
+                <li class="active">Meal Plan</li>
             </ol>
         </section>
+
 
         <!-- Main content -->
         <section class="content">
 
             <!-- Your Page Content Here -->
             <div class="row">
-
                 <div class="col-md-10 col-md-offset-1">
 
+                    <!--Create box-->
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title">Create New Meal Plan</h3>
+                        </div>
+                        <div class="box-body">
+                            <form role="form" class="col-md-offset-1">
+                                <!--Column for text details-->
+                                <div class="col-md-8">
+
+                                    <div class="row form-group">
+                                        <label for="name" class="col-md-4">Meal Plan name: </label>
+
+                                        <div class="col-md-8">
+                                            <input id="name" name="name" data-bind="value: name"
+                                                   class="form-control" type="text"
+                                                   placeholder="Sample Name"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="description" class="col-md-4">Description: </label>
+
+                                        <div class="col-md-8">
+                                            <textarea id="description" name="description"
+                                                      data-bind="value: description" class="form-control"
+                                                      type="text"
+                                                      placeholder="Sample Desc"></textarea>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+                            <button class="btn btn-info" onclick="sendMealPlanRequest()">Save Meal Plan</button>
+
+                        </div>
+
+
+                    </div>
 
                     <!-- box begins -->
                     <div class="box box-info">
                         <!-- box header-->
                         <div class="box-header">
-                            <h3 class="box-title">Add New Room</h3>
+
+                            <h3 class="box-title">Meal Plans</h3>
                         </div>
                         <!--box header ends-->
 
                         <!--box content begins-->
                         <div class="row box-body" style="padding: 20px">
-                            <!-- room details form-->
-                            <form role="form">
-                                <!--Column for text details-->
-                                <div class="col-md-8">
-
-                                    <div class="row form-group">
-                                        <label for="roomName" class="col-md-4">Room Name: </label>
-
-                                        <div class="input-group col-md-8">
-                                            <span class="input-group-addon"><i class="fa fa-bed"></i></span>
-                                            <input id="roomName" name="roomName" data-bind="value: roomName"
-                                                   class="form-control" type="text"
-                                                   placeholder="Sample Room"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <label for="displayNumber" class="col-md-4">Display Number: </label>
-
-                                        <div class="input-group col-md-8">
-                                            <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
-                                            <input id="displayNumber" name="displayNumber"
-                                                   data-bind="value: displayNumber" class="form-control"
-                                                   type="number"
-                                                   placeholder="101"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <label for="roomCategory" class="col-md-4">Category: </label>
-
-                                        <div class="input-group col-md-8">
-
-                                            <div class="col-md-10" style="padding-left: 0; padding-right: 0;">
-
-                                                <select id="roomCategory" name="roomCategory"
-                                                        data-bind="options: roomCategories, optionsText:'name', value: roomCategory, optionsCaption: 'Select Category'"
-                                                        class="form-control"
-                                                        type="text">
-                                                </select>
-                                            </div>
-                                            <div class="col-md-2" style="padding-right: 0; padding-left: 0;">
-                                                <a class="btn btn-info btn-sm pull-right" href="category.html">New</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <label for="roomCapacity" class="col-md-4">Capacity: </label>
-
-                                        <div class="input-group col-md-8 select2-container--default">
-
-                                            <select id="roomCapacity" name="roomCapacity"
-                                                    data-bind="options: roomCapacities, optionsText: 'name', value: roomCapacity, optionsCaption: 'Select Capacity'" class="form-control"
-                                                    type="text">
-
-
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <label for="airconditionState" class="col-md-4">Air Condition State: </label>
-
-                                        <div class="input-group col-md-8">
-                                            <select id="airconditionState" name="airconditionState"
-                                                    data-bind="options: ['A/C', 'Non A/C'], value: airconditionState, optionsCaption: 'Select Aircondition State'" class="form-control"
-                                                    type="text">
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </form>
-                            <!--room form ends-->
-                        </div>
-                        <!-- box content ends-->
-
-                        <!-- box footer begins-->
-                        <center>
-                            <div class="box-footer">
-                                <button type="button" onclick="$('form').trigger('reset')" class="btn btn-danger ">Clear
-                                    All
-                                </button>
-                                <a href="#tab-confirmation" class="btn btn-info" data-toggle="modal"
-                                   data-target="#modal-1">Create</a>
-                            </div>
-                        </center>
-                        <!-- box footer ends-->
-
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-            <div class="modal" id="modal-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Confirmation</h4>
-                        </div>
-                        <div class="modal-body">
-
-                            <table class="table">
-                                <tbody>
+                            <table id= "mealPlanDetails" class="table table-bordered">
+                                <thead>
                                 <tr>
-                                    <td><b>Room Name: </b></td>
-                                    <td data-bind="text: roomName"></td>
+                                    <th>Meal Plan ID</th>
+                                    <th>Meal Plan Name</th>
+                                    <th>Description</th>
                                 </tr>
-
+                                </thead>
+                                <tbody data-bind="{foreach: mealPlans,afterRender: runWhenAllRenderDone}">
                                 <tr>
-                                    <td><b>Display Number: </b></td>
-                                    <td data-bind="text: displayNumber"></td>
-                                </tr>
-
-                                <tr data-bind="with: roomCategory">
-                                    <td><b>Room Category: </b></td>
+                                    <td data-bind="text: id"></td>
                                     <td data-bind="text: name"></td>
+                                    <td data-bind="text: description"></td>
+
+                                    <td><a class="label label-danger" href=""
+                                           data-bind="click: $root.removeMealPlan">Remove</a> <a
+                                            class="label label-info"
+                                            href=""
+                                            data-bind="click: ">View</a>
+                                    </td>
                                 </tr>
-
-                                <tr data-bind="with: roomCapacity">
-                                    <td><b>Room Capacity: </b></td>
-                                    <td data-bind="text: name"></td>
-                                </tr>
-
-                                <tr>
-                                    <td><b>Aircondition State: </b></td>
-                                    <td data-bind="text: airconditionState"></td>
-                                </tr>
-
-
-
-
                                 </tbody>
                             </table>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="sendRoomRequest()">Save
-                                changes
-                            </button>
-                        </div>
+                        <!-- box content ends-->
                     </div>
-                    <!-- /.modal-content -->
+                    <!-- box ends-->
                 </div>
-                <!-- /.modal-dialog -->
             </div>
 
 
@@ -566,86 +479,104 @@ desired effect
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
       fixed layout. -->
+</body>
 
 
+<script src="plugins/knockout/knockout-3.3-min.js"></script>
 <script type="text/javascript">
 
 
-    function newRoomViewModel() {
+    var mealPlanViewModel = function () {
         var self = this;
-        self.roomName = ko.observable();
-        self.displayNumber = ko.observable();
-        self.roomCategory = ko.observable();
-        self.roomCapacity = ko.observable();
-        self.airconditionState = ko.observable();
+        self.mealPlans = ko.observableArray();
+        self.id = ko.observable();
+        self.name = ko.observable();
+        self.description = ko.observable();
 
-        self.roomCategories = ko.observableArray();
-        self.roomCapacities = ko.observableArray();
 
-        self.loadCategories = function(){
+        self.loadMealPlans = function () {
             jQuery.ajax({
 
-                url: "/redberry/services/roomCategory/getRoomCategories",
+                url: "/redberry/services/mealPlan/getMealPlans",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
-                    self.roomCategories(data);
+                    self.mealPlans(data);
 
                 }
             });
         }
 
-        self.loadCapacities = function(){
-            jQuery.ajax({
 
-                url: "/redberry/services/roomCapacity/getRoomCapacities",
-                method: "GET",
-                dataType: "JSON",
-                success: function (data) {
-                    self.roomCapacities(data);
 
-                }
-            });
+
+        self.removeMealPlan = function () {
+
+            var r = confirm("Do you realy want to remove this category?");
+            if (r == true) {
+                alert(JSON.stringify(self.mealPlans()[self.mealPlans.indexOf(this)]));
+                jQuery.ajax({
+                    url: "/redberry/services/mealPlan/deleteMealPlan",
+                    method: "DELETE",
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    data: JSON.stringify(self.mealPlans()[self.mealPlans.indexOf(this)]),
+                    success: function (data) {
+
+                        alert(data);
+                    }
+                });
+                self.mealPlans.remove(this);
+            }
+
+
         }
+
 
     }
 
-    // Activates knockout.js
-    var roomModel = new newRoomViewModel();
-    roomModel.loadCategories();
-    roomModel.loadCapacities();
 
-    ko.applyBindings(roomModel);
+    //$(document).ready(function () {
 
-    function makeRoomJSON() {
 
-        var obj = ko.toJS(roomModel);
-        delete obj.roomCategories;
-        delete  obj.roomCapacities;
+        var model = new mealPlanViewModel();
+        model.loadMealPlans();
+        ko.applyBindings(model);
+
+
+
+
+
+    //});
+
+
+    function makeMealPlanJSON() {
+
+        var obj = ko.toJS(model);
+        delete obj.mealPlans;
 
         obj = ko.toJSON(obj);
 
         return obj;
     }
 
-    function sendRoomRequest(){
+    function sendMealPlanRequest() {
 
         $.ajax({
             type: 'POST',
-            url: '/redberry/services/room/addroom',
+            url: '/redberry/services/mealPlan/addMealPlan',
             contentType: 'application/json',
             dataType: 'JSON',
-            data: makeRoomJSON(),
+            data: makeMealPlanJSON(),
 
 
         });
 
-        $('#modal-1').modal('hide');
-        window.location.href='rooms.html';
+        window.location.href = 'mealPlan.html';
 
     }
 
-
 </script>
-</body>
+
+
 </html>

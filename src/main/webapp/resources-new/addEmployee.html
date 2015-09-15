@@ -35,7 +35,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- custom jquery-->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="plugins/knockout/knockout-3.3-min.js"></script>
-    <script src="plugins/knockout/knockout.mapping-latest.js"></script>
 
 
 </head>
@@ -467,8 +466,9 @@ desired effect
                                         <div class="row form-group" style="">
                                             <img id="employeeImage" src="dist/img/default_male_avatar.gif"
                                                  class="img-rounded img-responsive"
+                                                 data-bind="attr: {}"
                                                  style="width:140px;height:140px;">
-                                            <input id="imageURL" name="imageURL" type="file"
+                                            <input id="imageInput" name="imageInput" type="file"
                                                    onchange="$('#employeeImage')[0].src = window.URL.createObjectURL(this.files[0])"
                                                    style="margin-top: 18px;"/>
 
@@ -511,65 +511,75 @@ desired effect
                         </div>
                         <div class="modal-body">
 
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <td><b>Full Name: </b></td>
-                                    <td data-bind="text: fullName"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Email: </b></td>
-                                    <td data-bind="text: email"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Residential Phone: </b></td>
-                                    <td data-bind="text: residentialPhone"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Permanent Phone: </b></td>
-                                    <td data-bind="text: permanentPhone"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>NIC Number: </b></td>
-                                    <td data-bind="text: nic"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Date of Birth: </b></td>
-                                    <td data-bind="text: dob"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Joined Date: </b></td>
-                                    <td data-bind="text: joinedDate"></td>
-                                </tr>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td><b>Full Name: </b></td>
+                                            <td data-bind="text: fullName"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Email: </b></td>
+                                            <td data-bind="text: email"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Residential Phone: </b></td>
+                                            <td data-bind="text: residentialPhone"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Permanent Phone: </b></td>
+                                            <td data-bind="text: permanentPhone"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>NIC Number: </b></td>
+                                            <td data-bind="text: nic"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Date of Birth: </b></td>
+                                            <td data-bind="text: dob"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Joined Date: </b></td>
+                                            <td data-bind="text: joinedDate"></td>
+                                        </tr>
 
-                                <tr>
-                                    <td><b>Starting Salary(Rs): </b></td>
-                                    <td data-bind="text: startingSalary"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Residential Address: </b></td>
-                                    <td data-bind="text: residentialAddress"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Permanent Address: </b></td>
-                                    <td data-bind="text: permanentAddress"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Previous Experience: </b></td>
-                                    <td data-bind="text: prevExperience"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Comments from previous work places: </b></td>
-                                    <td data-bind="text: commentsFromPrevWorkPlace"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Emergency Contact: </b></td>
-                                    <td data-bind="text: emergencyContact"></td>
-                                </tr>
+                                        <tr>
+                                            <td><b>Starting Salary(Rs): </b></td>
+                                            <td data-bind="text: startingSalary"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Residential Address: </b></td>
+                                            <td data-bind="text: residentialAddress"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Permanent Address: </b></td>
+                                            <td data-bind="text: permanentAddress"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Previous Experience: </b></td>
+                                            <td data-bind="text: prevExperience"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Comments from previous work places: </b></td>
+                                            <td data-bind="text: commentsFromPrevWorkPlace"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Emergency Contact: </b></td>
+                                            <td data-bind="text: emergencyContact"></td>
+                                        </tr>
 
 
-                                </tbody>
-                            </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <img id="employeeImageView" src="dist/img/default_male_avatar.gif"
+                                         class="img-rounded img-responsive"
+                                         style="width:140px;height:140px;" data-bind="attr{src: imageURL}">
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -694,28 +704,32 @@ desired effect
 
 
     function AppViewModel() {
-        this.fullName = ko.observable();
-        this.email = ko.observable();
-        this.nic = ko.observable();
-        this.residentialPhone = ko.observable();
-        this.permanentPhone = ko.observable();
-        this.startingSalary = ko.observable();
-        this.residentialAddress = ko.observable();
-        this.permanentAddress = ko.observable();
-        this.dob = ko.observable();
-        this.joinedDate = ko.observable();
-        this.prevExperience = ko.observable();
-        this.commentsFromPrevWorkPlace = ko.observable();
-        this.emergencyContact = ko.observable();
+        var self = this;
+        self.fullName = ko.observable();
+        self.email = ko.observable();
+        self.nic = ko.observable();
+        self.residentialPhone = ko.observable();
+        self.permanentPhone = ko.observable();
+        self.startingSalary = ko.observable();
+        self.residentialAddress = ko.observable();
+        self.permanentAddress = ko.observable();
+        self.dob = ko.observable();
+        self.joinedDate = ko.observable();
+        self.prevExperience = ko.observable();
+        self.commentsFromPrevWorkPlace = ko.observable();
+        self.emergencyContact = ko.observable();
+        self.imageURL = ko.observable();
+
+
+
     }
 
     // Activates knockout.js
     var employeeModel = new AppViewModel();
     ko.applyBindings(employeeModel);
 
-    function makeEmployeeJSON() {
-        return ko.toJSON(employeeModel);
-    }
+
+
 
 
     function sendEmployeeRequest(){
@@ -726,13 +740,40 @@ desired effect
             contentType: 'application/json',
             dataType: 'JSON',
             data: makeEmployeeJSON(),
-
-
         });
 
         $('#modal-1').modal('hide');
-        window.location.href='employee.html';
+        //window.location.href='employee.html';
 
+    }
+
+    function uploadProfilePicture(model){
+
+        var myFormData = new FormData();
+        myFormData.append('file', $('#imageInput')[0].files[0]);
+
+        $.ajax({
+            url: '/redberry/services/employeeImage/upload',
+            type: 'POST',
+            processData: false, // important
+            contentType: false, // important
+            enctype: 'multipart/form-data',
+            data: myFormData,
+            dataType: 'text',
+
+            success: function(data){
+                employeeModel.imageURL(data);
+                alert(data);
+
+            }
+        });
+
+    }
+
+
+    function makeEmployeeJSON() {
+        uploadProfilePicture();
+        return ko.toJSON(employeeModel);
     }
 
 </script>
