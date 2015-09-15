@@ -34,22 +34,25 @@ public class Employee {
     }
 
     public Employee(String fullName, String residentialAddress, String permanentAddress, String residentialPhone, String permanentPhone, String NIC, String email, Date dob, Date joinedDate, String prevExperience, String commentsFromPrevWorkPlace, Double startingSalary, String emergencyContact, String imageURL) {
-        this.setFullName(fullName);
-        this.setResidentialAddress(residentialAddress);
-        this.setPermanentAddress(permanentAddress);
-        this.setResidentialPhone(residentialPhone);
-        this.setPermanentPhone(permanentPhone);
-        this.setNIC(NIC);
-        this.setEmail(email);
-        this.setDob(dob);
-        this.setJoinedDate(joinedDate);
-        this.setPrevExperience(prevExperience);
-        this.setCommentsFromPrevWorkPlace(commentsFromPrevWorkPlace);
-        this.setStartingSalary(startingSalary);
-        this.setEmergencyContact(emergencyContact);
-        this.setImageURL(imageURL);
+        this.fullName = fullName;
+        this.residentialAddress = residentialAddress;
+        this.permanentAddress = permanentAddress;
+        this.residentialPhone = residentialPhone;
+        this.permanentPhone = permanentPhone;
+        this.NIC = NIC;
+        this.email = email;
+        this.dob = dob;
+        this.joinedDate = joinedDate;
+        this.prevExperience = prevExperience;
+        this.commentsFromPrevWorkPlace = commentsFromPrevWorkPlace;
+        this.startingSalary = startingSalary;
+        this.emergencyContact = emergencyContact;
+        this.imageURL = imageURL;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

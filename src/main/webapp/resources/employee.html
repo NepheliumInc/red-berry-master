@@ -29,6 +29,14 @@
     <script type="text/javascript">
         jQuery(document).ready(function () {
 
+            // dynamic table
+            var tbl = jQuery('#dyntable2').dataTable({
+                "bScrollInfinite": true,
+                "bScrollCollapse": true,
+                "sScrollY": "300px"
+            });
+
+
             //populating employee table
 
             jQuery.ajax({
@@ -37,23 +45,10 @@
                 dataType: "JSON",
                 success: function(data){
                     ko.applyBindings({
-                        people: [
-                            { firstName: 'Bert', lastName: 'Bertington' },
-                            { firstName: 'Charles', lastName: 'Charlesforth' },
-                            { firstName: 'Denise', lastName: 'Dentiste' }
-                        ]
+                        employees: data
                     });
+
                 }
-            });
-
-
-
-
-            // dynamic table
-            jQuery('#dyntable2').dataTable({
-                "bScrollInfinite": true,
-                "bScrollCollapse": true,
-                "sScrollY": "300px"
             });
 
         });
@@ -250,7 +245,7 @@
                     <a href="add-employee.html" class="btn">Add new employee</a>
                     <button class="btn btn-danger">Remove an employee</button>
                 </h4>
-                <table class="table table-bordered table-infinite" id="dyntable2">
+                <table class="table table-bordered table-infinite" id="">
                     <colgroup>
                         <col class="con0" style="align: center; width: 4%"/>
                         <col class="con1"/>
@@ -262,54 +257,27 @@
                     <thead>
                     <tr>
                         <th class="head0 nosort"><input type="checkbox" class="checkall"/></th>
-                        <th class="head0">Employee ID</th>
-                        <th class="head1">Name</th>
-                        <th class="head0">Role</th>
-                        <th class="head1">Salary</th>
-                        <th class="head0">SSN</th>
+                        <th class="head0">Full Name</th>
+                        <th class="head1">NIC</th>
+                        <th class="head0">Email</th>
+                        <th class="head1">Contact No</th>
+                        <th class="head0">Address</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody data-bind="{foreach: employees,afterRender: runWhenAllRenderDone}">
                     <tr class="gradeX">
-                        <td class="aligncenter"><span class="center">
-                            <input type="checkbox"/>
-                          </span></td>
-                        <td>1</td>
-                        <td>Amila</td>
-                        <td>Win 95+</td>
-                        <td class="center">4</td>
-                        <td class="center">X</td>
+                        <td class="aligncenter">
+                            <span class="center">
+                                <input type="checkbox"/>
+                            </span>
+                        </td>
+                        <td data-bind="text: fullName"></td>
+                        <td data-bind="text: nic"></td>
+                        <td data-bind="text: email"></td>
+                        <td class="center" data-bind="text: residentialPhone"></td>
+                        <td class="center" data-bind="text: permanentAddress"></td>
                     </tr>
-                    <tr class="gradeC">
-                        <td class="aligncenter"><span class="center">
-                            <input type="checkbox"/>
-                          </span></td>
-                        <td>2</td>
-                        <td>Kokila</td>
-                        <td>Win 95+</td>
-                        <td class="center">5</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td class="aligncenter"><span class="center">
-                            <input type="checkbox"/>
-                          </span></td>
-                        <td>3</td>
-                        <td>Ravinda</td>
-                        <td>Win 95+</td>
-                        <td class="center">5.5</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td class="aligncenter"><span class="center">
-                            <input type="checkbox"/>
-                          </span></td>
-                        <td>4</td>
-                        <td>Janath</td>
-                        <td>Win 98+</td>
-                        <td class="center">6</td>
-                        <td class="center">A</td>
-                    </tr>
+
                     </tbody>
                 </table>
 

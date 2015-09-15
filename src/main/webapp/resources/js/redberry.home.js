@@ -61,8 +61,9 @@ jQuery(document).ready(function() {
             self.checkin.push(new TodayCheckin(self.checkinsJson[i]['time'], self.checkinsJson[i]['date'], self.checkinsJson[i]['sourceName'], self.checkinsJson[i]['imagePath'], self.checkinsJson[i]['customerName'], self.checkinsJson[i]['customerName']));
         }
 
-
     }
+
+
 
     ko.applyBindings(new HomeViewModel());
 

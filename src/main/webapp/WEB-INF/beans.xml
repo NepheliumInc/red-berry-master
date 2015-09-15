@@ -23,7 +23,11 @@
         <jaxrs:serviceBeans>
             <ref bean="customerServiceImpl" />
             <ref bean="employeeServiceImpl" />
-            <ref bean="userServiceImpl" />
+            <ref bean="roomServiceImpl" />
+            <ref bean="roomCategoryServiceImpl"/>
+            <ref bean="roomCapacityServiceImpl" />
+            <ref bean="testService" />
+
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
             <entry key="xml" value="application/xml" />
@@ -31,14 +35,19 @@
         </jaxrs:extensionMappings>
     </jaxrs:server>
 
-    <bean id="customerServiceImpl" class="com.redberry.mvc.service.CustomerServiceImpl"/>
-    <bean id="employeeServiceImpl" class="com.redberry.mvc.service.EmployeeServiceImpl"/>
-    <bean id="userServiceImpl" class="com.redberry.mvc.service.UserServiceImpl"/>
+    <bean id="customerServiceImpl" class="com.redberry.mvc.serviceImpl.CustomerServiceImpl"/>
+    <bean id="employeeServiceImpl" class="com.redberry.mvc.serviceImpl.EmployeeServiceImpl"/>
+    <bean id="roomServiceImpl" class="com.redberry.mvc.serviceImpl.RoomServiceImpl" />
+    <bean id="roomCategoryServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCategoryServiceImpl" />
+    <bean id="roomCapacityServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCapacityServiceImpl" />
+    <bean id="testService" class="com.redberry.mvc.service.TestService" />
 
 
     <bean id="customerDaoImpl" class="com.redberry.mvc.dao.CustomerDaoImpl"/>
     <bean id="employeeDaoImpl" class="com.redberry.mvc.dao.EmployeeDaoImpl"/>
-    <bean id="userDaoImpl" class="com.redberry.mvc.dao.UserDaoImpl"/>
+    <bean id="roomDaoImpl" class="com.redberry.mvc.dao.RoomDaoImpl" />
+    <bean id="roomCategoryDaoImpl" class="com.redberry.mvc.dao.RoomCategoryDaoImpl" />
+    <bean id="roomCapacityDaoImpl" class="com.redberry.mvc.dao.RoomCapacityDaoImpl"/>
 
 
     <!-- hibernate -->
