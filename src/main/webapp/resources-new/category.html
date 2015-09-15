@@ -271,8 +271,8 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Rooms
-                <small>Room Management</small>
+                Room Categories
+                <small>Room Category Management</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -280,20 +280,76 @@ desired effect
             </ol>
         </section>
 
+
         <!-- Main content -->
         <section class="content">
 
             <!-- Your Page Content Here -->
             <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
+                <div class="col-md-10 col-md-offset-1">
+
+                    <!--Create box-->
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title">Create new category</h3>
+                        </div>
+                        <div class="box-body">
+                            <form role="form" class="col-md-offset-1">
+                                <!--Column for text details-->
+                                <div class="col-md-8">
+
+                                    <div class="row form-group">
+                                        <label for="categoryName" class="col-md-4">Category Name: </label>
+
+                                        <div class="col-md-8">
+                                            <input id="categoryName" name="categoryName" data-bind="value: name"
+                                                   class="form-control" type="text"
+                                                   placeholder="Sample Category"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="categoryDescription" class="col-md-4">Description: </label>
+
+                                        <div class="col-md-8">
+                                            <textarea id="categoryDescription" name="categoryDescription"
+                                                      data-bind="value: description" class="form-control"
+                                                      type="text"
+                                                      placeholder="Sample Desc"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <label for="mealPlan" class="col-md-4">Meal Plan: </label>
+
+                                        <div class="col-md-8">
+
+                                            <select id="mealPlan" name="mealPlan"
+                                                    data-bind="options: mealPlans, optionsText:'description', value: mealPlan, optionsCaption: 'Select Meal Plan'"
+                                                    class="form-control"
+                                                    type="text">
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+                            <button class="btn btn-info" onclick="sendRoomCategoryRequest()">Add Category</button>
+
+                        </div>
+
+
+                    </div>
+
                     <!-- box begins -->
                     <div class="box box-info">
                         <!-- box header-->
                         <div class="box-header">
 
-                            <h3 class="box-title">Existing Rooms</h3>
-                            <a class="btn btn-info btn-sm pull-right" href="addRoom.html">Add New</a>
+                            <h3 class="box-title">Category</h3>
                         </div>
                         <!--box header ends-->
 
@@ -302,25 +358,24 @@ desired effect
                             <table id="roomDetails" class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Room No</th>
-                                    <th>Room Name</th>
-                                    <th>Category</th>
-                                    <th>Air Condition Status</th>
-                                    <th>Capacity</th>
+                                    <th>Category ID</th>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                    <th>Meal Plan</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
-                                <tbody data-bind="{foreach: rooms,afterRender: runWhenAllRenderDone}">
+                                <tbody data-bind="{foreach: roomCategories,afterRender: runWhenAllRenderDone}">
                                 <tr>
-                                    <td data-bind="text: displayNumber"></td>
-                                    <td data-bind="text: roomName"></td>
-                                    <td data-bind="text: roomCategory.name"></td>
-                                    <td data-bind="text: airconditionState"></td>
-                                    <td data-bind="text: roomCapacity.name"></td>
+                                    <td data-bind="text: id"></td>
+                                    <td data-bind="text: name"></td>
+                                    <td data-bind="text: description"></td>
+                                    <td data-bind="text: mealPlan.description"></td>
                                     <td><a class="label label-danger" href=""
-                                           data-bind="click: $root.removeRoom">Remove</a> <a class="label label-info"
-                                                                                            href=""
-                                                                                            data-bind="click: $root.viewRoom">View</a>
+                                           data-bind="click: $root.removeCategory">Remove</a> <a
+                                            class="label label-info"
+                                            href=""
+                                            data-bind="click: ">View</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -332,77 +387,6 @@ desired effect
                 </div>
             </div>
 
-
-            <!-- modal -->
-
-            <div class="modal" id="modal-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="box box-info">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">×</span></button>
-                                <h4 class="modal-title">Details of the Room</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <table class="table table-striped">
-                                            <tbody>
-                                            <tr>
-                                                <td><b>Room Id: </b></td>
-                                                <td data-bind="text: roomId"></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><b>Display Number: </b></td>
-                                                <td data-bind="text: displayNumber"></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><b>Room Name: </b></td>
-                                                <td data-bind="text: roomName"></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><b>Aircondition State: </b></td>
-                                                <td data-bind="text: airconditionState"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><b>Room Capacity: </b></td>
-                                                <td data-bind="text: roomCapacity"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><b>Room Category: </b></td>
-                                                <td data-bind="text: roomCategory"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><b>Extension Number: </b></td>
-                                                <td data-bind="text: extensionNumber"></td>
-                                            </tr>
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img id="roomImage" src="dist/img/default_male_avatar.gif"
-                                             class="img-rounded img-responsive"
-                                             style="width:140px;height:140px;">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-info pull-right" data-dismiss="modal">Close</button>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
 
         </section>
         <!-- /.content -->
@@ -433,7 +417,7 @@ desired effect
                 <h3 class="control-sidebar-heading">Recent Activity</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                             <div class="menu-info">
@@ -449,7 +433,7 @@ desired effect
                 <h3 class="control-sidebar-heading">Tasks Progress</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="label label-danger pull-right">70%</span>
@@ -516,94 +500,111 @@ desired effect
 <script type="text/javascript">
 
 
-    var roomViewModel = function () {
+    var categoryViewModel = function () {
         var self = this;
 
-        self.roomId = ko.observable();
-        self.roomName = ko.observable();
-        self.airconditionState = ko.observable();
-        self.roomCapacity = ko.observable();
-        self.displayNumber = ko.observable();
-        self.roomCategory = ko.observable();
-        self.extensionNumber = ko.observable();
+        self.mealPlans = ko.observableArray();
+        self.roomCategories = ko.observableArray();
 
-        //load rooms from database
+        self.name = ko.observable();
+        self.description = ko.observable();
+        self.mealPlan = ko.observable();
 
-        self.rooms = ko.observableArray();
 
-        self.loadRooms = function(){
+        self.loadMealPlans = function () {
             jQuery.ajax({
 
-                url: "/redberry/services/room/getrooms",
+                url: "/redberry/services/mealPlan/getMealPlans",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
-                    self.rooms(data);
+                    self.mealPlans(data);
 
                 }
             });
+        }
 
+        self.loadRoomCategories = function () {
+            jQuery.ajax({
+
+                url: "/redberry/services/roomCategory/getRoomCategories",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    self.roomCategories(data);
+
+                }
+            });
         }
 
 
+        self.removeCategory = function () {
 
-
-        //remove a room
-
-        self.removeRoom = function () {
-
-            var r = confirm("Do you realy want to remove this room?");
+            var r = confirm("Do you realy want to remove this category?");
             if (r == true) {
-                alert(JSON.stringify(self.rooms()[self.rooms.indexOf(this)]));
+                alert(JSON.stringify(self.roomCategories()[self.roomCategories.indexOf(this)]));
                 jQuery.ajax({
-                    url: "/redberry/services/room/deleteroom",
+                    url: "/redberry/services/roomCategory/deleteRoomCategory",
                     method: "DELETE",
                     dataType: "JSON",
                     contentType: "application/json",
-                    data: JSON.stringify(self.rooms()[self.rooms.indexOf(this)]),
+                    data: JSON.stringify(self.roomCategories()[self.roomCategories.indexOf(this)]),
                     success: function (data) {
 
                         alert(data);
                     }
                 });
-                self.rooms.remove(this);
+                self.roomCategories.remove(this);
             }
 
 
         }
 
 
-        //view a room
-
-        self.viewRoom = function () {
-            self.roomId(this.roomId);
-            self.roomName(this.roomName);
-            self.airconditionState(this.airconditionState);
-            self.roomCapacity(this.roomCapacity.name);
-            self.displayNumber(this.displayNumber);
-            self.roomCategory(this.roomCategory.name);
-            self.extensionNumber(this.extensionNumber);
-
-
-
-            $('#modal-1').modal('toggle');
-        }
-
-
-
     }
 
 
-    $(document).ready(function () {
+    //$(document).ready(function () {
 
 
-        var model = new roomViewModel();
-        model.loadRooms();
+        var model = new categoryViewModel();
+        model.loadMealPlans();
+        model.loadRoomCategories();
         ko.applyBindings(model);
 
 
-    });
 
+
+
+    //});
+
+
+    function makeRoomCategoryJSON() {
+
+        var obj = ko.toJS(model);
+        delete obj.mealPlans;
+        delete  obj.roomCategories;
+
+        obj = ko.toJSON(obj);
+
+        return obj;
+    }
+
+    function sendRoomCategoryRequest() {
+
+        $.ajax({
+            type: 'POST',
+            url: '/redberry/services/roomCategory/addRoomCategory',
+            contentType: 'application/json',
+            dataType: 'JSON',
+            data: makeRoomCategoryJSON(),
+
+
+        });
+
+        window.location.href = 'category.html';
+
+    }
 
 </script>
 

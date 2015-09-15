@@ -1,10 +1,8 @@
 package com.redberry.mvc.database;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 /**
  * Created by Lakshan Vithana on 9/1/2015.
@@ -24,8 +22,25 @@ public class TravelAgent {
     private String accountNo;
     private String accountName;
     private String accountBranch;
-    private double rates;
 
+    @OneToMany (fetch = FetchType.EAGER)
+    private List<Rates> rates;
+
+
+    public TravelAgent() {
+    }
+
+    public TravelAgent(String fullName, String address, String phoneNo, String email, String bankName, String accountNo, String accountName, String accountBranch, List<Rates> rates) {
+        this.fullName = fullName;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.email = email;
+        this.bankName = bankName;
+        this.accountNo = accountNo;
+        this.accountName = accountName;
+        this.accountBranch = accountBranch;
+        this.setRates(rates);
+    }
 
     public int getId() {
         return id;
@@ -99,11 +114,12 @@ public class TravelAgent {
         this.accountBranch = accountBranch;
     }
 
-    public double getRates() {
+
+    public List<Rates> getRates() {
         return rates;
     }
 
-    public void setRates(double rates) {
+    public void setRates(List<Rates> rates) {
         this.rates = rates;
     }
 }

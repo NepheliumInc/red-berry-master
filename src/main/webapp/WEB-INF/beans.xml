@@ -26,6 +26,8 @@
             <ref bean="roomServiceImpl" />
             <ref bean="roomCategoryServiceImpl"/>
             <ref bean="travelAgentServiceImpl"/>
+            <ref bean="ratesServiceImpl"/>
+
             <ref bean="testService" />
 
         </jaxrs:serviceBeans>
@@ -40,7 +42,9 @@
     <bean id="roomServiceImpl" class="com.redberry.mvc.serviceImpl.RoomServiceImpl" />
     <bean id="roomCategoryServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCategoryServiceImpl" />
     <bean id="travelAgentServiceImpl" class="com.redberry.mvc.serviceImpl.TravelAgentServiceImpl" />
+    <bean id="ratesServiceImpl" class="com.redberry.mvc.serviceImpl.RatesServiceImpl" />
     <bean id="testService" class="com.redberry.mvc.service.TestService" />
+
 
 
     <bean id="customerDaoImpl" class="com.redberry.mvc.dao.CustomerDaoImpl"/>
@@ -48,6 +52,8 @@
     <bean id="roomDaoImpl" class="com.redberry.mvc.dao.RoomDaoImpl" />
     <bean id="roomCategoryDaoImpl" class="com.redberry.mvc.dao.RoomCategoryDaoImpl" />
     <bean id="travelAgentDaoImpl" class="com.redberry.mvc.dao.TravelAgentDaoImpl" />
+    <bean id="ratesDaoImpl" class="com.redberry.mvc.dao.RatesDaoImpl" />
+
 
 
     <!-- hibernate -->
