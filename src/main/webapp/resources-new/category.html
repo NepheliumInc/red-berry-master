@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>AdminLTE 2 | Room Category</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
@@ -276,7 +276,8 @@ desired effect
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li class="active">Room</li>
+                <li><a href="addRoom.html">Add New Room</a></li>
+                <li class="active">Room Category</li>
             </ol>
         </section>
 
@@ -294,78 +295,67 @@ desired effect
                             <h3 class="box-title">Create new category</h3>
                         </div>
                         <div class="box-body">
-                            <form role="form">
+                            <form role="form" class="col-md-offset-1">
                                 <!--Column for text details-->
                                 <div class="col-md-8">
 
                                     <div class="row form-group">
-                                        <label for="roomName" class="col-md-4">Room Name: </label>
+                                        <label for="categoryName" class="col-md-4">Category Name: </label>
 
                                         <div class="col-md-8">
-                                            <input id="roomName" name="roomName" data-bind="value: roomName"
+                                            <input id="categoryName" name="categoryName" data-bind="value: name"
                                                    class="form-control" type="text"
-                                                   placeholder="Sample Room"/>
+                                                   placeholder="Sample Category"/>
                                         </div>
                                     </div>
 
                                     <div class="row form-group">
-                                        <label for="displayNumber" class="col-md-4">Display Number: </label>
+                                        <label for="categoryDescription" class="col-md-4">Description: </label>
 
                                         <div class="col-md-8">
-                                            <input id="displayNumber" name="displayNumber"
-                                                   data-bind="value: displayNumber" class="form-control"
-                                                   type="number"
-                                                   placeholder="101"/>
+                                            <textarea id="categoryDescription" name="categoryDescription"
+                                                      data-bind="value: description" class="form-control"
+                                                      type="text"
+                                                      placeholder="Sample Desc"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="row form-group">
-                                        <label for="roomCategory" class="col-md-4">Category: </label>
+                                        <label for="mealPlan" class="col-md-4">Meal Plan: </label>
 
-                                        <div class="col-md-8">
+                                        <div class="col-md-6">
 
-                                            <div class="col-md-10">
-                                                <select id="roomCategory" name="roomCategory"
-                                                        data-bind="options: roomCategories, optionsText:'name', value: roomCategory, optionsCaption: 'Select Category'"
-                                                        class="form-control"
-                                                        type="text">
-                                                </select>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <a class="btn btn-info btn-sm pull-right" href="category.html">New</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <label for="roomCapacity" class="col-md-4">Capacity: </label>
-
-                                        <div class="col-md-8 select2-container--default">
-                                            <select id="roomCapacity" name="roomCapacity"
-                                                    data-bind="options: roomCapacities, optionsText: 'name', value: roomCapacity, optionsCaption: 'Select Capacity'"
-                                                    class="form-control"
-                                                    type="text">
-
-
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <label for="airconditionState" class="col-md-4">Air Condition State: </label>
-
-                                        <div class="col-md-8">
-                                            <select id="airconditionState" name="airconditionState"
-                                                    data-bind="options: ['A/C', 'Non A/C'], value: airconditionState, optionsCaption: 'Select Aircondition State'"
+                                            <select id="mealPlan" name="mealPlan"
+                                                    data-bind="options: mealPlans, optionsText:'description', value: mealPlan, optionsCaption: 'Select Meal Plan'"
                                                     class="form-control"
                                                     type="text">
                                             </select>
                                         </div>
+                                        <div class="col-md-2" style="padding-right: 0; padding-left: 0;">
+                                            <a class="btn btn-info btn-sm" href="mealPlan.html">New</a>
+                                        </div>
+
                                     </div>
+
+                                    <div class="row form-group">
+                                        <label for="price" class="col-md-4">Price: </label>
+
+                                        <div class="col-md-8">
+                                            <input id="price" name="price" data-bind="value: price"
+                                                   class="form-control" type="text"
+                                                   placeholder=""/>
+                                        </div>
+                                    </div>
+
 
                                 </div>
+
                             </form>
+                            <button class="btn btn-info" onclick="sendRoomCategoryRequest()">Saves</button>
+
                         </div>
+
+
                     </div>
 
                     <!-- box begins -->
@@ -374,7 +364,6 @@ desired effect
                         <div class="box-header">
 
                             <h3 class="box-title">Category</h3>
-                            <a class="btn btn-info btn-sm pull-right" href="addRoom.html">Add New</a>
                         </div>
                         <!--box header ends-->
 
@@ -383,25 +372,26 @@ desired effect
                             <table id="roomDetails" class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Room No</th>
-                                    <th>Room Name</th>
-                                    <th>Category</th>
-                                    <th>Air Condition Status</th>
-                                    <th>Capacity</th>
+                                    <th>Category ID</th>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                    <th>Meal Plan</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
-                                <tbody data-bind="{foreach: rooms,afterRender: runWhenAllRenderDone}">
+                                <tbody data-bind="{foreach: roomCategories,afterRender: runWhenAllRenderDone}">
                                 <tr>
-                                    <td data-bind="text: displayNumber"></td>
-                                    <td data-bind="text: roomName"></td>
-                                    <td data-bind="text: roomCategory.name"></td>
-                                    <td data-bind="text: airconditionState"></td>
-                                    <td data-bind="text: roomCapacity.name"></td>
+                                    <td data-bind="text: id"></td>
+                                    <td data-bind="text: name"></td>
+                                    <td data-bind="text: description"></td>
+                                    <td data-bind="text: mealPlan.description"></td>
+                                    <td>Rs: <span data-bind="text: price"></span></td>
                                     <td><a class="label label-danger" href=""
-                                           data-bind="click: $root.removeRoom">Remove</a> <a class="label label-info"
-                                                                                             href=""
-                                                                                             data-bind="click: $root.viewRoom">View</a>
+                                           data-bind="click: $root.removeCategory">Remove</a> <a
+                                            class="label label-info"
+                                            href=""
+                                            data-bind="click: ">Edit</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -529,19 +519,109 @@ desired effect
     var categoryViewModel = function () {
         var self = this;
 
+        self.mealPlans = ko.observableArray();
+        self.roomCategories = ko.observableArray();
+
+        self.name = ko.observable();
+        self.description = ko.observable();
+        self.mealPlan = ko.observable();
+        self.price = ko.observable();
+
+
+        self.loadMealPlans = function () {
+            jQuery.ajax({
+
+                url: baseUrl+"/redberry/services/mealPlan/getMealPlans",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    self.mealPlans(data);
+
+                }
+            });
+        }
+
+        self.loadRoomCategories = function () {
+            jQuery.ajax({
+
+                url: baseUrl+"/redberry/services/roomCategory/getRoomCategories",
+                method: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    self.roomCategories(data);
+
+                }
+            });
+        }
+
+
+        self.removeCategory = function () {
+
+            var r = confirm("Do you realy want to remove this category?");
+            if (r == true) {
+                alert(JSON.stringify(self.roomCategories()[self.roomCategories.indexOf(this)]));
+                jQuery.ajax({
+                    url: baseUrl+"/redberry/services/roomCategory/deleteRoomCategory",
+                    method: "DELETE",
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    data: JSON.stringify(self.roomCategories()[self.roomCategories.indexOf(this)]),
+                    success: function (data) {
+
+                        alert(data);
+                    }
+                });
+                self.roomCategories.remove(this);
+            }
+
+
+        }
+
 
     }
 
 
-    $(document).ready(function () {
+    //$(document).ready(function () {
 
 
         var model = new categoryViewModel();
+        model.loadMealPlans();
+        model.loadRoomCategories();
         ko.applyBindings(model);
 
 
-    });
 
+
+
+    //});
+
+
+    function makeRoomCategoryJSON() {
+
+        var obj = ko.toJS(model);
+        delete obj.mealPlans;
+        delete  obj.roomCategories;
+
+        obj = ko.toJSON(obj);
+
+        return obj;
+    }
+
+    function sendRoomCategoryRequest() {
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl+'/redberry/services/roomCategory/addRoomCategory',
+            contentType: 'application/json',
+            dataType: 'JSON',
+            data: makeRoomCategoryJSON(),
+
+
+        });
+
+        window.location.href = 'category.html';
+
+    }
 
 </script>
 

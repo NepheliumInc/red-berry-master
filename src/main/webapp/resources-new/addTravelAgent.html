@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>AdminLTE 2 | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome Icons -->
@@ -17,7 +18,7 @@
     <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 
 
-    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <link href="dist/css/skins/skin-red.min.css" rel="stylesheet" type="text/css"/>
     <!-- data load for existing travel agents-->
     <script type="text/javascript">
 
@@ -26,7 +27,7 @@
 
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-red sidebar-mini">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -668,7 +669,7 @@
         $.ajax({
 
             type: 'POST',
-            url: '/redberry/services/travelAgent/addtravelagent',
+            url:  baseUrl+'/redberry/services/travelAgent/addtravelagent',
             contentType: 'application/json',
             dataType: 'JSON',
             data: makeTravelAgentJSON(),

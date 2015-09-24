@@ -6,9 +6,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ARedBerry | Check In</title>
+    <title>RedBerry | Check In</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome Icons -->
@@ -271,8 +272,8 @@ desired effect
             <ul class="sidebar-menu">
                 <li class=""><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
                 <li class="active"><a href="checkin.html"><i class="fa fa-link"></i> <span>Check In</span></a></li>
-                <li class="active"><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
-                <li class="active"><a href="travelAgent.html"><i class='fa fa-user-plus'></i> <span>Travel Agent Setup</span></a>
+                <li><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
+                <li><a href="travelAgent.html"><i class='fa fa-user-plus'></i> <span>Travel Agent Setup</span></a>
                 <li class=""><a href="rooms.html"><i class="fa fa-link"></i> <span>Room</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
@@ -418,7 +419,8 @@ desired effect
                                     <div class="tab-content" data-bind="template: { name: 'roomConfig_body',foreach: Rooms,as:Room}"></div><!-- /.tab-content -->
 
                                     <div class="pull-right">
-                                        <button class="btn btn-warning"><i class="fa  fa-shopping-cart"></i> Cancel Order</button>
+                                        <button class="btn btn-default" data-bind="click: resetFilters"><i class="fa fa-refresh"></i> Reset</button>
+                                        <button class="btn btn-warning"><i class="fa  fa-remove"></i> Cancel Order</button>
                                         <button class="btn btn-primary" data-bind="click: orderSend"><i class="fa  fa-shopping-cart"></i> Check In</button>
                                     </div><!-- /.form group -->
                                     <br/>
@@ -549,6 +551,7 @@ desired effect
 <script type="text/html" id="roomConfig_body">
 
     <div class="tab-pane active" data-bind="attr: {id: 'room'+no()},visible : show()">
+        <div class="row">
         <div class="col-md-6">
 
             <div class="form-group">
@@ -571,13 +574,26 @@ desired effect
                         <i class="fa fa-home"></i>
                     </div>
 
-                    <select class="form-control" data-bind="options: AC ,selectedOptions: $root.selectedAC, event:{change: $root.ACChanged}"></select>
+                    <select class="form-control" data-bind="options: $root.AC ,selectedOptions: $root.selectedAC, event:{change: $root.ACChanged}"></select>
 
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
         </div>
 
         <div class="col-md-6">
+
+        <div class="form-group">
+            <label>Room Capacity :</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-home"></i>
+                </div>
+
+                <select class="form-control" data-bind="options: $root.roomCap ,selectedOptions: $root.selectedCapacity, event:{change: $root.mealConfigChanged}"></select>
+
+            </div><!-- /.input group -->
+        </div><!-- /.form group -->
+
 
         <div class="form-group">
             <label>Meal Configuration :</label>
@@ -592,46 +608,53 @@ desired effect
         </div><!-- /.form group -->
 
         </div>
+        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-            <div class="form-group">
-                <label>Select Room :</label>
-                <div class="input-group">
-                    <div class="row room-rec" data-bind="foreach: $root.allRooms">
-                        <div class="col-sm-1" data-bind="text: displayNumber"></div>
-                    </div>
-                </div><!-- /.input group -->
-            </div><!-- /.form group -->
+        <div class="row roomrow">
+            <div class="col-md-8">
 
             <div class="form-group">
-                <label>Select Room :</label>
+                <label>&nbsp; &nbsp; Rooms :</label>
                 <div class="input-group">
                     <div class="row room-rec" data-bind="foreach: $root.roomsToShow">
-                        <div class="col-sm-1" data-bind="text: displayNumber, click:$root.selectRoom"></div>
+                        <div class="col-sm-1" data-bind="click:$root.selectRoom , css: roomStatus"><p data-bind="text: displayNumber"></p> <i class="fa fa-home fa-2x"></i></div>
                     </div>
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
-                </div>
+            </div>
+            <div class="col-md-4">
+            <div class="form-group roombox">
+                <label> <i class="fa fa-bed"></i> Selected Room :</label>
+                <div class="input-group">
+                    <table class="table table-bordered table-hover">
+                    	<tbody>
+                    		<tr>
+                    			<td data-bind="">Name</td>
+                    			<td data-bind="">TP Extension</td>
+                    		</tr>
+                            <tr>
+                    			<td data-bind="">ASdw</td>
+                    			<td data-bind="">123</td>
+                    		</tr>
+                    	</tbody>
+                    </table>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+            </div>
+
+
         </div>
 
     </div><!-- /.tab-pane -->
 </script>
 <script type="text/javascript">
 
-    var baseUrl = "http://localhost:8080";
+
 
     var Room = function(no, show) {
         var Rself = this;
         Rself.no = ko.observable(no);
-        Rself.roomId = ko.observable();
-        Rself.category = ko.observableArray(['Duplex','Cabana','luxury']);
-        //Rself.selectedCategory = ko.observable('Duplex');
-        Rself.AC = ko.observableArray(['NO','YES']);
-        //Rself.selectedAC = ko.observable('NO');
-        Rself.occupancy = ko.observableArray(['Available','Occupied','Cleaning']);
-        Rself.mealConfigs = ko.observableArray(['Full-Board','Half-Board', 'All Inclusive']);
-        //Rself.selectedMeal = ko.observable('Full-Board');
+
         Rself.show = ko.observable(show);
     };
 
@@ -648,10 +671,13 @@ desired effect
         self.noOfRooms = ko.observable(1);
 
         self.roomCat = ko.observableArray();
+        self.roomCap = ko.observableArray(['none..','Single','Double','Family']);
+        self.AC = ko.observableArray(['none..','YES','NO']);
         self.mealPlans = ko.observableArray();
-        self.selectedAC = ko.observable('NO');
-        self.selectedMeal = ko.observable('Full-Board');
-        self.selectedCategory = ko.observable('Duplex');
+        self.selectedAC = ko.observable('none..');
+        self.selectedMeal = ko.observable('none..');
+        self.selectedCategory = ko.observable('none..');
+        self.selectedCapacity = ko.observable('none..');
         self.allRooms = ko.observableArray(); //load all rooms
         self.typeToShow = ko.observable("NO");
         var pointedRoomTab = 1;
@@ -662,12 +688,29 @@ desired effect
             var AC = self.selectedAC();
             var meal = self.selectedMeal();
             var category = self.selectedCategory();
+            var capacity = self.selectedCapacity();
+            if(AC == "none.." && category == "none.." && capacity == "none.." && meal == "none.."){
+                return self.allRooms();
+            }
             return ko.utils.arrayFilter(self.allRooms(), function(room) {
-                return room.airconditionState == AC && room.roomCategory.name == category && room.roomCategory.availableMealPlans;
+
+                var mealplanCheck = ko.utils.arrayFirst(room.roomCategory.availableMealPlans , function(mealplan){
+                    return mealplan.name == meal || meal == "none..";
+                },meal);
+
+                return (room.airconditionState == AC || AC == "none..") && (room.roomCategory.name == category || category == "none..") && (room.roomCapacity.name == capacity || capacity == "none..") && mealplanCheck;
             });
         });
 
+        self.resetFilters = function(){
+            self.selectedAC('none..');
+            self.selectedMeal('none..');
+            self.selectedCategory('none..');
+            self.selectedCapacity('none..');
+        }
+
         self.selectRoom =function(obj){
+            alert(JSON.stringify(obj, null, 4));
             console.log(obj);
         }
 
@@ -679,9 +722,11 @@ desired effect
                 dataType: "JSON",
                 success: function (data) {
                     self.roomCat(data);
-
+                    self.roomCat.unshift({"name":"none.."});
+                    self.selectedCategory('none..');
                 }
             });
+
 
             jQuery.ajax({
                 url: baseUrl+"/redberry/services/mealPlan/getMealPlans",
@@ -689,7 +734,8 @@ desired effect
                 dataType: "JSON",
                 success: function (data) {
                     self.mealPlans(data);
-
+                    self.mealPlans.unshift({"name":"none.."});
+                    self.selectedMeal('none..');
                 }
             });
 
@@ -720,39 +766,6 @@ desired effect
         self.Rooms = ko.observableArray([
             new Room(1,true)
         ]);
-
-       /* self.categoryChanged = function (obj, event) {
-
-            if (event.originalEvent) { //user changed
-
-                //alert(this.selectedCategory()[0]);
-            } else { // program changed
-               //do nothing
-            }
-
-        }
-
-        self.mealConfigChanged = function (obj, event) {
-
-            if (event.originalEvent) { //user changed
-
-                //alert(this.selectedMeal()[0]);
-            } else { // program changed
-                //do nothing
-            }
-
-        }
-
-        self.ACChanged = function (obj, event) {
-
-            if (event.originalEvent) { //user changed
-
-               // alert(this.selectedAC()[0]);
-            } else { // program changed
-                //do nothing
-            }
-
-        }*/
 
 
         self.TravelSources = ko.observableArray(['none','Lanka Tours','Sri Tours','Sl Tour Guide','Jhon Snow']);
@@ -836,8 +849,6 @@ desired effect
 
 
 </script>
-
-
 
 </body>
 </html>

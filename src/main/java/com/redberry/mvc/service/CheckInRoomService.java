@@ -2,6 +2,7 @@ package com.redberry.mvc.service;
 
 import com.redberry.mvc.database.CheckInRoom;
 import com.redberry.mvc.database.CheckInRoom;
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;
@@ -11,7 +12,9 @@ import javax.ws.rs.core.Response;
 /**
  * Created by Kokila on 9/8/15.
  */
-
+@CrossOriginResourceSharing(allowOrigins = {
+        "http://redberry.com","https://redberry.com","http://www.redberry.com","https://www.redberry.com"
+})
 @Path("/checkInRoom")
 @WebService(name="services")
 public interface CheckInRoomService {

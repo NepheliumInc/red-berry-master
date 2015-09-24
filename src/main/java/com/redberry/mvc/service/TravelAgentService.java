@@ -2,6 +2,7 @@ package com.redberry.mvc.service;
 
 import com.redberry.mvc.database.Employee;
 import com.redberry.mvc.database.TravelAgent;
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;
@@ -11,7 +12,9 @@ import javax.ws.rs.core.Response;
 /**
  * Created by Lakshan Vithana on 9/3/2015.
  */
-
+@CrossOriginResourceSharing(allowOrigins = {
+        "http://redberry.com","https://redberry.com","http://www.redberry.com","https://www.redberry.com"
+})
 @Path("/travelAgent")
 @WebService(name="services")
 public interface TravelAgentService {

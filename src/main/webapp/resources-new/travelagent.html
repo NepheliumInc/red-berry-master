@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>AdminLTE 2 | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome Icons -->
@@ -16,13 +17,13 @@
     <!-- DATA TABLES -->
     <link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
 
-    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <link href="dist/css/skins/skin-red.min.css" rel="stylesheet" type="text/css"/>
     <!-- data load for existing travel agents-->
     <script type="text/javascript" src="plugins/knockout/knockout-3.3-min.js"> </script>
 
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-red sidebar-mini">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -225,11 +226,7 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class=""><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
-                <li class="active"><a href="checkin.html"><i class="fa fa-link"></i> <span>Check In</span></a></li>
-                <li class="active"><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
-                <li class="active"><a href="travelagent.html"><i class='fa fa-user-plus'></i> <span>Travel Agent Setup</span></a>
-                <li class=""><a href="rooms.html"><i class="fa fa-link"></i> <span>Room</span></a></li>
+
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -598,7 +595,7 @@
 
         self.loadTravelAgents = function(){
             jQuery.ajax({
-                url: "/redberry/services/travelAgent/gettravelagents",
+                url: baseUrl+"/redberry/services/travelAgent/gettravelagents",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data){
@@ -613,7 +610,7 @@
             if (check == true) {
 
                 jQuery.ajax({
-                    url: "/redberry/services/travelAgent/deletetravelagent",
+                    url:  baseUrl+"/redberry/services/travelAgent/deletetravelagent",
                     method: "DELETE",
                     dataType: "JSON",
                     contentType: "application/json",
