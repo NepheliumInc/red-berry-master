@@ -5,7 +5,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Amila on 7/31/15.
@@ -27,8 +29,10 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public List<Room> getRooms() {
-        return sessionFactory.getCurrentSession().createCriteria(Room.class).list();
+    public Set<Room> getRooms() {
+        List<Room> list = sessionFactory.getCurrentSession().createCriteria(Room.class).list();
+        Set<Room> room = new HashSet<Room>(list);
+        return room;
     }
 
     @Override

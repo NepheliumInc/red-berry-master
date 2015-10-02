@@ -816,7 +816,7 @@
 
 				ed.onMouseUp.add(function() {
 					var e = DOM.get(ed.id + '_external');
-					DOM.show(e);
+					DOM.show({model: e});
 
 					DOM.hide(lastExtID);
 
@@ -825,12 +825,12 @@
 						Event.remove(ed.id + '_external_close', 'click', f);
 					});
 
-					DOM.show(e);
+					DOM.show({model: e});
 					DOM.setStyle(e, 'top', 0 - DOM.getRect(ed.id + '_tblext').h - 1);
 
 					// Fixes IE rendering bug
 					DOM.hide(e);
-					DOM.show(e);
+					DOM.show({model: e});
 					e.style.filter = '';
 
 					lastExtID = ed.id + '_external';
