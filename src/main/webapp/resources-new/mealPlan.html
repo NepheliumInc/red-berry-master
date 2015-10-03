@@ -497,7 +497,7 @@ desired effect
         self.loadMealPlans = function () {
             jQuery.ajax({
 
-                url: "/redberry/services/mealPlan/getMealPlans",
+                url: baseUrl+"/redberry/services/mealPlan/getMealPlans",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
@@ -516,7 +516,7 @@ desired effect
             if (r == true) {
                 alert(JSON.stringify(self.mealPlans()[self.mealPlans.indexOf(this)]));
                 jQuery.ajax({
-                    url: "/redberry/services/mealPlan/deleteMealPlan",
+                    url: baseUrl+"/redberry/services/mealPlan/deleteMealPlan",
                     method: "DELETE",
                     dataType: "JSON",
                     contentType: "application/json",
@@ -564,7 +564,7 @@ desired effect
 
         $.ajax({
             type: 'POST',
-            url: '/redberry/services/mealPlan/addMealPlan',
+            url: baseUrl+'/redberry/services/mealPlan/addMealPlan',
             contentType: 'application/json',
             dataType: 'JSON',
             data: makeMealPlanJSON(),

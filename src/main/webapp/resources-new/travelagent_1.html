@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
+
 <html>
 <head>
     <meta charset="UTF-8">
     <title>AdminLTE 2 | Dashboard</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome Icons -->
@@ -18,39 +14,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
     <!-- Theme style -->
     <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
-    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <!-- data load for existing travel agents-->
+    <script type="text/javascript">
+
+
+    </script>
+
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -245,7 +218,7 @@ desired effect
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search..."/>
               <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
                 </div>
@@ -256,16 +229,27 @@ desired effect
             <ul class="sidebar-menu">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Employee</span></a></li>
-                <li><a href="#" id="room"><i class="fa fa-link"></i> <span>Rooms</span></a></li>
+                <li><a href="#"><i class='fa fa-home'></i> <span>Home</span></a></li>
+                <li><a href="#"><i class='fa fa-users'></i> <span>Employee</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i
+                    <a href="#"><i class='fa fa-bed'></i> <span>Room Setup</span> <i
                             class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="#">Link in level 2</a></li>
                         <li><a href="#">Link in level 2</a></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#"><i class='fa fa-link'></i> <span>Booking Status</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="#">Link in level 2</a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="travelagent-setup.html"><i class='fa fa-user-plus'></i> <span>Travel Agent Setup</span></a>
+                </li>
+                <li><a href="#"><i class='fa fa-link'></i> <span>Offer Setup</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -273,120 +257,213 @@ desired effect
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" id="maincontent">
+    <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Employee
-                <small>Employee Management</small>
+                Travel Agent Setup
+                <small>Optional description</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
+                <li class="active">Add New</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
+
             <!-- Your Page Content Here -->
-            <div class="row">
+            <div class="row" style="margin-top: 22px;">
 
+                <div class="col-md-1"></div>
+                   <div class="col-md-10">
+                    <!-- box begins -->
+                    <div class="box box-info">
+                        <!-- box header-->
+                        <div class="box-header">
+                            <h3 class="box-title">Create New Travel Agents</h3>
 
-                <div class="col-lg-8">
-
-                    <div class="box box-primary col-lg-6">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Add New Employee</h3>
                         </div>
+                        <!--box header ends-->
 
-                        <form role="form">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label>Full Name: </label>
-                                    <input class="form-control" type="text" id="fullName" name="fullName" placeholder="John Doe"/>
-                                </div>
+                        <!--box content begins-->
+                        <div class="box-body" style="padding: 20px">
+                            <!-- Employee details form-->
+                            <form role="form">
+                                <!--Column for text details-->
+                                <div class="col-md-8">
 
-
-                                <div class="form-group">
-                                    <label>Email: </label>
-                                    <input class="form-control" type="email" id="email" name="email" placeholder="john.doe@redberry.com"/>
-                                </div>
-
-                                <div class="">
-                                    <div class="form-group">
-                                        <label>Telephone: </label>
-
-                                        <P>Residential
-                                            <input class="form-control" type="tel" id="residentialPhone"
-                                                   name="residentialPhone"/></P>
-
-
-                                        <P>Permanent
-                                            <input class="form-control" type="tel" id="permanentPhone"
-                                                   name="permanentPhone"/>
-                                        </P>
+                                    <div class="row form-group" style="margin-top: 20px;">
+                                        <label class="col-md-4" for="travelAgentName">Travel Agent Name:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" name="travelAgentName" id="travelAgentName" data-bind="value:travelAgentName"
+                                                   placeholder="Enter Name">
+                                        </div>
                                     </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentAddress">Address:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control"  id="travelAgentAddress" placeholder="Enter Address" data-bind="value:travelAgentAddress">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4"  for="travelAgentPhoneNo">Phone No:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="travelAgentPhoneNo" placeholder="Enter Phone Number" data-bind="value:travelAgentPhoneNo">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentEmail">Email:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control"  id="travelAgentEmail"  placeholder="Enter Email" data-bind="value:travelAgentEmail">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentAccountNo">Account No:</label>
+
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control"  id="travelAgentAccountNo" placeholder="Enter Account Number" data-bind="value:travelAgentAccountNo">
+                                        </div>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentAccountName">Account Name:</label>
+
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="travelAgentAccountName" placeholder="Enter Account Name" data-bind="value:travelAgentAccountName">
+                                        </div>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentAccountBranch">Branch Name:</label>
+
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="travelAgentAccountBranch" placeholder="Enter Branch Name" data-bind="value:travelAgentAccountBranch">
+                                        </div>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4" for="travelAgentRates">Rates:</label>
+
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control"
+                                                   id="travelAgentRates" placeholder="Enter Rates" data-bind="value:travelAgentRates">
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
 
+                                <!--column for profile picture-->
+                                <div class="col-md-4">
+                                    <div class="box-body">
+                                        <div class="row form-group" style="margin-top: 10px;">
+                                            <img id="employeeImage" src="dist/img/avatar5.png" class="img-rounded img-responsive"  style="width:140px;height:140px;">
+                                            <input id="imageURL" name="imageURL" type="file" onchange="$('#employeeImage')[0].src = window.URL.createObjectURL(this.files[0])" style="margin-top: 18px;">
 
-                                <div class="form-group">
-                                    <label>NIC: </label>
-                                    <input class="form-control" type="text" id="nic" name="nic"/>
+                                        </div>
+                                    </div>
+
                                 </div>
+                            </form>
+                            <!--travel agent form ends-->
+                        </div>
+                        <!-- box content(body) ends-->
 
-                                <div class="form-group">
-                                    <label>Date of Birth: </label>
-                                    <input class="form-control" type="date" id="dob" name="dob"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Joined Date: </label>
-                                    <input class="form-control" type="date" id="joinedDate" name="joinedDate"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Starting Salary: </label>
-                                    <input class="form-control" type="number" id="startingSalary" name="startingSalary"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Residential Address: </label>
-                                    <textarea class="form-control" rows="3" id="residentialAddress" name="residentialAddress" placeholder="Residential Address"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Permanent Address: </label>
-                                    <textarea class="form-control" rows="3" id="permanentAddress" name="permanentAddress" placeholder="Permanent Address"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Previous working experience: (According to CV)</label>
-                                    <textarea class="form-control" rows="3" id="prevExperience" name="prevExperience" placeholder="Experiences"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Comments from previous work places: </label>
-                                    <textarea class="form-control" rows="3" id="commentsFromPrevWorkPlace" name="commentsFromPrevWorkPlace" placeholder="Experiences"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Contact information in any emergency: </label>
-                                    <input class="form-control" type="number" id="emergencyContact" name="emergencyContact"/>
-                                </div>
-
-
-
-                            </div>
+                        <!-- box footer begins-->
+                        <center>
                             <div class="box-footer">
-                                <input type="submit" class="btn btn-primary"/>
+                                <button type="button" onclick="$('form').trigger('reset')" class="btn btn-danger ">
+                                    Clear
+                                </button>
+                                <a href="" class="btn btn-info" data-toggle="modal" data-target="#NewAgentDetails">Next&nbsp;<i class="fa fa-angle-double-right"></i></a>
                             </div>
-                        </form>
+                        </center>
+                        <!-- box footer ends-->
+
                     </div>
+                    <!-- box ends-->
+
 
                 </div>
+            </div><!-- end of row-->
 
 
-            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="NewAgentDetails" role="dialog" data-bind="modal: { visible: modalVisible}">
+                <div class="modal-dialog" style="height: auto">
+                    <div class="box box-info">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">New Travel Agent Details</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <table  class="table table-bordered table-striped">
+
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Travel Agent Name: </b></td>
+                                                <td data-bind="text: travelAgentName" ></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Address: </b></td>
+                                                <td data-bind="text: travelAgentAddress"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Phone No: </b></td>
+                                                <td data-bind="text: travelAgentPhoneNo"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Email: </b></td>
+                                                <td data-bind="text: travelAgentEmail"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Bank Name: </b></td>
+                                                <td data-bind="text:travelAgentAccountNo"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Account Name: </b></td>
+                                                <td data-bind="text: travelAgentAccountName"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Branch Name: </b></td>
+                                                <td data-bind="text: travelAgentAccountBranch"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><b>Rates(Rs): </b></td>
+                                                <td data-bind="text: travelAgentRates"></td>
+                                            </tr>
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <img id="agentImage" src="dist/img/avatar5.png" class="img-rounded img-responsive"style="width:140px;height:140px;"
+                                             width="215" height="215">
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                                <a href="" class="btn btn-info" data-toggle="modal" data-target="#NewAgentDetails"><i class="fa fa-floppy-o"></i>&nbsp;Save</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!--end of model-->
 
 
         </section>
@@ -416,9 +493,9 @@ desired effect
             <!-- Home tab content -->
             <div class="tab-pane active" id="control-sidebar-home-tab">
                 <h3 class="control-sidebar-heading">Recent Activity</h3>
-                <ul class="control-sidebar-menu">
+                <ul class='control-sidebar-menu'>
                     <li>
-                        <a href="javascript:">
+                        <a href='javascript::;'>
                             <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                             <div class="menu-info">
@@ -432,9 +509,9 @@ desired effect
                 <!-- /.control-sidebar-menu -->
 
                 <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                <ul class="control-sidebar-menu">
+                <ul class='control-sidebar-menu'>
                     <li>
-                        <a href="javascript:">
+                        <a href='javascript::;'>
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="label label-danger pull-right">70%</span>
@@ -477,31 +554,92 @@ desired effect
     <!-- /.control-sidebar -->
     <!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
+    <div class='control-sidebar-bg'></div>
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.1.4 -->
-<script src="plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js" type="text/javascript"></script>
+<!-- KnockoutJs -->
+<script type="text/javascript" src="plugins/knockout/knockout-3.3-min.js"></script>
+<script src="plugins/knockout/knockout.mapping-latest.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-      Both of these plugins are recommended to enhance the
-      user experience. Slimscroll is required when using the
-      fixed layout. -->
+
+<!-- DATA TABES SCRIPT -->
+<script src="plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#room").click(function () {
-            $("#testing").load("graph.html div.box");
-        });
-    });
+    //function for preview image before upload
+    function show_pic(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#agentImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
+
+<script type="text/javascript">
+            $(function () {
+               $("#travelAgentDetails").dataTable();});
+
+</script>
+
+<script type="text/javascript">
+
+
+    function NewTravelAgentModel() {
+        this.travelAgentName = ko.observable();
+        this.travelAgentAddress = ko.observable();
+        this.travelAgentPhoneNo = ko.observable();
+        this.travelAgentEmail = ko.observable();
+
+        this.travelAgentAccountNo = ko.observable();
+        this.travelAgentAccountName = ko.observable();
+        this.travelAgentAccountBranch= ko.observable();
+        this.travelAgentRates = ko.observable();
+
+    }
+
+    // Activates knockout.js
+
+    ko.applyBindings(new NewTravelAgentModel());
+
+    function makeEmployeeJSON() {
+        return ko.toJSON(employeeModel);
+    }
+
+
+    function sendEmployeeRequest(){
+
+        $.ajax({
+            type: 'POST',
+            url: '/redberry/services/employee/addemployee',
+            contentType: 'application/json',
+            dataType: 'JSON',
+            data: makeEmployeeJSON(),
+
+
+        });
+
+        $('#modal-1').modal('hide');
+        window.location.href='employee.html';
+
+    }
+
+</script>
+
+
 
 </body>
 </html>

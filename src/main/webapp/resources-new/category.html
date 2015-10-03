@@ -531,7 +531,7 @@ desired effect
         self.loadMealPlans = function () {
             jQuery.ajax({
 
-                url: "/redberry/services/mealPlan/getMealPlans",
+                url: baseUrl+"/redberry/services/mealPlan/getMealPlans",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
@@ -544,7 +544,7 @@ desired effect
         self.loadRoomCategories = function () {
             jQuery.ajax({
 
-                url: "/redberry/services/roomCategory/getRoomCategories",
+                url: baseUrl+"/redberry/services/roomCategory/getRoomCategories",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
@@ -561,7 +561,7 @@ desired effect
             if (r == true) {
                 alert(JSON.stringify(self.roomCategories()[self.roomCategories.indexOf(this)]));
                 jQuery.ajax({
-                    url: "/redberry/services/roomCategory/deleteRoomCategory",
+                    url: baseUrl+"/redberry/services/roomCategory/deleteRoomCategory",
                     method: "DELETE",
                     dataType: "JSON",
                     contentType: "application/json",
@@ -611,7 +611,7 @@ desired effect
 
         $.ajax({
             type: 'POST',
-            url: '/redberry/services/roomCategory/addRoomCategory',
+            url: baseUrl+'/redberry/services/roomCategory/addRoomCategory',
             contentType: 'application/json',
             dataType: 'JSON',
             data: makeRoomCategoryJSON(),

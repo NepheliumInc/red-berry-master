@@ -9,6 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 2 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome Icons -->
@@ -585,7 +586,7 @@ desired effect
         self.loadCategories = function(){
             jQuery.ajax({
 
-                url: "/redberry/services/roomCategory/getRoomCategories",
+                url: baseUrl+"/redberry/services/roomCategory/getRoomCategories",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
@@ -598,7 +599,7 @@ desired effect
         self.loadCapacities = function(){
             jQuery.ajax({
 
-                url: "/redberry/services/roomCapacity/getRoomCapacities",
+                url: baseUrl+"/redberry/services/roomCapacity/getRoomCapacities",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
@@ -632,7 +633,7 @@ desired effect
 
         $.ajax({
             type: 'POST',
-            url: '/redberry/services/room/addroom',
+            url: baseUrl+'/redberry/services/room/addroom',
             contentType: 'application/json',
             dataType: 'JSON',
             data: makeRoomJSON(),

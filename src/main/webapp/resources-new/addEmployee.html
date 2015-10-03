@@ -9,6 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 2 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome Icons -->
@@ -22,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <link href="dist/css/skins/skin-red.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,7 +59,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-blue sidebar-mini">
+<body class="skin-red sidebar-mini">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -464,7 +465,7 @@ desired effect
                                 <div class="col-md-4">
                                     <center>
                                         <div class="row form-group" style="">
-                                            <img id="employeeImage" src="dist/img/default_male_avatar.gif"
+                                            <img id="employeeImage" src="dist/img/avatar5.png"
                                                  class="img-rounded img-responsive"
                                                  data-bind="attr: {}"
                                                  style="width:140px;height:140px;">
@@ -575,7 +576,7 @@ desired effect
                                 </div>
 
                                 <div class="col-md-4">
-                                    <img id="employeeImageView" src="dist/img/default_male_avatar.gif"
+                                    <img id="employeeImageView" src="dist/img/avatar5.png"
                                          class="img-rounded img-responsive"
                                          style="width:140px;height:140px;" data-bind="attr{src: imageURL}">
                                 </div>
@@ -736,7 +737,7 @@ desired effect
 
         $.ajax({
             type: 'POST',
-            url: '/redberry/services/employee/addemployee',
+            url: baseUrl+'/redberry/services/employee/addemployee',
             contentType: 'application/json',
             dataType: 'JSON',
             data: makeEmployeeJSON(),
@@ -753,7 +754,7 @@ desired effect
         myFormData.append('file', $('#imageInput')[0].files[0]);
 
         $.ajax({
-            url: '/redberry/services/employeeImage/upload',
+            url: baseUrl+'/redberry/services/employeeImage/upload',
             type: 'POST',
             processData: false, // important
             contentType: false, // important

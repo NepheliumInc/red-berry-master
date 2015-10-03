@@ -947,7 +947,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
-    return this.isShown ? this.hide() : this.show(_relatedTarget)
+    return this.isShown ? this.hide() : this.show({model: _relatedTarget})
   }
 
   Modal.prototype.show = function (_relatedTarget) {
@@ -1199,7 +1199,7 @@ if (typeof jQuery === 'undefined') {
 
       if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option](_relatedTarget)
-      else if (options.show) data.show(_relatedTarget)
+      else if (options.show) data.show({model: _relatedTarget})
     })
   }
 

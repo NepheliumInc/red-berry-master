@@ -9880,7 +9880,7 @@ tinymce.create('tinymce.ui.Separator:tinymce.ui.Control', {
 			if (!tinymce.isOpera)
 				DOM.setStyles(co, {left : -0xFFFF , top : -0xFFFF});
 
-			DOM.show(co);
+			DOM.show({model: co});
 			t.update();
 
 			x += s.offset_x || 0;
@@ -10846,7 +10846,7 @@ tinymce.create('tinymce.ui.Separator:tinymce.ui.Control', {
 				return t.hideMenu();
 
 			e = DOM.get(t.id);
-			DOM.show(t.id + '_menu');
+			DOM.show({model: t.id + '_menu'});
 			DOM.addClass(e, 'mceSplitButtonSelected');
 			p2 = DOM.getPos(e);
 			DOM.setStyles(t.id + '_menu', {
@@ -12532,7 +12532,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 		show : function() {
 			var self = this;
 
-			DOM.show(self.getContainer());
+			DOM.show({model: self.getContainer()});
 			DOM.hide(self.id);
 			self.load();
 		},

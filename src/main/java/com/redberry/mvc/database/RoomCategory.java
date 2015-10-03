@@ -3,6 +3,9 @@ package com.redberry.mvc.database;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Set;
+
 
 @XmlRootElement(name="roomCategory")
 @Entity
@@ -12,35 +15,25 @@ public class RoomCategory implements Serializable{
     private int id;
     private String name;
     private String description;
-    private MealPlan mealPlan;
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(name = "roomCat_mealPlans", joinColumns = { @JoinColumn(name = "roomCategory_id") },
+            inverseJoinColumns = { @JoinColumn(name = "mealPlan_id") },
+            uniqueConstraints = {@UniqueConstraint(
+                    columnNames = {"roomCategory_id", "mealPlan_id"})}
+    )
+    private Set<MealPlan> availableMealPlans;
     private double price;
 
 
-
     public RoomCategory() {
+
     }
 
-    public RoomCategory(String name, String description, MealPlan mealPlan, double price) {
+    public RoomCategory(String name, String description, Set<MealPlan> availableMealPlans, double price) {
         this.name = name;
         this.description = description;
-        this.mealPlan = mealPlan;
+        this.availableMealPlans = availableMealPlans;
         this.price = price;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public MealPlan getMealPlan() {
-        return mealPlan;
-    }
-
-    public void setMealPlan(MealPlan mealPlan) {
-        this.mealPlan = mealPlan;
     }
 
     public int getId() {
@@ -65,5 +58,21 @@ public class RoomCategory implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<MealPlan> getAvailableMealPlans() {
+        return availableMealPlans;
+    }
+
+    public void setAvailableMealPlans(Set<MealPlan> availableMealPlans) {
+        this.availableMealPlans = availableMealPlans;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

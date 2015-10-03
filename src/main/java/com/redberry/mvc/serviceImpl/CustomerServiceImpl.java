@@ -35,4 +35,26 @@ public class CustomerServiceImpl implements CustomerService {
     public Response getCustomerById(int customerId) {
         return Response.ok(customerDaoImpl.getCustomerById(customerId)).build();
     }
+
+
+    @Transactional
+    @Override
+    public Response addCustomer(Customer customer) {
+        customerDaoImpl.addCustomer(customer);
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @Transactional
+    @Override
+    public Response updateCustomer(Customer customer) {
+        customerDaoImpl.updateCustomer(customer);
+        return Response.status(Response.Status.CREATED).build();
+    }
+
+    @Transactional
+    @Override
+    public Response removeCustomer(Customer customer) {
+        customerDaoImpl.removeCustomer(customer);
+        return Response.status(Response.Status.GONE).build();
+    }
 }
