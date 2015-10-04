@@ -685,20 +685,17 @@ desired effect
         self.roomsToShow = ko.computed(function() {
             // Represents a filtered list of rooms
             // i.e., only those matching the "category" condition
-            var AC = self.selectedAC();
-            var meal = self.selectedMeal();
-            var category = self.selectedCategory();
-            var capacity = self.selectedCapacity();
-            if(AC == "none.." && category == "none.." && capacity == "none.." && meal == "none.."){
-                return self.allRooms();
-            }
+
             return ko.utils.arrayFilter(self.allRooms(), function(room) {
 
                 var mealplanCheck = ko.utils.arrayFirst(room.roomCategory.availableMealPlans , function(mealplan){
-                    return mealplan.name == meal || meal == "none..";
-                },meal);
+                    return mealplan.name == self.selectedMeal() || self.selectedMeal() == "none..";
+                });
 
-                return (room.airconditionState == AC || AC == "none..") && (room.roomCategory.name == category || category == "none..") && (room.roomCapacity.name == capacity || capacity == "none..") && mealplanCheck;
+                return (room.airconditionState == self.selectedAC() ||
+                        self.selectedAC() == "none..") && (room.roomCategory.name == self.selectedCategory() ||
+                        self.selectedCategory() == "none..") && (room.roomCapacity.name == self.selectedCapacity() ||
+                        self.selectedCapacity() == "none..") && mealplanCheck;
             });
         });
 
