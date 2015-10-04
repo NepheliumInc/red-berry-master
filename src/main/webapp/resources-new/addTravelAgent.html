@@ -648,9 +648,14 @@
     function NewRates(rate,range){
         var self=this;
         self.rate=ko.observable(rate);
-        self.startDate=ko.observable("");
-        self.endDate=ko.observable("");
         self.range=ko.observable(range);
+        self.DateRange=ko.computed(function() {
+
+            var dd=self.range().split("-");
+            self.startDate=ko.observable(dd[0]);
+            self.endDate=ko.observable( dd[1]);
+        }, this);
+
 
 
     }
@@ -722,7 +727,7 @@
             });
 
             $('#NewAgentDetails').modal('hide');
-            window.location.href='travelagent.html';
+            window.location.href='travelAgent.html';
         }
 
 

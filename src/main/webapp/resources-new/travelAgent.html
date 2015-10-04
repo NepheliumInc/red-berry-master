@@ -245,7 +245,7 @@
                         <li><a href="#">Link in level 2</a></li>
                     </ul>
                 </li>
-                <li class="active"><a href="travelagent.html"><i class='fa fa-user-plus'></i> <span>Travel Agent Setup</span></a>
+                <li class="active"><a href="travelAgent.html"><i class='fa fa-user-plus'></i> <span>Travel Agent Setup</span></a>
                 </li>
                 <li><a href="#"><i class='fa fa-link'></i> <span>Offer Setup</span></a></li>
             </ul>
@@ -305,7 +305,7 @@
 
                                                     <td>
                                                     <div class="tools">
-                                                     <a data-toggle="modal" title="view agent details" data-target="#AgentDetails" data-bind="click:  $parent.show">View&nbsp;&nbsp;</a>
+                                                     <a  title="view agent details" data-bind="click:  $parent.show">View&nbsp;&nbsp;</a>
 
                                                      <a href="#" data-bind="click: $parent.removeAgent" title="Remove Agent"><i class="btn-xs fa fa-trash-o"></i></a>
                                                     </div>
@@ -646,14 +646,16 @@
 
         self.show=function(a){
 
-            self.fullName(a.fullName);
-            self.address(a.address);
-            self.phoneNo(a.phoneNo);
-            self.email(a.email);
-            self.bankName(a.bankName);
-            self.accountNo(a.accountNo);
-            self.accountName(a.accountName);
-            self.accountBranch(a.accountBranch);
+            var a=ko.toJSON(a);
+            return a;
+//            self.fullName(a.fullName);
+//            self.address(a.address);
+//            self.phoneNo(a.phoneNo);
+//            self.email(a.email);
+//            self.bankName(a.bankName);
+//            self.accountNo(a.accountNo);
+//            self.accountName(a.accountName);
+//            self.accountBranch(a.accountBranch);
 
 
 
