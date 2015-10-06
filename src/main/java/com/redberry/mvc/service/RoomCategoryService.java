@@ -11,7 +11,9 @@ import javax.ws.rs.core.Response;
 /**
  * Created by Amila on 7/31/15.
  */
-@CrossOriginResourceSharing(allowAllOrigins = true)
+@CrossOriginResourceSharing(allowOrigins = {
+        "http://redberry.com","https://redberry.com","http://www.redberry.com","https://www.redberry.com"
+})
 @Path("/roomCategory")
 @WebService(name="services")
 public interface RoomCategoryService {

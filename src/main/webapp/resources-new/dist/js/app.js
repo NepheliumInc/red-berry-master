@@ -11,6 +11,10 @@
  * @license MIT <http://opensource.org/licenses/MIT>
  */
 
+var baseUrl = "http://localhost:8080";
+
+$('.sidebar-menu').load('sidebar.html');
+
 'use strict';
 
 //Make sure jQuery has been loaded before app.js
@@ -385,7 +389,7 @@ function _init() {
   $.AdminLTE.tree = function (menu) {
     var _this = this;
     var animationSpeed = $.AdminLTE.options.animationSpeed;
-    $("li a", $(menu)).on('click', function (e) {
+    $(".sidebar-menu", $(menu)).on('click',"li a", function (e) {
       //Get the clicked link and the next element
       var $this = $(this);
       var checkElement = $this.next();

@@ -11,7 +11,10 @@ import javax.ws.rs.core.Response;
 /**
  * Created by Amila on 9/3/15.
  */
-@CrossOriginResourceSharing(allowAllOrigins = true)
+
+@CrossOriginResourceSharing(allowOrigins = {
+        "http://redberry.com","https://redberry.com","http://www.redberry.com","https://www.redberry.com"
+})
 @Path("mealPlan")
 @WebService(name = "services")
 public interface MealPlanService {

@@ -9,6 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 2 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome Icons -->
@@ -315,7 +316,8 @@ desired effect
                                     <div class="row form-group">
                                         <label for="roomName" class="col-md-4">Room Name: </label>
 
-                                        <div class="col-md-8">
+                                        <div class="input-group col-md-8">
+                                            <span class="input-group-addon"><i class="fa fa-bed"></i></span>
                                             <input id="roomName" name="roomName" data-bind="value: roomName"
                                                    class="form-control" type="text"
                                                    placeholder="Sample Room"/>
@@ -325,7 +327,8 @@ desired effect
                                     <div class="row form-group">
                                         <label for="displayNumber" class="col-md-4">Display Number: </label>
 
-                                        <div class="col-md-8">
+                                        <div class="input-group col-md-8">
+                                            <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
                                             <input id="displayNumber" name="displayNumber"
                                                    data-bind="value: displayNumber" class="form-control"
                                                    type="number"
@@ -336,16 +339,17 @@ desired effect
                                     <div class="row form-group">
                                         <label for="roomCategory" class="col-md-4">Category: </label>
 
-                                        <div class="col-md-8">
+                                        <div class="input-group col-md-8">
 
-                                            <div class="col-md-10">
+                                            <div class="col-md-10" style="padding-left: 0; padding-right: 0;">
+
                                                 <select id="roomCategory" name="roomCategory"
                                                         data-bind="options: roomCategories, optionsText:'name', value: roomCategory, optionsCaption: 'Select Category'"
                                                         class="form-control"
                                                         type="text">
                                                 </select>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-2" style="padding-right: 0; padding-left: 0;">
                                                 <a class="btn btn-info btn-sm pull-right" href="category.html">New</a>
                                             </div>
                                         </div>
@@ -354,7 +358,8 @@ desired effect
                                     <div class="row form-group">
                                         <label for="roomCapacity" class="col-md-4">Capacity: </label>
 
-                                        <div class="col-md-8 select2-container--default">
+                                        <div class="input-group col-md-8 select2-container--default">
+
                                             <select id="roomCapacity" name="roomCapacity"
                                                     data-bind="options: roomCapacities, optionsText: 'name', value: roomCapacity, optionsCaption: 'Select Capacity'" class="form-control"
                                                     type="text">
@@ -367,7 +372,7 @@ desired effect
                                     <div class="row form-group">
                                         <label for="airconditionState" class="col-md-4">Air Condition State: </label>
 
-                                        <div class="col-md-8">
+                                        <div class="input-group col-md-8">
                                             <select id="airconditionState" name="airconditionState"
                                                     data-bind="options: ['A/C', 'Non A/C'], value: airconditionState, optionsCaption: 'Select Aircondition State'" class="form-control"
                                                     type="text">
@@ -581,7 +586,7 @@ desired effect
         self.loadCategories = function(){
             jQuery.ajax({
 
-                url: "/redberry/services/roomCategory/getRoomCategories",
+                url: baseUrl+"/redberry/services/roomCategory/getRoomCategories",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
@@ -594,7 +599,7 @@ desired effect
         self.loadCapacities = function(){
             jQuery.ajax({
 
-                url: "/redberry/services/roomCapacity/getRoomCapacities",
+                url: baseUrl+"/redberry/services/roomCapacity/getRoomCapacities",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
@@ -628,7 +633,7 @@ desired effect
 
         $.ajax({
             type: 'POST',
-            url: '/redberry/services/room/addroom',
+            url: baseUrl+'/redberry/services/room/addroom',
             contentType: 'application/json',
             dataType: 'JSON',
             data: makeRoomJSON(),

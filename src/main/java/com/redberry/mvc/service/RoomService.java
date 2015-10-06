@@ -12,7 +12,9 @@ import javax.ws.rs.core.Response;
  * Created by Amila on 7/29/15.
  */
 
-@CrossOriginResourceSharing(allowAllOrigins = true)
+@CrossOriginResourceSharing(allowOrigins = {
+        "http://redberry.com","https://redberry.com","http://www.redberry.com","https://www.redberry.com"
+})
 @Path("/room")
 @WebService(name="services")
 public interface RoomService {

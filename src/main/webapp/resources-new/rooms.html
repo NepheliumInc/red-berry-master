@@ -9,6 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 2 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome Icons -->
@@ -22,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <link href="dist/css/skins/skin-red.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,7 +52,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-blue sidebar-mini">
+<body class="skin-red sidebar-mini">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -254,11 +255,7 @@ desired effect
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class=""><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
-                <li class="active"><a href="checkin.html"><i class="fa fa-link"></i> <span>Check In</span></a></li>
-                <li class="active"><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
-                <li class="active"><a href="travelAgent.html"><i class='fa fa-user-plus'></i> <span>Travel Agent Setup</span></a>
-                <li class=""><a href="rooms.html"><i class="fa fa-link"></i> <span>Room</span></a></li>
+
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -306,6 +303,7 @@ desired effect
                                     <th>Category</th>
                                     <th>Air Condition Status</th>
                                     <th>Capacity</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -316,6 +314,7 @@ desired effect
                                     <td data-bind="text: roomCategory.name"></td>
                                     <td data-bind="text: airconditionState"></td>
                                     <td data-bind="text: roomCapacity.name"></td>
+                                    <td data-bind="text: status"></td>
                                     <td><a class="label label-danger" href=""
                                            data-bind="click: $root.removeRoom">Remove</a> <a class="label label-info"
                                                                                             href=""
@@ -379,13 +378,17 @@ desired effect
                                                 <td><b>Extension Number: </b></td>
                                                 <td data-bind="text: extensionNumber"></td>
                                             </tr>
+                                            <tr>
+                                                <td><b>Status: </b></td>
+                                                <td data-bind="text: status"></td>
+                                            </tr>
 
 
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="col-md-4">
-                                        <img id="roomImage" src="dist/img/default_male_avatar.gif"
+                                        <img id="roomImage" src="dist/img/avatar5.png"
                                              class="img-rounded img-responsive"
                                              style="width:140px;height:140px;">
                                     </div>
@@ -525,6 +528,7 @@ desired effect
         self.displayNumber = ko.observable();
         self.roomCategory = ko.observable();
         self.extensionNumber = ko.observable();
+        self.status = ko.observable();
 
         //load rooms from database
 
@@ -533,7 +537,7 @@ desired effect
         self.loadRooms = function(){
             jQuery.ajax({
 
-                url: "/redberry/services/room/getrooms",
+                url: baseUrl+"/redberry/services/room/getrooms",
                 method: "GET",
                 dataType: "JSON",
                 success: function (data) {
@@ -555,7 +559,7 @@ desired effect
             if (r == true) {
                 alert(JSON.stringify(self.rooms()[self.rooms.indexOf(this)]));
                 jQuery.ajax({
-                    url: "/redberry/services/room/deleteroom",
+                    url: baseUrl+"/redberry/services/room/deleteroom",
                     method: "DELETE",
                     dataType: "JSON",
                     contentType: "application/json",
@@ -582,6 +586,7 @@ desired effect
             self.displayNumber(this.displayNumber);
             self.roomCategory(this.roomCategory.name);
             self.extensionNumber(this.extensionNumber);
+            self.status(this.status);
 
 
 

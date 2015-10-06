@@ -22,16 +22,18 @@ public class RoomCategory implements Serializable{
                     columnNames = {"roomCategory_id", "mealPlan_id"})}
     )
     private Set<MealPlan> availableMealPlans;
+    private double price;
 
 
     public RoomCategory() {
 
     }
 
-    public RoomCategory(String name, String description, Set<MealPlan> availableMealPlans) {
+    public RoomCategory(String name, String description, Set<MealPlan> availableMealPlans, double price) {
         this.name = name;
         this.description = description;
         this.availableMealPlans = availableMealPlans;
+        this.price = price;
     }
 
     public int getId() {
@@ -64,5 +66,13 @@ public class RoomCategory implements Serializable{
 
     public void setAvailableMealPlans(Set<MealPlan> availableMealPlans) {
         this.availableMealPlans = availableMealPlans;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
