@@ -1,6 +1,6 @@
 package com.redberry.mvc.service;
 
-import com.redberry.mvc.database.RoomCategory;
+import com.redberry.mvc.database.MealPlan;
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 import javax.jws.WebService;
@@ -9,38 +9,38 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Created by Amila on 7/31/15.
+ * Created by Amila on 9/3/15.
  */
 @CrossOriginResourceSharing(allowAllOrigins = true)
-@Path("/roomCategory")
-@WebService(name="services")
-public interface RoomCategoryService {
+@Path("mealPlan")
+@WebService(name = "services")
+public interface MealPlanService {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/getRoomCategories")
-    public Response getRoomCategories();
+    @Path("/getMealPlans")
+    public Response getMealPlans();
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/getRoomCategoryById")
-    public Response getCategoryById(@QueryParam("roomCategoryId")int roomCategoryId);
+    @Path("/getMealPlanById")
+    public Response getMealPlanById(@QueryParam("mealPlanId")int mealPlanId);
 
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/addRoomCategory")
-    public Response addRoomCategory(RoomCategory roomCategory);
+    @Path("/addMealPlan")
+    public Response addMealPlan(MealPlan mealPlan);
 
     @PUT
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("updateRoomCategory")
-    public Response updateRoomCategory(RoomCategory roomCategory);
+    @Path("updateMealPlan")
+    public Response updateMealPlan(MealPlan mealPlan);
 
     @DELETE
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("deleteRoomCategory")
-    public Response removeRoomCategory(RoomCategory roomCategory);
+    @Path("deleteMealPlan")
+    public Response removeMealPlan(MealPlan mealPlan);
 }

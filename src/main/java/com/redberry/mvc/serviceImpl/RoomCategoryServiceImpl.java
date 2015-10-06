@@ -37,12 +37,14 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
         return Response.status(Response.Status.CREATED).build();
     }
 
+    @Transactional
     @Override
     public Response updateRoomCategory(RoomCategory roomCategory) {
         roomCategoryDaoImpl.updateRoomCategory(roomCategory);
         return Response.status(Response.Status.CREATED).build();
     }
 
+    @Transactional
     @Override
     public Response removeRoomCategory(RoomCategory roomCategory) {
         roomCategoryDaoImpl.removeRoomCategory(roomCategory);

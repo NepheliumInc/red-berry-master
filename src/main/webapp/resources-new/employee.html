@@ -38,12 +38,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="plugins/knockout/knockout.mapping-latest.js"></script>
     <script type="text/javascript">
 
-        var model;
 
-        var empViewModel = function () {
+        var employeeViewModel = function () {
             var self = this;
-            self.current = ko.observableArray([]);
+
+            self.id = ko.observable();
+            self.fullName = ko.observable();
+            self.residentialAddress = ko.observable();
+            self.permanentAddress = ko.observable();
+            self.residentialPhone = ko.observable();
+            self.permanentPhone = ko.observable();
+            self.email = ko.observable();
+            self.dob = ko.observable();
+            self.joinedDate = ko.observable();
+            self.prevExperience = ko.observable();
+            self.commentsFromPrevWorkPlace = ko.observable();
+            self.startingSalary = ko.observable();
+            self.emergencyContact = ko.observable();
+            self.imageURL = ko.observable();
+            self.nic = ko.observable();
+
+            //load employees from database
+
             self.employees = ko.observableArray();
+
+            self.loadEmployees = function(){
+                jQuery.ajax({
+                    url: "/redberry/services/employee/getemployees",
+                    method: "GET",
+                    dataType: "JSON",
+                    success: function (data) {
+                         self.employees(data);
+
+                    }
+                });
+
+            }
+
+
+
+            //remove an employee
+
             self.removeEmp = function () {
 
                 var r = confirm("Do you realy want to remove this employee?");
@@ -65,24 +100,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
             }
-            self.viewEmp = function () {
-                self.current = ko.mapping.fromJSON(self.employees()[self.employees.indexOf(this)]);
 
-                //alert(self.current.fullName);
+
+            //view an employee
+
+            self.viewEmp = function () {
+                self.id(this.id);
+                self.fullName(this.fullName);
+                self.residentialAddress(this.residentialAddress);
+                self.permanentAddress(this.permanentAddress);
+                self.residentialPhone(this.residentialPhone);
+                self.permanentPhone(this.permanentPhone);
+                self.email(this.email);
+                self.dob(this.dob);
+                self.joinedDate(this.joinedDate);
+                self.prevExperience(this.prevExperience);
+                self.commentsFromPrevWorkPlace(this.commentsFromPrevWorkPlace);
+                self.startingSalary(this.startingSalary);
+                self.emergencyContact(this.emergencyContact);
+                self.imageURL(this.imageURL);
+                self.nic(this.nic);
+
                 $('#modal-1').modal('toggle');
             }
-        };
+        }
 
 
         $(document).ready(function () {
-
-
-            model = new empViewModel();
-
-
-            ko.applyBindings(model);
-
-
             jQuery.ajax({
                 url: "/redberry/services/employee/getemployees",
                 method: "GET",
@@ -92,11 +136,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     for (var x in data) {
                         model.employees.push(data[x]);
                     }
-
-                }
-            });
-
-
+                    var model = new employeeViewModel();
+                    model.loadEmployees();
+                    ko.applyBindings(model);
+                }});
         });
 
 
@@ -327,9 +370,8 @@ desired effect
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
-                <!-- Optionally, you can add icons to the links -->
                 <li class=""><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a href="checkin.html"><i class="fa fa-link"></i> <span>Check In</span></a></li>
                 <li class="active"><a href="employee.html"><i class="fa fa-link"></i> <span>Employee</span></a></li>
                 <li class=""><a href="rooms.html"><i class="fa fa-link"></i> <span>Room</span></a></li>
 
@@ -365,8 +407,7 @@ desired effect
                         <!-- box header-->
                         <div class="box-header">
                             <h3 class="box-title">Existing Employees</h3>
-                            <hr>
-                            <a class="btn btn-primary btn-sm pull-left" href="addEmployee.html">Add New</a>
+                            <a class="btn btn-info btn-sm pull-right" href="addEmployee.html">Add New</a>
                         </div>
 
                         <!--box header ends-->
@@ -377,7 +418,6 @@ desired effect
                                 <thead>
                                 <tr>
                                     <th>Full Name</th>
-                                    <th>NIC</th>
                                     <th>Email</th>
                                     <th>Address</th>
                                     <th>Phone</th>
@@ -388,7 +428,6 @@ desired effect
                                 <tr>
                                     <td data-bind="text: id" hidden></td>
                                     <td data-bind="text: fullName"></td>
-                                    <td data-bind="text: nic"></td>
                                     <td data-bind="text: email"></td>
                                     <td data-bind="text: residentialAddress"></td>
                                     <td data-bind="text: residentialPhone"></td>
@@ -411,76 +450,87 @@ desired effect
             <div class="modal" id="modal-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Modal Default</h4>
-                        </div>
-                        <div class="modal-body">
+                        <div class="box box-info">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                                <h3 class="modal-title"><span data-bind="text: fullName"></span> | Employee Details</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Full Name: </b></td>
+                                                <td data-bind="text: fullName"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Email: </b></td>
+                                                <td data-bind="text: email"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Residential Phone: </b></td>
+                                                <td data-bind="text: residentialPhone"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Permanent Phone: </b></td>
+                                                <td data-bind="text: permanentPhone"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>NIC Number: </b></td>
+                                                <td data-bind="text: nic"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Date of Birth: </b></td>
+                                                <td data-bind="text: dob"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Joined Date: </b></td>
+                                                <td data-bind="text: joinedDate"></td>
+                                            </tr>
 
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <td><b>Full Name: </b></td>
-                                    <td data-bind="text: current.fullName"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Email: </b></td>
-                                    <td data-bind="text: current.email"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Residential Phone: </b></td>
-                                    <td data-bind="text: current.residentialPhone"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Permanent Phone: </b></td>
-                                    <td data-bind="text: current.permanentPhone"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>NIC Number: </b></td>
-                                    <td data-bind="text: current.nic"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Date of Birth: </b></td>
-                                    <td data-bind="text: current.dob"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Joined Date: </b></td>
-                                    <td data-bind="text: current.joinedDate"></td>
-                                </tr>
-
-                                <tr>
-                                    <td><b>Starting Salary(Rs): </b></td>
-                                    <td data-bind="text: current.startingSalary"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Residential Address: </b></td>
-                                    <td data-bind="text: current.residentialAddress"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Permanent Address: </b></td>
-                                    <td data-bind="text: current.permanentAddress"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Previous Experience: </b></td>
-                                    <td data-bind="text: current.prevExperience"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Comments from previous work places: </b></td>
-                                    <td data-bind="text: current.commentsFromPrevWorkPlace"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Emergency Contact: </b></td>
-                                    <td data-bind="text: current.emergencyContact"></td>
-                                </tr>
+                                            <tr>
+                                                <td><b>Starting Salary(Rs): </b></td>
+                                                <td data-bind="text: startingSalary"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Residential Address: </b></td>
+                                                <td data-bind="text: residentialAddress"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Permanent Address: </b></td>
+                                                <td data-bind="text: permanentAddress"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Previous Experience: </b></td>
+                                                <td data-bind="text: prevExperience"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Comments from previous work places: </b></td>
+                                                <td data-bind="text: commentsFromPrevWorkPlace"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Emergency Contact: </b></td>
+                                                <td data-bind="text: emergencyContact"></td>
+                                            </tr>
 
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img id="employeeImage" src="dist/img/default_male_avatar.gif"
+                                             class="img-rounded img-responsive"
+                                             style="width:140px;height:140px;">
+                                    </div>
+                                </div>
 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info pull-right" data-dismiss="modal">Close</button>
+
+                            </div>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -516,7 +566,7 @@ desired effect
                 <h3 class="control-sidebar-heading">Recent Activity</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                             <div class="menu-info">
@@ -532,7 +582,7 @@ desired effect
                 <h3 class="control-sidebar-heading">Tasks Progress</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="label label-danger pull-right">70%</span>

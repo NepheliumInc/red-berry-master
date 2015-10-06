@@ -38,4 +38,13 @@ public class RoomCapacity {
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
+
+    public RoomCapacity(String name, Integer capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    public RoomCapacity() {
+
+    }
 }
