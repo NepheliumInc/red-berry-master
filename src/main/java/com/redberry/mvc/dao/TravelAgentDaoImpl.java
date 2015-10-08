@@ -5,7 +5,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Lakshan Vithana on 9/1/2015.
@@ -27,8 +29,8 @@ public class TravelAgentDaoImpl implements TravelAgentDao{
     }
 
     @Override
-    public List<TravelAgent> getTravelAgents(){
-        List<TravelAgent> travelAgentList=sessionFactory.getCurrentSession().createCriteria(TravelAgent.class).list();
+    public Set<TravelAgent> getTravelAgents(){
+        Set<TravelAgent> travelAgentList=new HashSet<TravelAgent>(sessionFactory.getCurrentSession().createCriteria(TravelAgent.class).list());
         return travelAgentList;
     }
 
