@@ -18,6 +18,7 @@
 
     <jaxrs:server id="services" address="/services">
         <jaxrs:providers>
+            <ref bean="cors-filter" />
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
         </jaxrs:providers>
         <jaxrs:serviceBeans>
@@ -26,7 +27,12 @@
             <ref bean="roomServiceImpl" />
             <ref bean="roomCategoryServiceImpl"/>
             <ref bean="roomCapacityServiceImpl" />
+            <ref bean="travelAgentServiceImpl"/>
+            <ref bean="ratesServiceImpl"/>
+            <ref bean="mealPlanServiceImpl"/>
             <ref bean="testService" />
+            <ref bean="checkInRoomServiceImpl" />
+            <ref bean="customerServiceImpl" />
 
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
@@ -35,12 +41,19 @@
         </jaxrs:extensionMappings>
     </jaxrs:server>
 
-    <bean id="customerServiceImpl" class="com.redberry.mvc.serviceImpl.CustomerServiceImpl"/>
+    <bean id="cors-filter" class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter"/>
+
     <bean id="employeeServiceImpl" class="com.redberry.mvc.serviceImpl.EmployeeServiceImpl"/>
     <bean id="roomServiceImpl" class="com.redberry.mvc.serviceImpl.RoomServiceImpl" />
     <bean id="roomCategoryServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCategoryServiceImpl" />
     <bean id="roomCapacityServiceImpl" class="com.redberry.mvc.serviceImpl.RoomCapacityServiceImpl" />
+    <bean id="travelAgentServiceImpl" class="com.redberry.mvc.serviceImpl.TravelAgentServiceImpl" />
+    <bean id="ratesServiceImpl" class="com.redberry.mvc.serviceImpl.RatesServiceImpl" />
+    <bean id="checkInRoomServiceImpl" class="com.redberry.mvc.serviceImpl.CheckInServiceImpl" />
+    <bean id="mealPlanServiceImpl" class="com.redberry.mvc.serviceImpl.MealPlanServiceImpl" />
+    <bean id="customerServiceImpl" class="com.redberry.mvc.serviceImpl.CustomerServiceImpl"/>
     <bean id="testService" class="com.redberry.mvc.service.TestService" />
+
 
 
     <bean id="customerDaoImpl" class="com.redberry.mvc.dao.CustomerDaoImpl"/>
@@ -48,6 +61,10 @@
     <bean id="roomDaoImpl" class="com.redberry.mvc.dao.RoomDaoImpl" />
     <bean id="roomCategoryDaoImpl" class="com.redberry.mvc.dao.RoomCategoryDaoImpl" />
     <bean id="roomCapacityDaoImpl" class="com.redberry.mvc.dao.RoomCapacityDaoImpl"/>
+    <bean id="travelAgentDaoImpl" class="com.redberry.mvc.dao.TravelAgentDaoImpl" />
+    <bean id="ratesDaoImpl" class="com.redberry.mvc.dao.RatesDaoImpl" />
+    <bean id="mealPlanDaoImpl" class="com.redberry.mvc.dao.MealPlanDaoImpl" />
+    <bean id="checkInRoomDaoImpl" class="com.redberry.mvc.dao.CheckInRoomDaoImpl" />
 
 
     <!-- hibernate -->
@@ -55,7 +72,7 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/redberry" />
-        <property name="username" value="root" />
+        <property name="username" value="test" />
         <property name="password" value="123" />
         <property name="validationQuery" value="SELECT 1" />
     </bean>

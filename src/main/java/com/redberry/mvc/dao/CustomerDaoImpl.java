@@ -27,4 +27,19 @@ public class CustomerDaoImpl implements CustomerDao {
         List<Customer> customerList = sessionFactory.getCurrentSession().createCriteria(Customer.class).list();
         return customerList;
     }
+
+    @Override
+    public void addCustomer(Customer customer) {
+        sessionFactory.getCurrentSession().saveOrUpdate(customer);
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        sessionFactory.getCurrentSession().update(customer);
+    }
+
+    @Override
+    public void removeCustomer(Customer customer) {
+        sessionFactory.getCurrentSession().delete(customer);
+    }
 }

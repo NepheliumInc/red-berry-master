@@ -5,7 +5,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Amila on 7/31/15.
@@ -28,8 +30,9 @@ public class RoomCategoryDaoImpl implements RoomCategoryDao {
     }
 
     @Override
-    public List<RoomCategory> getRoomCategories() {
-        return sessionFactory.getCurrentSession().createCriteria(RoomCategory.class).list();
+    public Set<RoomCategory> getRoomCategories() {
+        List<RoomCategory> categoryList = sessionFactory.getCurrentSession().createCriteria(RoomCategory.class).list();
+        return new HashSet<RoomCategory>(categoryList);
     }
 
     @Override

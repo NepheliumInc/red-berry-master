@@ -1,0 +1,299 @@
+<script type="text/html" id="main_content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+
+        <div class="col-md-10 col-md-offset-1">
+
+
+            <!-- box begins -->
+            <div class="box box-info">
+                <!-- box header-->
+                <div class="box-header">
+                    <h3 class="box-title">Add New Employee</h3>
+
+                </div>
+                <!--box header ends-->
+
+                <!--box content begins-->
+                <div class="box-body" style="padding: 20px">
+                    <!-- Employee details form-->
+                    <form role="form">
+                        <!--Column for text details-->
+                        <div class="col-md-8">
+
+                            <div class="row form-group">
+                                <label for="fullName" class="col-md-4">Full Name: </label>
+
+                                <div class="col-md-8">
+                                    <input id="fullName" name="fullName" data-bind="value: fullName"
+                                           class="form-control" type="text"
+                                           placeholder="John Doe"/>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="email" class="col-md-4">Email: </label>
+
+                                <div class="col-md-8">
+                                    <input id="email" name="email" data-bind="value: email"
+                                           class="form-control" type="email"
+                                           placeholder="john.doe@mail.com"/>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label for="residentialPhone" class="col-md-4">Residential
+                                    Phone: </label>
+
+                                <div class="col-md-8">
+                                    <input id="residentialPhone" name="residentialPhone"
+                                           data-bind="value: residentialPhone" class="form-control"
+                                           type="tel"
+                                           placeholder="(+00)00-0000000"/>
+                                </div>
+
+                            </div>
+
+                            <div class="row form-group">
+                                <label for="permanentPhone" class="col-md-4">Permanent
+                                    Phone: </label>
+
+                                <div class="col-md-8">
+                                    <input id="permanentPhone" name="permanentPhone"
+                                           data-bind="value: permanentPhone" class="form-control" type="tel"
+                                           placeholder="(+00)00-0000000"/>
+                                </div>
+
+                            </div>
+
+                            <div class="row form-group">
+                                <label for="nic" class="col-md-4">NIC Number: </label>
+
+                                <div class="col-md-8">
+                                    <input id="nic" name="nic" data-bind="value: nic" class="form-control"
+                                           type="text"
+                                           placeholder="000000000v"/>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <label for="dob" class="col-md-4">Date of Birth: </label>
+
+                                <div class="col-md-8">
+                                    <input id="dob" name="dob" data-bind="value:dob" class="form-control"
+                                           type="date"/>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <label for="joinedDate" class="col-md-4">Joined Date: </label>
+
+                                <div class="col-md-8">
+                                    <input id="joinedDate" name="joinedDate" data-bind="value: joinedDate"
+                                           class="form-control" type="date"/>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <label for="startingSalary" class="col-md-4">Starting
+                                    Salary(Rs): </label>
+
+                                <div class="col-md-8">
+                                    <input id="startingSalary" name="startingSalary"
+                                           data-bind="value: startingSalary" class="form-control"
+                                           type="number"/>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <label for="residentialAddress" class="col-md-4">Residential
+                                    Address: </label>
+
+                                <div class="col-md-8">
+                                                        <textarea id="residentialAddress" name="residentialAddress"
+                                                                  data-bind="value: residentialAddress"
+                                                                  class="col-md-12"
+                                                                  rows="5"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <label for="permanentAddress" class="col-md-4">Permanent
+                                    Address: </label>
+
+                                <div class="col-md-8">
+                                                        <textarea id="permanentAddress" name="permanentAddress"
+                                                                  data-bind="value: permanentAddress" class="col-md-12"
+                                                                  rows="5"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <label for="prevExperience" class="col-md-4">Previous
+                                    Experience:(According to CV) </label>
+
+                                <div class="col-md-8">
+                                                        <textarea id="prevExperience" name="prevExperience"
+                                                                  data-bind="value: prevExperience" class="col-md-12"
+                                                                  rows="5"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="row form-group">
+                                <label for="commentsFromPrevWorkPlace" class="col-md-4">Comments
+                                    from previous work places: </label>
+
+                                <div class="col-md-8">
+                                                        <textarea id="commentsFromPrevWorkPlace"
+                                                                  name="commentsFromPrevWorkPlace"
+                                                                  data-bind="value: commentsFromPrevWorkPlace"
+                                                                  class="col-md-12"
+                                                                  rows="5"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="row form-group">
+                                <label for="emergencyContact" class="col-md-4">Emergency
+                                    Contact: </label>
+
+                                <div class="col-md-8">
+                                    <input id="emergencyContact" name="emergencyContact"
+                                           data-bind="value: emergencyContact" class="form-control"
+                                           type="tel"
+                                           placeholder="(+00)00-0000000"/>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <!--column for profile picture-->
+                        <div class="col-md-4">
+                            <center>
+                                <div class="row form-group" style="">
+                                    <img id="employeeImage" src="dist/img/default_male_avatar.gif"
+                                         class="img-rounded img-responsive"
+                                         style="width:140px;height:140px;">
+                                    <input id="imageURL" name="imageURL" type="file"
+                                           onchange="$('#employeeImage')[0].src = window.URL.createObjectURL(this.files[0])"
+                                           style="margin-top: 18px;"/>
+
+                                </div>
+                            </center>
+                        </div>
+                    </form>
+                    <!--employee form ends-->
+                </div>
+                <!-- box content ends-->
+
+                <!-- box footer begins-->
+                <center>
+                    <div class="box-footer">
+                        <button type="button" onclick="$('form').trigger('reset')" class="btn btn-danger ">
+                            Clear All
+                        </button>
+                        <a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-1">Next</a>
+                    </div>
+                </center>
+                <!-- box footer ends-->
+
+            </div>
+            <!-- box ends-->
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="modal" id="modal-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Modal Default</h4>
+                </div>
+                <div class="modal-body">
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td><b>Full Name: </b></td>
+                            <td data-bind="text: fullName"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Email: </b></td>
+                            <td data-bind="text: email"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Residential Phone: </b></td>
+                            <td data-bind="text: residentialPhone"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Permanent Phone: </b></td>
+                            <td data-bind="text: permanentPhone"></td>
+                        </tr>
+                        <tr>
+                            <td><b>NIC Number: </b></td>
+                            <td data-bind="text: nic"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Date of Birth: </b></td>
+                            <td data-bind="text: dob"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Joined Date: </b></td>
+                            <td data-bind="text: joinedDate"></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Starting Salary(Rs): </b></td>
+                            <td data-bind="text: startingSalary"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Residential Address: </b></td>
+                            <td data-bind="text: residentialAddress"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Permanent Address: </b></td>
+                            <td data-bind="text: permanentAddress"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Previous Experience: </b></td>
+                            <td data-bind="text: prevExperience"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Comments from previous work places: </b></td>
+                            <td data-bind="text: commentsFromPrevWorkPlace"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency Contact: </b></td>
+                            <td data-bind="text: emergencyContact"></td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="sendEmployeeRequest()">Save
+                        changes
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</script>
+
+
+
+
+
+
+

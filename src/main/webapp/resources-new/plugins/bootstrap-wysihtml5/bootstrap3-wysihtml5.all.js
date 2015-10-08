@@ -14005,7 +14005,7 @@ wysihtml5.views.View = Base.extend(
                 state = state.length === 1 ? state[0] : true;
                 command.state = state;
               }
-              command.dialog.show(state);
+              command.dialog.show({model: state});
             } else {
               command.dialog.hide();
             }

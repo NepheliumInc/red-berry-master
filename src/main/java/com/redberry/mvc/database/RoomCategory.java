@@ -2,16 +2,39 @@ package com.redberry.mvc.database;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Set;
+
 
 @XmlRootElement(name="roomCategory")
 @Entity
-public class RoomCategory {
+public class RoomCategory implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String description;
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(name = "roomCat_mealPlans", joinColumns = { @JoinColumn(name = "roomCategory_id") },
+            inverseJoinColumns = { @JoinColumn(name = "mealPlan_id") },
+            uniqueConstraints = {@UniqueConstraint(
+                    columnNames = {"roomCategory_id", "mealPlan_id"})}
+    )
+    private Set<MealPlan> availableMealPlans;
+    private double price;
 
+
+    public RoomCategory() {
+
+    }
+
+    public RoomCategory(String name, String description, Set<MealPlan> availableMealPlans, double price) {
+        this.name = name;
+        this.description = description;
+        this.availableMealPlans = availableMealPlans;
+        this.price = price;
+    }
 
     public int getId() {
         return id;
@@ -35,5 +58,21 @@ public class RoomCategory {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<MealPlan> getAvailableMealPlans() {
+        return availableMealPlans;
+    }
+
+    public void setAvailableMealPlans(Set<MealPlan> availableMealPlans) {
+        this.availableMealPlans = availableMealPlans;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

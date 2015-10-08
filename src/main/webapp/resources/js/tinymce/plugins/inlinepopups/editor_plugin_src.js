@@ -309,7 +309,7 @@
 					style : {zIndex : t.zIndex - 1}
 				});
 
-				DOM.show('mceModalBlocker'); // Reduces flicker in IE
+				DOM.show({model: 'mceModalBlocker'}); // Reduces flicker in IE
 				DOM.setAttrib(DOM.doc.body, 'aria-hidden', 'true');
 			} else
 				DOM.setStyle('mceModalBlocker', 'z-index', t.zIndex - 1);
