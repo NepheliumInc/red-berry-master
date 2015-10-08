@@ -18,7 +18,7 @@
     <link href="plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
     <!--jQuary Ui-->
 
-    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <link href="dist/css/skins/skin-red.min.css" rel="stylesheet" type="text/css"/>
     <!-- data load for existing travel agents-->
     <script type="text/javascript">
 
@@ -27,7 +27,7 @@
 
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-red sidebar-mini">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -282,7 +282,7 @@
                 <div class="col-md-1"></div>
                    <div class="col-md-10">
                     <!-- box begins -->
-                    <div class="box box-info">
+                    <div class="box box-danger">
                         <!-- box header-->
                         <div class="box-header">
                             <h3 class="box-title">Create New Travel Agents</h3>
@@ -389,11 +389,18 @@
                                 <!--column for profile picture-->
                                 <div class="col-md-4">
                                     <div class="box-body">
-                                        <div class="row form-group" style="margin-top: 10px;">
-                                            <img id="employeeImage" src="dist/img/avatar5.png" class="img-rounded img-responsive"  style="width:140px;height:140px;">
-                                            <input id="imageURL" name="imageURL" type="file" onchange="$('#employeeImage')[0].src = window.URL.createObjectURL(this.files[0])" style="margin-top: 18px;">
 
-                                        </div>
+                                            <div class="row form-group" style="">
+                                                <img id="employeeImage" src="dist/img/avatar5.png"
+                                                     class="img-rounded img-responsive"
+                                                     data-bind="attr: {}"
+                                                     style="width:140px;height:140px;">
+                                                <input id="imageInput" name="imageInput" type="file"
+                                                       onchange="$('#employeeImage')[0].src = window.URL.createObjectURL(this.files[0])"
+                                                       style="margin-top: 18px;"/>
+
+                                            </div>
+
                                     </div>
 
                                 </div>
@@ -428,7 +435,7 @@
             <!-- Modal -->
             <div class="modal fade" id="NewAgentDetails" role="dialog" data-bind="modal: { visible: modalVisible}">
                 <div class="modal-dialog" style="height: auto">
-                    <div class="box box-info">
+                    <div class="box box-danger">
                         <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">
@@ -673,7 +680,7 @@
         self.accountNo = ko.observable();
         self.accountName = ko.observable();
         self.accountBranch= ko.observable();
-
+        self.imageURL = ko.observable();
         self.rates=ko.observableArray([new NewRates("","")]);
 
 
@@ -688,10 +695,33 @@
             self.rates.remove(this);
         };
 
+        function uploadProfilePicture(model){
+
+            var myFormData = new FormData();
+            myFormData.append('file', $('#imageInput')[0].files[0]);
+
+            $.ajax({
+                url: baseUrl+'/redberry/services/travelagentlogo/upload',
+                type: 'POST',
+                processData: false, // important
+                contentType: false, // important
+                enctype: 'multipart/form-data',
+                data: myFormData,
+                dataType: 'text',
+
+                success: function(data){
+                    self.imageURL(data);
+                    alert(data);
+
+                }
+            });
+
+        }
         self.submitForm=function(){
 
             $('#NewAgentDetails').modal('toggle');
         }
+
 
         self.save=function(){
             var travelAgentObject = ko.toJS(NewTravelAgentModel);
@@ -703,6 +733,7 @@
             ratesObject = ko.toJSON(ratesObject);
 
             alert(ratesObject);
+            uploadProfilePicture();// Travel Agent logo upload
 
             $.ajax({
 

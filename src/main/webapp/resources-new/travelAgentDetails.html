@@ -16,7 +16,7 @@
     <!-- DATA TABLES -->
     <link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
 
-    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <link href="dist/css/skins/skin-red.min.css" rel="stylesheet" type="text/css"/>
     <!-- data load for existing travel agents-->
     <script type="text/javascript" src="plugins/knockoutjs/knockout-3.3.0.js"> </script>
     <!-- fullCalendar 2.2.5-->
@@ -26,7 +26,7 @@
 
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-red sidebar-mini">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -277,7 +277,7 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <div class="box box-primary">
+                    <div class="box box-danger">
                         <div class="box-body no-padding">
                             <div class="col-md-6"> <!-- THE CALENDAR -->
                                 <div id="calendar"></div>
@@ -342,6 +342,14 @@
                                                         </tr>
                                                         <tr>
                                                             <td><b>Branch Name: </b></td>
+                                                            <td>
+                                                                <div data-bind="visible: !editing(),text: accountBranch"></div>
+                                                                <input class="form-control input-sm" data-bind="visible: editing, value: accountBranch"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                        <tr>
+                                                            <td><b>Rates: </b></td>
                                                             <td>
                                                                 <div data-bind="visible: !editing(),text: accountBranch"></div>
                                                                 <input class="form-control input-sm" data-bind="visible: editing, value: accountBranch"/>
